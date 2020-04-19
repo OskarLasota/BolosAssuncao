@@ -2,6 +2,7 @@ package com.frezzcoding.bolosassuncao
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,48 +10,57 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var ctx : Context
-    private lateinit var drawer : DrawerLayout
-    private lateinit var toolbar : Toolbar
-    private lateinit var navigationView : NavigationView
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ctx = this
-
-        setupView();
-    }
-
-    private fun setupView(){
-        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view)
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        var toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
-        navigationView.setNavigationItemSelectedListener(this)
+        setupBottomNavMenu(navController)
+        setupSideNavigationMenu(navController)
+        setupActionBar(navController)
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_homepage -> {
-                Toast.makeText(this, "Homepage", Toast.LENGTH_SHORT).show()
-            }
+    private fun setupBottomNavMenu(navController: NavController) {
+        bottom_nav?.let {
+            NavigationUI.setupWithNavController(it, navController)
         }
-        drawer.closeDrawer(GravityCompat.START)
+    }
+
+    private fun setupSideNavigationMenu(navController: NavController) {
+        nav_view?.let {
+            NavigationUI.setupWithNavController(it, navController)
+        }
+    }
+
+    private fun setupActionBar(navController: NavController) {
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navigated = NavigationUI.onNavDestinationSelected(item!!, navController)
+        return navigated || super.onOptionsItemSelected(item)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(Navigation.findNavController(this, R.id.nav_host_fragment),
+            drawer_layout)
+    }
 }

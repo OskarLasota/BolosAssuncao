@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/destination_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/destination_orders"
+        android:icon="@drawable/ic_orders"
+        android:title="Orders" />
+    <item
+        android:id="@+id/destination_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="Chat"
+        />
+</menu>
