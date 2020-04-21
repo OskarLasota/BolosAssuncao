@@ -1,18 +1,24 @@
-package com.frezzcoding.bolosassuncao.view
+package view
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
+import di.Injection
 import kotlinx.android.synthetic.main.activity_main.*
-
+import models.Product
+import viewmodel.ProductViewModel
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: ProductViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +32,24 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavMenu(navController)
         setupSideNavigationMenu(navController)
         setupActionBar(navController)
+
+        initializeViewModel()
+        viewModel.getProducts()
     }
+
+    private fun initializeViewModel(){
+        //set viewmodel with factory
+        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
+        //set observers
+        viewModel.products.observe(this, renderProducts)
+
+    }
+
+    private val renderProducts = Observer<List<Product>>{
+        println("render products success")
+        println(it.size)
+    }
+
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.let {

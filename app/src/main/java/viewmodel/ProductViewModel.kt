@@ -2,26 +2,56 @@ package viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import data.OperationCallBack
 import models.Product
+import models.ProductDataSource
 import repo.ProductRepository
 
 
-class ProductViewModel(application : Application) : ViewModel() {
+class ProductViewModel(private val repository : ProductDataSource) : ViewModel() {
 
-    private var repository : ProductRepository = ProductRepository().getInstance()
-    private lateinit var products : LiveData<Product>
+    //private val _products = MutableLiveData<List<Product>>().apply { value = emptyList() }
+    private val _products = MutableLiveData<List<Product>>()
+    val products : LiveData<List<Product>> = _products
 
-    init {
-        products = repository.initProducts()
+    private val _isViewLoading=MutableLiveData<Boolean>()
+    val isViewLoading:LiveData<Boolean> = _isViewLoading
+
+    private val _onMessageError=MutableLiveData<Any>()
+    val onMessageError:LiveData<Any> = _onMessageError
+
+    private val _isEmptyList=MutableLiveData<Boolean>()
+    val isEmptyList:LiveData<Boolean> = _isEmptyList
+
+
+    fun getProducts(){
+        _isViewLoading.postValue(true)
+        repository.retrieveProducts(object:OperationCallBack<Product>{
+            override fun onSuccess(data: List<Product>?) {
+                _isViewLoading.postValue(false)
+
+                if(data!=null){
+                    if(data.isEmpty()){
+                        println("reached is empty")
+                        _isEmptyList.postValue(true)
+                    }else{
+                        _products.value = data
+                    }
+                }
+            }
+
+            override fun onError(error: String?) {
+                println(error)
+                _isViewLoading.postValue(false)
+                _onMessageError.postValue(error)
+            }
+
+        })
     }
 
 
-    private fun getProducts() = repository.getProducts()
-
-    private fun addProduct(product : Product) = repository.addProduct(product)
-
-    private fun updateProduct(product : Product) = repository.updateProduct(product)
 
 
 

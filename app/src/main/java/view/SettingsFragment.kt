@@ -8,13 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
+import viewmodel.ProductViewModel
 
 
 class SettingsFragment : Fragment() {
 
     private lateinit var viewer : View
-
+    private lateinit var productViewModel : ProductViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -33,5 +35,7 @@ class SettingsFragment : Fragment() {
 
         return viewer;
     }
+
+
 
 }
