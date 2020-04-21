@@ -1,19 +1,13 @@
-package com.frezzcoding.bolosassuncao
+package com.frezzcoding.bolosassuncao.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.navigation.NavigationView
+import com.frezzcoding.bolosassuncao.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -25,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navController = Navigation.findNavController(this,
+            R.id.nav_host_fragment
+        )
 
         setupBottomNavMenu(navController)
         setupSideNavigationMenu(navController)
@@ -54,13 +50,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navController = Navigation.findNavController(this,
+            R.id.nav_host_fragment
+        )
         val navigated = NavigationUI.onNavDestinationSelected(item!!, navController)
         return navigated || super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(Navigation.findNavController(this, R.id.nav_host_fragment),
+        return NavigationUI.navigateUp(Navigation.findNavController(this,
+            R.id.nav_host_fragment
+        ),
             drawer_layout)
     }
 }
