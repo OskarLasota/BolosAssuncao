@@ -1,9 +1,9 @@
-package di
+package com.frezzcoding.bolosassuncao.di
 
 import androidx.lifecycle.ViewModelProvider
-import models.ProductDataSource
-import repo.ProductRepository
-import viewmodel.ViewModelFactory
+import com.frezzcoding.bolosassuncao.models.ProductDataSource
+import com.frezzcoding.bolosassuncao.repo.ProductRepository
+import com.frezzcoding.bolosassuncao.viewmodel.ViewModelFactory
 
 object Injection {
 

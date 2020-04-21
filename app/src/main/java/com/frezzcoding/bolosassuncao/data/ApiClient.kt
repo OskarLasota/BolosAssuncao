@@ -1,7 +1,6 @@
-package data
+package com.frezzcoding.bolosassuncao.data
 
-import models.Product
-import okhttp3.OkHttpClient
+import com.frezzcoding.bolosassuncao.models.Product
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit

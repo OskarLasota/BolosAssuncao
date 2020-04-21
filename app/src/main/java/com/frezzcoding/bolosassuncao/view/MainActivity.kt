@@ -1,4 +1,4 @@
-package view
+package com.frezzcoding.bolosassuncao.view
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,10 +10,10 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
-import di.Injection
+import com.frezzcoding.bolosassuncao.di.Injection
 import kotlinx.android.synthetic.main.activity_main.*
-import models.Product
-import viewmodel.ProductViewModel
+import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeViewModel(){
-        //set viewmodel with factory
+        //set com.frezzcoding.bolosassuncao.viewmodel with factory
         viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
         //set observers
         viewModel.products.observe(this, renderProducts)

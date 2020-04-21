@@ -1,13 +1,11 @@
-package viewmodel
+package com.frezzcoding.bolosassuncao.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import data.OperationCallBack
-import models.Product
-import models.ProductDataSource
-import repo.ProductRepository
+import com.frezzcoding.bolosassuncao.data.OperationCallBack
+import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.models.ProductDataSource
 
 
 class ProductViewModel(private val repository : ProductDataSource) : ViewModel() {

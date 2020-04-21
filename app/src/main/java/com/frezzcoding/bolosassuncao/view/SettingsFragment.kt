@@ -1,16 +1,13 @@
 package com.resocoder.navigationtut
 
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
-import viewmodel.ProductViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 
 class SettingsFragment : Fragment() {
@@ -22,8 +19,8 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         viewer =  inflater.inflate(R.layout.fragment_settings, container, false)
 
-        //todo create a viewmodel that will connect to the api using retrofit to upload images and obtain images from the server
-        //todo this fragment is exclusive for the privilaged users, but viewmodel should be reused for normal users and retrieval of images
+        //todo create a com.frezzcoding.bolosassuncao.viewmodel that will connect to the api using retrofit to upload images and obtain images from the server
+        //todo this fragment is exclusive for the privilaged users, but com.frezzcoding.bolosassuncao.viewmodel should be reused for normal users and retrieval of images
         //todo the images will be stored in a Room database to allow caching as well as reducing amount of http requests made
         //todo the user should see all the stored pictures and be able to edit the pictures as well as the description and details
         //todo this application is aimed at a bakery company

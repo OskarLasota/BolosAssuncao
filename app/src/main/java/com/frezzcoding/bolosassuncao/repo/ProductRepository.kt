@@ -1,12 +1,9 @@
-package repo
+package com.frezzcoding.bolosassuncao.repo
 
-import android.app.Application
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import data.ApiClient
-import data.OperationCallBack
-import models.Product
-import models.ProductDataSource
+import com.frezzcoding.bolosassuncao.data.ApiClient
+import com.frezzcoding.bolosassuncao.data.OperationCallBack
+import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.models.ProductDataSource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

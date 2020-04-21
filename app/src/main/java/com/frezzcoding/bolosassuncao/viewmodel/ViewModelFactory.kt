@@ -1,8 +1,8 @@
-package viewmodel
+package com.frezzcoding.bolosassuncao.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import models.ProductDataSource
+import com.frezzcoding.bolosassuncao.models.ProductDataSource
 
 class ViewModelFactory(private val repository : ProductDataSource) : ViewModelProvider.Factory {
 

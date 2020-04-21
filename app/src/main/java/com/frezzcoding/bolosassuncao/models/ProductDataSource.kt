@@ -1,6 +1,6 @@
-package models
+package com.frezzcoding.bolosassuncao.models
 
-import data.OperationCallBack
+import com.frezzcoding.bolosassuncao.data.OperationCallBack
 
 interface ProductDataSource {
 
