@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.di.Injection
+import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 
 class SettingsFragment : Fragment() {
 
     private lateinit var viewer : View
-    private lateinit var productViewModel : ProductViewModel
+    private lateinit var viewModel : ProductViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -30,9 +34,25 @@ class SettingsFragment : Fragment() {
         //todo each card should be pressable which will navigate to a new fragment, edit and create fragment can be identical
         //todo on new object create or update, the api as well as the database should be updated.
 
+        initializeViewModel()
+        viewModel.getProducts()
+
         return viewer;
     }
 
+
+    private fun initializeViewModel(){
+        //set com.frezzcoding.bolosassuncao.viewmodel with factory
+        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
+        //set observers
+        viewModel.products.observe(viewLifecycleOwner, renderProducts)
+
+    }
+
+    private val renderProducts = Observer<List<Product>>{
+        println("render products success fragment")
+        println(it.size)
+    }
 
 
 }

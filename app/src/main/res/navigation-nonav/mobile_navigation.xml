@@ -19,7 +19,8 @@
         android:id="@+id/destination_settings"
         android:name="com.resocoder.navigationtut.SettingsFragment"
         android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+    </fragment>
     <fragment
         android:id="@+id/destination_chat"
         android:name="com.resocoder.navigationtut.ChatFragment"

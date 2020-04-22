@@ -33,21 +33,8 @@ class MainActivity : AppCompatActivity() {
         setupSideNavigationMenu(navController)
         setupActionBar(navController)
 
-        initializeViewModel()
-        viewModel.getProducts()
-    }
+        //todo activity shouldnt make calls to any viewmodels
 
-    private fun initializeViewModel(){
-        //set com.frezzcoding.bolosassuncao.viewmodel with factory
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
-        //set observers
-        viewModel.products.observe(this, renderProducts)
-
-    }
-
-    private val renderProducts = Observer<List<Product>>{
-        println("render products success")
-        println(it.size)
     }
 
 
