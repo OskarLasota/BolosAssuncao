@@ -23,7 +23,7 @@ class ViewAdapter(private val context : Context, private val _data : List<Produc
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return _data.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

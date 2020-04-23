@@ -10,20 +10,20 @@ import retrofit2.Response
 
 class ProductRepository() : ProductDataSource {
 
-    private var call: Call<List<Product>>?= null
+    private var call: Call<ArrayList<Product>>?= null
 
     override fun retrieveProducts(callback: OperationCallBack<Product>) {
         call= ApiClient.build()?.products()
-        call?.enqueue(object : Callback<List<Product>>{
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+        call?.enqueue(object : Callback<ArrayList<Product>>{
+            override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
                 callback.onError(t.message)
             }
 
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+            override fun onResponse(call: Call<ArrayList<Product>>, response: Response<ArrayList<Product>>) {
                 response?.body()?.let {
                     if (response.isSuccessful){
                         println(response.body())
-                        var list : List<Product> = response.body()!!
+                        var list : ArrayList<Product> = response.body()!!
                         callback.onSuccess(list)
                     }else{
                         callback.onError(it.toString())
