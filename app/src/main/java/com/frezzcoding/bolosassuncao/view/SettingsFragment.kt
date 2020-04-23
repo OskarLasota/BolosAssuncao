@@ -20,13 +20,14 @@ import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+
 class SettingsFragment : Fragment() {
 
     private lateinit var _view : View
     private lateinit var viewModel : ProductViewModel
     private lateinit var btnUpload : Button
-    private lateinit var adapter : ViewAdapter
     private lateinit var floating : FloatingActionButton
+    private lateinit var adapter : ViewAdapter
     private var productList : ArrayList<Product> = ArrayList<Product>()
     private lateinit var recycler : RecyclerView
     //storage permission code
@@ -65,7 +66,7 @@ class SettingsFragment : Fragment() {
     private fun initializeView(){
         recycler = _view.findViewById(R.id.recycler_view)
         floating = _view.findViewById(R.id.floating_button)
-        floating.setOnClickListener{
+        floating.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.destination_update)
         }
         //set up adapter here
@@ -73,12 +74,6 @@ class SettingsFragment : Fragment() {
         recycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
         recycler.adapter = adapter
         //set up views here
-        /*
-        btnUpload = _view.findViewById(R.id.btn_upload)
-        btnUpload.setOnClickListener {
-            selectImage()
-        }
-         */
     }
 
     private fun selectImage(){

@@ -16,8 +16,6 @@
         android:src="@drawable/ic_add"
         />
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,5 +26,7 @@
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
