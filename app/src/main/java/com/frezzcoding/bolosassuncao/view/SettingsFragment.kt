@@ -1,6 +1,3 @@
-package com.resocoder.navigationtut
-
-
 import android.R.attr.bitmap
 import android.app.Activity.RESULT_OK
 import android.content.Intent
