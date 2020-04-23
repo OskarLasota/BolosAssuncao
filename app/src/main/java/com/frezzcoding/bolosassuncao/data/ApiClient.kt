@@ -19,12 +19,6 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-
-     //   var httpClient: OkHttpClient.Builder = OkHttpClient.Builder()
-     //   httpClient.addInterceptor(interceptor())
-
-     //   var retrofit: Retrofit = builder.client(httpClient.build()).build()
-
         servicesApiInterface = retrofit.create(
             ServicesApiInterface::class.java)
 

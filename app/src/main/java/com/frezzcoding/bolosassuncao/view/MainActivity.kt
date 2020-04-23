@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
-import com.frezzcoding.bolosassuncao.di.Injection
 import kotlinx.android.synthetic.main.activity_main.*
-import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 
