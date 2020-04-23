@@ -1,26 +1,16 @@
-package com.resocoder.navigationtut
-
-
-import android.R.attr.bitmap
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.GridLayout
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
@@ -29,9 +19,6 @@ import com.frezzcoding.bolosassuncao.di.Injection
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.io.File
-import java.io.IOException
-
 
 class SettingsFragment : Fragment() {
 
