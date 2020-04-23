@@ -20,10 +20,17 @@
         android:name="com.resocoder.navigationtut.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_destination_settings_to_destination_update"
+            app:destination="@id/destination_update" />
     </fragment>
     <fragment
         android:id="@+id/destination_chat"
         android:name="com.resocoder.navigationtut.ChatFragment"
         android:label="Chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/destination_update"
+        android:name="com.frezzcoding.bolosassuncao.view.UpdateProductFragment"
+        android:label="UpdateProduct" />
 </navigation>

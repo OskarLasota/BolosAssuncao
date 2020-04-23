@@ -19,6 +19,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
@@ -26,6 +28,7 @@ import com.frezzcoding.bolosassuncao.adapters.ViewAdapter
 import com.frezzcoding.bolosassuncao.di.Injection
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.IOException
 
@@ -36,6 +39,7 @@ class SettingsFragment : Fragment() {
     private lateinit var viewModel : ProductViewModel
     private lateinit var btnUpload : Button
     private lateinit var adapter : ViewAdapter
+    private lateinit var floating : FloatingActionButton
     private var productList : ArrayList<Product> = ArrayList<Product>()
     private lateinit var recycler : RecyclerView
     //storage permission code
@@ -73,15 +77,21 @@ class SettingsFragment : Fragment() {
 
     private fun initializeView(){
         recycler = _view.findViewById(R.id.recycler_view)
+        floating = _view.findViewById(R.id.floating_button)
+        floating.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.destination_update)
+        }
         //set up adapter here
         adapter = ViewAdapter(requireContext(), productList)
         recycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
         recycler.adapter = adapter
         //set up views here
+        /*
         btnUpload = _view.findViewById(R.id.btn_upload)
         btnUpload.setOnClickListener {
             selectImage()
         }
+         */
     }
 
     private fun selectImage(){
