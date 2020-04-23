@@ -113,7 +113,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:backgroundTint="@color/colorPrimary"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@id/til_price"
+        app:layout_constraintTop_toBottomOf="@id/iv_selectimage"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
