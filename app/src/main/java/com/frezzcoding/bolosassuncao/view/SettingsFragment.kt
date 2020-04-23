@@ -56,6 +56,7 @@ class SettingsFragment : Fragment() {
         return _view;
     }
 
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if(requestCode == STORAGE_PERMISSION_CODE){
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
@@ -66,6 +67,9 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initializeView(){
+        //set up adapter here
+
+        //set up views here
         btnUpload = _view.findViewById(R.id.btn_upload)
         btnUpload.setOnClickListener {
             println("clicked")
