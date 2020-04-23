@@ -32,7 +32,6 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
                 if(data!=null){
                     if(data.isEmpty()){
-                        println("reached is empty")
                         _isEmptyList.postValue(true)
                     }else{
                         _products.value = data
@@ -48,6 +47,8 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
         })
     }
+
+
 
 
 

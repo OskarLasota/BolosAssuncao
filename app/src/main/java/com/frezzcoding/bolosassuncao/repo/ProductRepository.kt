@@ -1,5 +1,9 @@
 package com.frezzcoding.bolosassuncao.repo
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.Image
+import android.widget.ImageView
 import com.frezzcoding.bolosassuncao.data.ApiClient
 import com.frezzcoding.bolosassuncao.data.OperationCallBack
 import com.frezzcoding.bolosassuncao.models.Product
@@ -7,10 +11,13 @@ import com.frezzcoding.bolosassuncao.models.ProductDataSource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayInputStream
+import java.lang.Exception
+import java.net.URL
 
 class ProductRepository() : ProductDataSource {
 
-    private var call: Call<ArrayList<Product>>?= null
+    private var call: Call<ArrayList<Product>> ?= null
 
     override fun retrieveProducts(callback: OperationCallBack<Product>) {
         call= ApiClient.build()?.products()
@@ -22,7 +29,6 @@ class ProductRepository() : ProductDataSource {
             override fun onResponse(call: Call<ArrayList<Product>>, response: Response<ArrayList<Product>>) {
                 response?.body()?.let {
                     if (response.isSuccessful){
-                        println(response.body())
                         var list : ArrayList<Product> = response.body()!!
                         callback.onSuccess(list)
                     }else{
@@ -39,5 +45,7 @@ class ProductRepository() : ProductDataSource {
             it.cancel()
         }
     }
+
+
 
 }

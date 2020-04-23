@@ -45,8 +45,6 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         _view =  inflater.inflate(R.layout.fragment_settings, container, false)
-        var pr = Product(5, "fdas", "fasdf")
-        productList.add(pr)
 
         initializeView();
         //todo create a com.frezzcoding.bolosassuncao.viewmodel that will connect to the api using retrofit to upload images and obtain images from the server
@@ -66,13 +64,11 @@ class SettingsFragment : Fragment() {
     }
 
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if(requestCode == STORAGE_PERMISSION_CODE){
-            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this.context, "permission granted", Toast.LENGTH_LONG).show()
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    private val renderProducts = Observer<ArrayList<Product>>{
+        //initialize productlist here
+        //update view
+        productList = it
+        initializeView()
     }
 
     private fun initializeView(){
@@ -84,7 +80,6 @@ class SettingsFragment : Fragment() {
         //set up views here
         btnUpload = _view.findViewById(R.id.btn_upload)
         btnUpload.setOnClickListener {
-            println("clicked")
             selectImage()
         }
     }
@@ -94,6 +89,15 @@ class SettingsFragment : Fragment() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(requestCode == STORAGE_PERMISSION_CODE){
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this.context, "permission granted", Toast.LENGTH_LONG).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -113,10 +117,6 @@ class SettingsFragment : Fragment() {
 
     }
 
-    private val renderProducts = Observer<ArrayList<Product>>{
-        //initialize productlist here
-        productList = it
-    }
 
 
 }

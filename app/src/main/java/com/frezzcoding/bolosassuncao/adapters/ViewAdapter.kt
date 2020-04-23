@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.Product
+import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 class ViewAdapter(private val context : Context, private val _data : List<Product>) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
 
@@ -42,7 +44,8 @@ class ViewAdapter(private val context : Context, private val _data : List<Produc
 
         fun bind(product : Product){
             tvTitle?.text = product.name
-            //image?.setImageURI(product.uri)
+            //set image using picasso library
+            Picasso.get().load(product.url).into(image)
         }
 
 
