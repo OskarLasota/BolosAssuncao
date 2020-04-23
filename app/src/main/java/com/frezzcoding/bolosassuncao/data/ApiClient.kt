@@ -40,7 +40,7 @@ object ApiClient {
     interface ServicesApiInterface{
 
         @GET("products.php")
-        fun products(): Call<List<Product>>
+        fun products(): Call<ArrayList<Product>>
 
 
     }

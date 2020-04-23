@@ -11,8 +11,8 @@ import com.frezzcoding.bolosassuncao.models.ProductDataSource
 class ProductViewModel(private val repository : ProductDataSource) : ViewModel() {
 
     //private val _products = MutableLiveData<List<Product>>().apply { value = emptyList() }
-    private val _products = MutableLiveData<List<Product>>()
-    val products : LiveData<List<Product>> = _products
+    private val _products = MutableLiveData<ArrayList<Product>>()
+    val products : LiveData<ArrayList<Product>> = _products
 
     private val _isViewLoading=MutableLiveData<Boolean>()
     val isViewLoading:LiveData<Boolean> = _isViewLoading
@@ -27,12 +27,11 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
     fun getProducts(){
         _isViewLoading.postValue(true)
         repository.retrieveProducts(object:OperationCallBack<Product>{
-            override fun onSuccess(data: List<Product>?) {
+            override fun onSuccess(data: ArrayList<Product>?) {
                 _isViewLoading.postValue(false)
 
                 if(data!=null){
                     if(data.isEmpty()){
-                        println("reached is empty")
                         _isEmptyList.postValue(true)
                     }else{
                         _products.value = data
@@ -48,6 +47,8 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
         })
     }
+
+
 
 
 
