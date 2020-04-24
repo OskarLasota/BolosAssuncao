@@ -22,7 +22,10 @@ class ProductRepository() : ProductDataSource {
     private var uploadcall : Call<UploadResult> ?= null
 
     override fun uploadProduct(product: Product, callback: OperationCallBack<Boolean>) {
-        var body = UploadBody(product.name, product.image, product.price, product.description)
+        var body = UploadBody(product.name, product.encode, product.price, product.description)
+
+        //println(body)
+        uploadcall = ApiClient.build()?.upload(product.name, product.encode)
 
         //this needs completing
         // i dont know how to upload a file

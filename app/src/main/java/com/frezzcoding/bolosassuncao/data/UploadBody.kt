@@ -1,5 +1,7 @@
 package com.frezzcoding.bolosassuncao.data
 
+import com.google.gson.annotations.SerializedName
 import java.io.File
 
-class UploadBody(val name : String, val image : File, val price : Double, val desc : String)
+data class UploadBody(@SerializedName("name") var name : String, @SerializedName("image") var image : String,
+                      @SerializedName("price") var price : Double, @SerializedName("desc") var desc : String)

@@ -3,14 +3,16 @@ package com.frezzcoding.bolosassuncao.view
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +21,9 @@ import com.frezzcoding.bolosassuncao.di.Injection
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.textfield.TextInputEditText
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.InputStream
 
 
 class AddProductFragment : Fragment(){
@@ -31,7 +35,7 @@ class AddProductFragment : Fragment(){
     private lateinit var ivStatus : ImageView
     private lateinit var ivSelect : ImageView
     private lateinit var btnSubmit : Button
-    private lateinit var file : File
+    private lateinit var encode : String
     //storage permission code
     private val STORAGE_PERMISSION_CODE = 123
     private val PICK_IMAGE_REQUEST = 1
@@ -83,8 +87,8 @@ class AddProductFragment : Fragment(){
     private fun submitForm(){
         //loading animation then go back 1 fragment and update the list
         //call viewmodel here
-        //var product = Product(1, "fasdfasdf", "Tapioca", "very tasty", file.absoluteFile, 8.50)
-        //viewModel.upload(product)
+        var product = Product(1, "fasdfasdf", "Tapioca", "very tasty", encode, 8.50)
+        viewModel.upload(product)
     }
 
     private fun selectImage(){
@@ -113,12 +117,22 @@ class AddProductFragment : Fragment(){
             //todo call api from here to upload the image into the database
             //todo ivStatus update to green tick if correct
             //need to find real path i think
-            file = File(data.data.toString())
-
+            val imageUri = data.data
+            val imageStream: InputStream? = requireContext().getContentResolver().openInputStream(imageUri!!)
+            val selectedImage = BitmapFactory.decodeStream(imageStream)
+            encode = encodeImage(selectedImage)
             //make a retrofit POST request with this image and see if it works
 
         }
     }
+
+    private fun encodeImage(bm: Bitmap): String {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b: ByteArray = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
+    }
+
 
 
 }

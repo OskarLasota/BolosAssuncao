@@ -1,3 +1,6 @@
 package com.frezzcoding.bolosassuncao.data
 
-class UploadResult(error : Boolean, url : String, name : String)
+import com.google.gson.annotations.SerializedName
+
+data class UploadResult(@SerializedName("error") var error : String, @SerializedName("url") var url : String,
+                        @SerializedName("name") var name : String)
