@@ -54,8 +54,6 @@ class SettingsFragment : Fragment() {
 
 
     private val renderProducts = Observer<ArrayList<Product>>{
-        //initialize productlist here
-        //update view
         productList = it
         initializeView()
     }
@@ -70,7 +68,6 @@ class SettingsFragment : Fragment() {
         adapter = ViewAdapter(requireContext(), productList)
         recycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
         recycler.adapter = adapter
-        //set up views here
     }
 
 
@@ -81,7 +78,6 @@ class SettingsFragment : Fragment() {
         viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
         //set observers
         viewModel.products.observe(viewLifecycleOwner, renderProducts)
-
     }
 
 

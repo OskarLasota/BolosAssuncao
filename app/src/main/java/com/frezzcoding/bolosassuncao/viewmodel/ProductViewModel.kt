@@ -23,11 +23,31 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
     private val _isEmptyList=MutableLiveData<Boolean>()
     val isEmptyList:LiveData<Boolean> = _isEmptyList
 
+    private val _upload = MutableLiveData<Boolean>()
+    val upload : LiveData<Boolean> = _upload
+
+    fun upload(product : Product){
+        _isViewLoading.postValue(true)
+        repository.uploadProduct(product, object:OperationCallBack<Boolean>{
+            override fun onSuccess(data: ArrayList<Product>) {
+                _upload.value = true
+                _isViewLoading.postValue(false)
+            }
+
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(false)
+                _upload.value = false
+                _onMessageError.postValue(error)
+            }
+
+        })
+    }
+
 
     fun getProducts(){
         _isViewLoading.postValue(true)
         repository.retrieveProducts(object:OperationCallBack<Product>{
-            override fun onSuccess(data: ArrayList<Product>?) {
+            override fun onSuccess(data: ArrayList<Product>) {
                 _isViewLoading.postValue(false)
 
                 if(data!=null){

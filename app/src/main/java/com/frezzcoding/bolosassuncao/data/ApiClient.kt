@@ -1,15 +1,17 @@
 package com.frezzcoding.bolosassuncao.data
 
 import com.frezzcoding.bolosassuncao.models.Product
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
+import retrofit2.http.*
 
 object ApiClient {
 
-    private val API_BASE_URL = "https://bolosassuncao.com.br/api/"
+    private val API_BASE_URL = "http://bolosassuncao.com.br/api/"
     private var servicesApiInterface:ServicesApiInterface?=null
 
 
@@ -25,17 +27,15 @@ object ApiClient {
         return servicesApiInterface as ServicesApiInterface
     }
 
-    private fun interceptor(): HttpLoggingInterceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level=HttpLoggingInterceptor.Level.BODY
-        return httpLoggingInterceptor
-    }
 
     interface ServicesApiInterface{
 
         @GET("products.php")
         fun products(): Call<ArrayList<Product>>
 
+        @Multipart
+        @POST("upload.php")
+        fun upload(@Body uploadBody: UploadBody): Call<UploadResult>
 
     }
 
