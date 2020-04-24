@@ -13,7 +13,7 @@ class UpdateProductFragment : Fragment(){
     private lateinit var _view : View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _view =  inflater.inflate(R.layout.fragment_updateproducts, container, false)
+        _view =  inflater.inflate(R.layout.fragment_updateproduct, container, false)
 
 
         return _view
