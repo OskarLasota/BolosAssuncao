@@ -22,7 +22,7 @@ import com.google.android.material.textfield.TextInputEditText
 import java.io.File
 
 
-class UpdateProductFragment : Fragment(){
+class AddProductFragment : Fragment(){
 
     private lateinit var _view : View
     private lateinit var etName : TextInputEditText

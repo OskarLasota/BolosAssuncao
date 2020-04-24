@@ -54,6 +54,7 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
                     if(data.isEmpty()){
                         _isEmptyList.postValue(true)
                     }else{
+                        println(data)
                         _products.value = data
                     }
                 }
