@@ -30,9 +30,6 @@ class SettingsFragment : Fragment() {
     private lateinit var adapter : ViewAdapter
     private var productList : ArrayList<Product> = ArrayList<Product>()
     private lateinit var recycler : RecyclerView
-    //storage permission code
-    private val STORAGE_PERMISSION_CODE = 123
-    private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -76,30 +73,8 @@ class SettingsFragment : Fragment() {
         //set up views here
     }
 
-    private fun selectImage(){
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
-    }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if(requestCode == STORAGE_PERMISSION_CODE){
-            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this.context, "permission granted", Toast.LENGTH_LONG).show()
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null){
-            //imageview can be set with .setImageUri(URI);
-            //data.data = uri
-            //todo call api from here to upload the image into the database
-        }
-    }
 
     private fun initializeViewModel(){
         //set com.frezzcoding.bolosassuncao.viewmodel with factory
