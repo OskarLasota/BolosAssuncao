@@ -33,10 +33,10 @@ object ApiClient {
         @GET("products.php")
         fun products(): Call<ArrayList<Product>>
 
-
         @FormUrlEncoded
         @POST("upload.php")
-        fun upload(@Field("name") name : String, @Field("image") image : String ): Call<UploadResult>
+        fun upload(@Field("name") name : String, @Field("image") image : String,
+                   @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
 
     }
 
