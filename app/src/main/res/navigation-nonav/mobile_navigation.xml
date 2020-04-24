@@ -19,14 +19,14 @@
         android:label="Settings">
         <action
             android:id="@+id/action_destination_settings_to_updateProductFragment2"
-            app:destination="@id/destination_update" />
+            app:destination="@id/destination_add" />
     </fragment>
     <fragment
         android:id="@+id/destination_chat"
         android:name="ChatFragment"
         android:label="Chat" />
     <fragment
-        android:id="@+id/destination_update"
-        android:name="com.frezzcoding.bolosassuncao.view.UpdateProductFragment"
-        android:label="Update" />
+        android:id="@+id/destination_add"
+        android:name="com.frezzcoding.bolosassuncao.view.AddProductFragment"
+        android:label="Add" />
 </navigation>
