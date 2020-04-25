@@ -1,5 +1,6 @@
 package com.frezzcoding.bolosassuncao.models
 
 import java.io.File
+import java.io.Serializable
 
-data class Product(val id:Int, val url:String, val name:String, val description:String, val encode : String, val price : Double)
+data class Product(val id:Int, val url:String, val name:String, val description:String, val encode : String, val price : Double) : Serializable

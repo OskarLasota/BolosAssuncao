@@ -58,6 +58,7 @@ class AddProductFragment : Fragment(){
         initializeView()
         initializeListeners()
         initializeViewModel()
+        println("on create view")
         return _view
     }
 

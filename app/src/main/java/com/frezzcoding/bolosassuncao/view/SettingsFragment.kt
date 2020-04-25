@@ -4,16 +4,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.ViewAdapter
 import com.frezzcoding.bolosassuncao.di.Injection
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.view.EditProductFragment
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -37,7 +40,7 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
         //todo the user should see all the stored pictures and be able to edit the pictures as well as the description and details
         //todo this application is aimed at a bakery company
         //todo on new object create or update, the api as well as the database should be updated.
-
+        println("settings")
         initializeViewModel()
         viewModel.getProducts()
 
@@ -47,9 +50,6 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
 
     private val renderProducts = Observer<ArrayList<Product>>{
         productList = it
-        for(product in it){
-            println(product.id)
-        }
         initializeView()
     }
 
@@ -57,7 +57,7 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
         recycler = _view.findViewById(R.id.recycler_view)
         floating = _view.findViewById(R.id.floating_button)
         floating.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.destination_add)
+            Navigation.findNavController(_view).navigate(R.id.destination_add)
         }
         //set up adapter here
         adapter = ViewAdapter(requireContext(), productList, this)
@@ -77,7 +77,12 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(product: Product) {
-        Navigation.findNavController(_view).navigate(R.id.destination_edit)
+        println("pressed")
+        //findNavController().navigate(R.id.destination_edit)
+        var bundle = bundleOf("product" to product)
+
+        Navigation.findNavController(_view).navigate(R.id.destination_edit, bundle)
+
     }
 
 
