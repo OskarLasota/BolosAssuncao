@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.Product
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
-class ViewAdapter(private val context : Context, private val _data : List<Product>) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
-
+class ViewAdapter(private val context : Context, private val _data : List<Product>, var listener : OnItemClickListener) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,25 +28,40 @@ class ViewAdapter(private val context : Context, private val _data : List<Produc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product : Product = _data[position]
-        holder.bind(product)
+        holder.bind(product, listener)
     }
+
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var image : ImageView? = null
         private var tvTitle : TextView? = null
-
+        private lateinit var product : Product
+        private lateinit var _listener : OnItemClickListener
         init{
             image = itemView.findViewById(R.id.imageview_id)
             tvTitle = itemView.findViewById(R.id.image_title)
+
+            itemView.setOnClickListener {
+                _listener.onItemClick(product)
+            }
+
         }
 
-        fun bind(product : Product){
-            tvTitle?.text = product.name
+        fun bind(_product : Product, listener : OnItemClickListener){
+            tvTitle?.text = _product.name
+            _listener = listener
+            product = _product
             //set image using picasso library
-            Picasso.get().load(product.url).into(image)
+            Picasso.get().load(_product.url).into(image)
         }
 
 
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(product : Product)
+        //fun onLongPressClickListener(product : Product)
     }
 
 }

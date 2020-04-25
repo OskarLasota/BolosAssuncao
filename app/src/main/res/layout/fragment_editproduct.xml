@@ -5,17 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <TextView
-        android:id="@+id/tv_labeledit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Edit Product"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:background="?android:attr/listDivider" />
+
 
 
     <ImageView
@@ -25,13 +25,14 @@
         android:src="@drawable/bolos_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_labeledit" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/divider"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_editname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo"
+        app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         >
@@ -81,5 +82,16 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_editprice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Update"
+        android:backgroundTint="@color/colorPrimary"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
