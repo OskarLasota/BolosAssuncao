@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.frezzcoding.bolosassuncao.data.OperationCallBack
+import com.frezzcoding.bolosassuncao.data.UploadCallBack
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.models.ProductDataSource
 
@@ -28,10 +29,10 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
     fun upload(product : Product){
         _isViewLoading.postValue(true)
-        repository.uploadProduct(product, object:OperationCallBack<Boolean>{
-            override fun onSuccess(data: ArrayList<Product>) {
-                _upload.value = true
+        repository.uploadProduct(product, object:UploadCallBack<Boolean>{
+            override fun onSuccess(data: Boolean) {
                 _isViewLoading.postValue(false)
+                _upload.value = data
             }
 
             override fun onError(error: String?) {

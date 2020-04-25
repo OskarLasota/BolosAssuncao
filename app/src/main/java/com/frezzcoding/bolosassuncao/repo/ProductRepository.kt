@@ -2,6 +2,7 @@ package com.frezzcoding.bolosassuncao.repo
 
 import com.frezzcoding.bolosassuncao.data.ApiClient
 import com.frezzcoding.bolosassuncao.data.OperationCallBack
+import com.frezzcoding.bolosassuncao.data.UploadCallBack
 import com.frezzcoding.bolosassuncao.data.UploadResult
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.models.ProductDataSource
@@ -16,7 +17,7 @@ class ProductRepository() : ProductDataSource {
     private var call: Call<ArrayList<Product>> ?= null
     private var uploadcall : Call<UploadResult> ?= null
 
-    override fun uploadProduct(product: Product, callback: OperationCallBack<Boolean>) {
+    override fun uploadProduct(product: Product, callback: UploadCallBack<Boolean>) {
         //upload body didn't work when using @Body
         uploadcall = ApiClient.build()?.upload(product.name, product.encode, product.price, product.description)
 
@@ -26,7 +27,12 @@ class ProductRepository() : ProductDataSource {
             }
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-                println("on success")
+                var result = response.body()
+
+                // if false then error isn't present
+                if(!result!!.error){
+                    callback.onSuccess(true)
+                }
             }
 
         })
