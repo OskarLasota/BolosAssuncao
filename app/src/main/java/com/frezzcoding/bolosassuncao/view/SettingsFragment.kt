@@ -3,6 +3,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +18,7 @@ import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
 
     private lateinit var _view : View
     private lateinit var viewModel : ProductViewModel
@@ -59,9 +60,10 @@ class SettingsFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.destination_add)
         }
         //set up adapter here
-        adapter = ViewAdapter(requireContext(), productList)
+        adapter = ViewAdapter(requireContext(), productList, this)
         recycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
         recycler.adapter = adapter
+
     }
 
 
@@ -72,6 +74,10 @@ class SettingsFragment : Fragment() {
         viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
         //set observers
         viewModel.products.observe(viewLifecycleOwner, renderProducts)
+    }
+
+    override fun onItemClick(product: Product) {
+        Navigation.findNavController(_view).navigate(R.id.destination_edit)
     }
 
 

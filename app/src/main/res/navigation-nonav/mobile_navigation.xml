@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_destination_settings_to_updateProductFragment2"
             app:destination="@id/destination_add" />
+        <action
+            android:id="@+id/action_destination_settings_to_editProductFragment"
+            app:destination="@id/destination_edit" />
     </fragment>
     <fragment
         android:id="@+id/destination_chat"
@@ -28,5 +31,9 @@
     <fragment
         android:id="@+id/destination_add"
         android:name="com.frezzcoding.bolosassuncao.view.AddProductFragment"
-        android:label="Add" />
+        android:label="New Product" />
+    <fragment
+        android:id="@+id/destination_edit"
+        android:name="com.frezzcoding.bolosassuncao.view.EditProductFragment"
+        android:label="Edit Product" />
 </navigation>
