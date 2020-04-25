@@ -35,5 +35,10 @@
     <fragment
         android:id="@+id/destination_edit"
         android:name="com.frezzcoding.bolosassuncao.view.EditProductFragment"
-        android:label="Edit Product" />
+        android:label="Edit Product" >
+
+        <argument
+            android:name="product"
+            app:argType="com.frezzcoding.bolosassuncao.models.Product" />
+    </fragment>
 </navigation>

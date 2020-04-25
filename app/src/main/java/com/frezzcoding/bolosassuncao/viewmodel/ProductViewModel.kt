@@ -50,15 +50,12 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
         repository.retrieveProducts(object:OperationCallBack<Product>{
             override fun onSuccess(data: ArrayList<Product>) {
                 _isViewLoading.postValue(false)
-
-                if(data!=null){
                     if(data.isEmpty()){
                         _isEmptyList.postValue(true)
                     }else{
-                        println(data)
                         _products.value = data
                     }
-                }
+
             }
 
             override fun onError(error: String?) {
