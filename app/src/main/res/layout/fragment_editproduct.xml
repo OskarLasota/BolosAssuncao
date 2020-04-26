@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable name="product"
+        type="com.frezzcoding.bolosassuncao.models.Product"/>
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:text="@{product.name}"
             android:hint="name"
             android:singleLine="true"
             />
@@ -59,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:text="@{product.description}"
             android:hint="description"
             android:singleLine="true"
             />
@@ -78,6 +87,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:hint="price"
+            android:text="@{Double.toString(product.price)}"
             android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,3 +105,4 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
