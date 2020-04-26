@@ -40,8 +40,8 @@
             android:id="@+id/et_editname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
             android:maxLines="1"
+            android:hint="name"
             android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,8 +58,8 @@
             android:id="@+id/et_editdesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
             android:maxLines="1"
+            android:hint="description"
             android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,8 +76,8 @@
             android:id="@+id/et_editprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price"
             android:maxLines="1"
+            android:hint="price"
             android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
