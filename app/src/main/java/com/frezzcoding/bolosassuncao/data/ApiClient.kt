@@ -38,6 +38,11 @@ object ApiClient {
         fun upload(@Field("name") name : String, @Field("image") image : String,
                    @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
 
+        @FormUrlEncoded
+        @PUT("update.php")
+        fun update(@Field("id") id : Int, @Field("name") name : String, @Field("image") image : String,
+                   @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
+
     }
 
 }

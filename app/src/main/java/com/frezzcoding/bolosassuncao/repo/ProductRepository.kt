@@ -16,6 +16,22 @@ class ProductRepository() : ProductDataSource {
 
     private var call: Call<ArrayList<Product>> ?= null
     private var uploadcall : Call<UploadResult> ?= null
+    private var updatecall : Call<UploadResult> ?= null
+
+    override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
+        //updatecall = ApiClient.build()?.update()
+        updatecall?.enqueue(object : Callback<UploadResult>{
+            override fun onFailure(call: Call<UploadResult>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
+
+            }
+
+        })
+
+    }
 
     override fun uploadProduct(product: Product, callback: UploadCallBack<Boolean>) {
         //upload body didn't work when using @Body
