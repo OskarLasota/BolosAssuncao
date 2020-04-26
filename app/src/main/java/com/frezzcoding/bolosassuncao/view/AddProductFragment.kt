@@ -22,6 +22,7 @@ import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.di.Injection
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.utils.ProductInputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -33,7 +34,7 @@ import java.lang.Double.parseDouble
 import java.util.regex.Pattern
 
 
-class AddProductFragment : Fragment(){
+class AddProductFragment : Fragment() , ProductInputValidator {
 
     private lateinit var _view : View
     private lateinit var etName : TextInputEditText
@@ -78,14 +79,14 @@ class AddProductFragment : Fragment(){
     }
 
 
-    private fun checkCurrentValidity(resource : String){
+    override fun checkCurrentValidity(resource : String){
         when(resource){
             "name" -> if(etName.text.toString().length >= minNameLength) {tilName.error = null; }
             "price" -> if(etPrice.text.toString().isNotEmpty()) {tilPrice.error = null;}
         }
     }
 
-    private fun checkInputValidity() : Boolean {
+    override fun checkInputValidity() : Boolean {
         if (etName.text.toString().length < minNameLength) {
             tilName.error = getString(R.string.product_name_error)
             return false
