@@ -10,7 +10,9 @@ android {
     dataBinding {
         enabled = true
     }
-
+    viewBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.frezzcoding.bolosassuncao"
         minSdkVersion 21
