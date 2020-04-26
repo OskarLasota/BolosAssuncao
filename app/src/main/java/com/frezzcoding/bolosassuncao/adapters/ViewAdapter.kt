@@ -6,19 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.databinding.CardviewBinding
 import com.frezzcoding.bolosassuncao.models.Product
 import com.squareup.picasso.Picasso
 
-class ViewAdapter(private val context : Context, private val _data : List<Product>, var listener : OnItemClickListener) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
+class ViewAdapter(private val _data : List<Product>, var listener : OnItemClickListener) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
 
+    private lateinit var binding : CardviewBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var _view : View
-        var inflater : LayoutInflater = LayoutInflater.from(context)
-        _view = inflater.inflate(R.layout.cardview, parent, false)
-        return ViewHolder(_view)
+        var inflater : LayoutInflater = LayoutInflater.from(parent.context)
+        binding = DataBindingUtil.inflate(inflater, R.layout.cardview, parent, false)
+
+        return ViewHolder(binding)
 
     }
 
@@ -33,15 +37,16 @@ class ViewAdapter(private val context : Context, private val _data : List<Produc
 
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(binding: CardviewBinding) : RecyclerView.ViewHolder(binding.root) {
         private var image : ImageView? = null
         private var tvTitle : TextView? = null
         private lateinit var product : Product
         private lateinit var _listener : OnItemClickListener
+        private var _binding : CardviewBinding
         init{
             image = itemView.findViewById(R.id.imageview_id)
             tvTitle = itemView.findViewById(R.id.image_title)
-
+            _binding = binding
             itemView.setOnClickListener {
                 _listener.onItemClick(product)
             }
@@ -49,10 +54,10 @@ class ViewAdapter(private val context : Context, private val _data : List<Produc
         }
 
         fun bind(_product : Product, listener : OnItemClickListener){
-            tvTitle?.text = _product.name
+            _binding.product = _product
             _listener = listener
             product = _product
-            //set image using picasso library
+            //set image using picasso library, try to add this code in the model so we can databind
             Picasso.get().load(_product.url).into(image)
         }
 

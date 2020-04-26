@@ -60,7 +60,7 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
             Navigation.findNavController(_view).navigate(R.id.destination_add)
         }
         //set up adapter here
-        adapter = ViewAdapter(requireContext(), productList, this)
+        adapter = ViewAdapter(productList, this)
         recycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
         recycler.adapter = adapter
 
