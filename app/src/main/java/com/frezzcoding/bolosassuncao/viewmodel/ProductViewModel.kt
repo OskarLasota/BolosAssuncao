@@ -30,15 +30,21 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
     private val _update = MutableLiveData<Boolean>()
     val update : LiveData<Boolean> = _update
 
+    private val _delete = MutableLiveData<Boolean>()
+    val delete : LiveData<Boolean> = _delete
+
     fun delete(product : Product){
         _isViewLoading.postValue(true)
         repository.deleteProduct(product, object:UploadCallBack<Boolean>{
             override fun onSuccess(data: Boolean) {
-
+                _isViewLoading.postValue(false)
+                _delete.value = data
             }
 
             override fun onError(error: String?) {
-
+                _isViewLoading.postValue(false)
+                _upload.value = false
+                _onMessageError.postValue(error)
             }
 
         })
@@ -63,6 +69,18 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
     fun update(product : Product){
         _isViewLoading.postValue(true)
+        repository.updateProduct(product, object:UploadCallBack<Boolean>{
+            override fun onSuccess(data: Boolean) {
+                _isViewLoading.postValue(true)
+                _update.value = data
+            }
+
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(false)
+                _update.value = false
+                _onMessageError.postValue(error)
+            }
+        })
 
     }
 
