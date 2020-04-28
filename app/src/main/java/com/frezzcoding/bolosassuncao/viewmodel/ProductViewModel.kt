@@ -30,6 +30,8 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
     private val _update = MutableLiveData<Boolean>()
     val update : LiveData<Boolean> = _update
 
+    
+
     fun upload(product : Product){
         _isViewLoading.postValue(true)
         repository.uploadProduct(product, object:UploadCallBack<Boolean>{

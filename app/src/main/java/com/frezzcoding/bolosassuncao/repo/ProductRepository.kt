@@ -19,16 +19,21 @@ class ProductRepository() : ProductDataSource {
     private var updatecall : Call<UploadResult> ?= null
 
     override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
-        //updatecall = ApiClient.build()?.update()
+        //upload body didn't work when using @Body
+        updatecall = ApiClient.build()?.update(product.id, product.name, product.encode, product.price, product.description)
+
         updatecall?.enqueue(object : Callback<UploadResult>{
             override fun onFailure(call: Call<UploadResult>, t: Throwable) {
-
+                println(t.message)
             }
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-
+                var result = response.body()
+                // if false then error isn't present
+                if(!result!!.error){
+                    callback.onSuccess(true)
+                }
             }
-
         })
 
     }
@@ -44,7 +49,6 @@ class ProductRepository() : ProductDataSource {
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
                 var result = response.body()
-
                 // if false then error isn't present
                 if(!result!!.error){
                     callback.onSuccess(true)
