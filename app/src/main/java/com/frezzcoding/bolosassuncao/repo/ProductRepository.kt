@@ -18,6 +18,11 @@ class ProductRepository() : ProductDataSource {
     private var uploadcall : Call<UploadResult> ?= null
     private var updatecall : Call<UploadResult> ?= null
 
+
+    override fun deleteProduct(product: Product, callback: UploadCallBack<Boolean>) {
+
+    }
+
     override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
         //upload body didn't work when using @Body
         updatecall = ApiClient.build()?.update(product.id, product.name, product.encode, product.price, product.description)
