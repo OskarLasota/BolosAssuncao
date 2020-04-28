@@ -7,12 +7,15 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:src="@drawable/bolos_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/til_name"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_name"
