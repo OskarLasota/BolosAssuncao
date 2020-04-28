@@ -35,7 +35,7 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
             inflater, R.layout.fragment_settings, container, false
         )
 
-        initializeLiteners();
+        initializeLiteners()
         //todo this fragment is exclusive for the privilaged users, but com.frezzcoding.bolosassuncao.viewmodel should be reused for normal users and retrieval of images
         //todo the images will be stored in a Room database to allow caching as well as reducing amount of http requests made
         //todo the user should see all the stored pictures and be able to edit the pictures as well as the description and details

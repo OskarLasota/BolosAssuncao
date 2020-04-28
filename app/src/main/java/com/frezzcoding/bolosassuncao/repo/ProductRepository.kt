@@ -17,18 +17,47 @@ class ProductRepository() : ProductDataSource {
     private var call: Call<ArrayList<Product>> ?= null
     private var uploadcall : Call<UploadResult> ?= null
     private var updatecall : Call<UploadResult> ?= null
+    private var deletecall : Call<UploadResult> ?= null
 
-    override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
-        //updatecall = ApiClient.build()?.update()
-        updatecall?.enqueue(object : Callback<UploadResult>{
+    override fun deleteProduct(product: Product, callback: UploadCallBack<Boolean>) {
+        deletecall = ApiClient.build()?.delete(product.id)
+
+        deletecall?.enqueue(object : Callback<UploadResult>{
             override fun onFailure(call: Call<UploadResult>, t: Throwable) {
-
+                callback.onError(t.message)
             }
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-
+                var result = response.body()
+                if(!result!!.error){
+                    callback.onSuccess(true)
+                }else{
+                    callback.onError("something went wrong")
+                }
             }
 
+        })
+
+    }
+
+    override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
+        //upload body didn't work when using @Body
+        updatecall = ApiClient.build()?.update(product.id, product.name, product.encode, product.price, product.description)
+
+        updatecall?.enqueue(object : Callback<UploadResult>{
+            override fun onFailure(call: Call<UploadResult>, t: Throwable) {
+                callback.onError(t.message)
+            }
+
+            override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
+                var result = response.body()
+                // if false then error isn't present
+                if(!result!!.error){
+                    callback.onSuccess(true)
+                }else{
+                    callback.onError("something went wrong")
+                }
+            }
         })
 
     }
@@ -39,15 +68,16 @@ class ProductRepository() : ProductDataSource {
 
         uploadcall?.enqueue(object : Callback<UploadResult>{
             override fun onFailure(call: Call<UploadResult>, t: Throwable) {
-                println(t.message)
+                callback.onError(t.message)
             }
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
                 var result = response.body()
-
                 // if false then error isn't present
                 if(!result!!.error){
                     callback.onSuccess(true)
+                }else{
+                    callback.onError("something went wrong")
                 }
             }
 

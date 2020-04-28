@@ -11,7 +11,7 @@ import retrofit2.http.*
 
 object ApiClient {
 
-    private val API_BASE_URL = "http://bolosassuncao.com.br/api/"
+    private const val API_BASE_URL = "http://bolosassuncao.com.br/api/"
     private var servicesApiInterface:ServicesApiInterface?=null
 
 
@@ -33,15 +33,19 @@ object ApiClient {
         @GET("products.php")
         fun products(): Call<ArrayList<Product>>
 
+        //using POST requests for all below requests due to issues with php
         @FormUrlEncoded
         @POST("upload.php")
         fun upload(@Field("name") name : String, @Field("image") image : String,
                    @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
 
         @FormUrlEncoded
-        @PUT("update.php")
+        @POST("update.php")
         fun update(@Field("id") id : Int, @Field("name") name : String, @Field("image") image : String,
                    @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
+
+        @POST("delete.php")
+        fun delete(@Field("id") id : Int): Call<UploadResult>
 
     }
 
