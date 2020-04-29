@@ -14,4 +14,10 @@ Requirements :
 
 Current UI : In progress
 
-![home screen](images/home.png)
+![home screen](images/home.png) 
+![orders screen](images/orders.png)
+![chat screen](images/chat.png)
+
+![current products](images/currentProducts.png) 
+![edit product](images/editProduct.png)
+![new product](images/newProducts.png)
