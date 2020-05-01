@@ -76,4 +76,5 @@ dependencies {
     //util
     def picassoVersion = "2.71828"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4"
 }

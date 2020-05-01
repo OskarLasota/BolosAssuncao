@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import kotlinx.android.synthetic.main.activity_main.*
-import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
+import okhttp3.FormBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,30 +29,17 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this,
             R.id.nav_host_fragment
         )
+        //check if this line below works
+        startService(this.intent)
 
         setupBottomNavMenu(navController)
         setupSideNavigationMenu(navController)
         setupActionBar(navController)
-        getFirebaseId()
+
+        FirebaseMessaging.getInstance().subscribeToTopic("test")
 
     }
 
-
-    private fun getFirebaseId(){
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("tag1", "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
-                // Get new Instance ID token
-                val token = task.result?.token
-
-                // Log and toast
-                val msg = getString(R.string.msg_token_fmt, token)
-                println("msg is : $msg")
-            })
-    }
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.let {
