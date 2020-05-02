@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -18,7 +19,7 @@ import okhttp3.Request
 import java.io.IOException
 
 
-class MainActivity : AppCompatActivity() {
+class PrivilegedUserActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseMessaging.getInstance().subscribeToTopic("test")
 
     }
+
 
 
     private fun setupBottomNavMenu(navController: NavController) {
