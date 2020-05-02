@@ -8,7 +8,20 @@
     <fragment
         android:id="@+id/destination_home"
         android:name="HomeFragment"
-        android:label="Home" />
+        android:label="Home" >
+        <action
+            android:id="@+id/action_destination_home_to_destination_settings"
+            app:destination="@id/destination_settings" />
+        <action
+            android:id="@+id/action_destination_home_to_destination_orders"
+            app:destination="@id/destination_orders" />
+        <action
+            android:id="@+id/action_destination_home_to_destination_chat"
+            app:destination="@id/destination_chat" />
+        <action
+            android:id="@+id/action_destination_home_to_requireLoginFragment"
+            app:destination="@id/destination_requirelogin" />
+    </fragment>
     <fragment
         android:id="@+id/destination_orders"
         android:name="OrdersFragment"
@@ -41,4 +54,8 @@
             android:name="product"
             app:argType="com.frezzcoding.bolosassuncao.models.Product" />
     </fragment>
+    <fragment
+        android:id="@+id/destination_requirelogin"
+        android:name="com.frezzcoding.bolosassuncao.view.RequireLoginFragment"
+        android:label="requirelogin" />
 </navigation>

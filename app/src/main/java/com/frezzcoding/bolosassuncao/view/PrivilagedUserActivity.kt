@@ -18,7 +18,7 @@ import okhttp3.Request
 import java.io.IOException
 
 
-class MainActivity : AppCompatActivity() {
+class PrivilagedUserActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
