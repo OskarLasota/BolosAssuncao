@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.frezzcoding.bolosassuncao.R
-import com.frezzcoding.bolosassuncao.view.PrivilagedUserActivity
+import com.frezzcoding.bolosassuncao.view.PrivilegedUserActivity
 import com.google.firebase.messaging.RemoteMessage
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -50,7 +50,7 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
     }
 
     private fun showNotification(message : String?){
-        var intent = Intent(this, PrivilagedUserActivity::class.java)
+        var intent = Intent(this, PrivilegedUserActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         var pending = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)

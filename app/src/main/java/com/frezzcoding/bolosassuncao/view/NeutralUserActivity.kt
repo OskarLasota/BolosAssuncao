@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
+import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -18,6 +20,7 @@ class NeutralUserActivity : AppCompatActivity()  {
     /*
        user does not  have to log in to explore the products
        user will be taken to the login screen when they want to make an order or speak to the privilaged user
+       if user logs in once, their state should save automatically - find out how to get this done
      */
 
     /*
@@ -29,6 +32,8 @@ class NeutralUserActivity : AppCompatActivity()  {
         the user should have an option to log in and register
      */
 
+
+    private var loggedin = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +55,20 @@ class NeutralUserActivity : AppCompatActivity()  {
     }
 
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.destination_settings)?.isVisible = false
+        return super.onPrepareOptionsMenu(menu)
+    }
+
 
     private fun setupBottomNavMenu(navController: NavController) {
+        if(!loggedin) {
+            bottom_nav?.menu?.findItem(R.id.destination_chat)?.isVisible = loggedin
+            bottom_nav?.menu?.findItem(R.id.destination_orders)?.isVisible = loggedin
+            bottom_nav?.menu?.findItem(R.id.destination_requirelogin1)?.isVisible = !loggedin
+            bottom_nav?.menu?.findItem(R.id.destination_requirelogin2)?.isVisible = !loggedin
+        }
+
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
         }

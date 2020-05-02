@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="com.frezzcoding.bolosassuncao.view.PrivilagedUserActivity"
+            android:name="com.frezzcoding.bolosassuncao.view.PrivilegedUserActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
