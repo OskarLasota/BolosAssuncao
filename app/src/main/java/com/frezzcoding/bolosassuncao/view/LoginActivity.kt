@@ -2,16 +2,17 @@ package com.frezzcoding.bolosassuncao.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.di.Injection
+import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var viewModel : ProductViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
         //need to set up toolbar with back button to previous activity
         setSupportActionBar(toolbar)
-
+        initializeViewModel()
 
         setListeners()
     }
@@ -30,23 +31,32 @@ class LoginActivity : AppCompatActivity() {
         val btnregister = findViewById<Button>(R.id.btn_nav_register)
 
         btnlogin.setOnClickListener {
-            login()
+            //call view model here
+            //set viewmodel listener to listen for result, if successfull then call login() else show error
+
         }
         btnregister.setOnClickListener {
             register()
         }
-
-
     }
 
-    private fun login(){
-        var intent = Intent(this, PrivilegedUserActivity::class.java)
-        startActivity(intent)
+    private fun initializeViewModel(){
+        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(
+            ProductViewModel::class.java)
+         // viewModel.products.observe(viewLifecycleOwner, renderProducts)
     }
-    private fun register(){
-        var intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
+
+    private fun checkValidity() : Boolean{
+        var result = false
+
+
+        return result
     }
+
+    private fun login() = startActivity(Intent(this, PrivilegedUserActivity::class.java))
+
+    private fun register() = startActivity(Intent(this, RegisterActivity::class.java))
+
 
 
 }
