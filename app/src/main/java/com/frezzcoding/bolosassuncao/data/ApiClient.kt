@@ -47,6 +47,9 @@ object ApiClient {
         @POST("delete.php")
         fun delete(@Field("id") id : Int): Call<UploadResult>
 
+        @POST("login.php")
+        fun login(@Field("username") username : String, @Field("password") password : String): Call<UserResult>
+
     }
 
 }

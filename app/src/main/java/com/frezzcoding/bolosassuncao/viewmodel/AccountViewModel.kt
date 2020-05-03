@@ -20,12 +20,12 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
     val onMessageError:LiveData<Any> = _onMessageError
 
 
-    fun getUser(){
+    fun getUser(input : User){
         _isViewLoading.postValue(true)
-        repository.retrieveUser(object: UploadCallBack<User> {
+        repository.retrieveUser(input, object: UploadCallBack<User> {
             override fun onSuccess(data: User) {
                 _isViewLoading.postValue(false)
-
+                _user.value = data
 
             }
 
