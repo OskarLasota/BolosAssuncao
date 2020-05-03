@@ -44,6 +44,53 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         const val MIN_USERNAME_LENGTH = 4
     }
 
+    private fun login() = startActivity(Intent(this, PrivilegedUserActivity::class.java))
+
+    private fun register() = startActivity(Intent(this, RegisterActivity::class.java))
+
+
+    private fun initializeViewModel(){
+        viewModel = ViewModelProvider(this, AccountInjection.provideViewModelFactory()).get(
+           AccountViewModel::class.java)
+        viewModel.user.observe(this, observeLogin)
+    }
+
+    private val observeLogin = Observer<User>{
+        //on success call login
+        login()
+    }
+
+
+    override fun checkCurrentValidity(resource: String) {
+        when(resource){
+            "username" -> if(etUsername.text.toString().length > MIN_USERNAME_LENGTH) {tilUsername.error = null; }
+            "password" -> if(etPassword.text.toString().length > MIN_PASS_LENGTH) {tilPassword.error = null;}
+        }
+    }
+
+    override fun checkInputValidity(): Boolean {
+        if (etUsername.text.toString().length < MIN_USERNAME_LENGTH) {
+            tilUsername.error = "Username too short"
+            return false
+        }
+        if (etPassword.text.toString().length < MIN_PASS_LENGTH) {
+            tilPassword.error = "Password too short"
+            return false
+        }
+
+        return true
+    }
+
+    private fun initializeViews(){
+        tilUsername = findViewById(R.id.til_username)
+        tilPassword = findViewById(R.id.til_password)
+        etUsername = findViewById(R.id.et_username)
+        etPassword = findViewById(R.id.et_password)
+        btnlogin = findViewById(R.id.btn_login)
+        btnregister = findViewById(R.id.btn_nav_register)
+    }
+
+
     private fun setListeners(){
         etUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -79,52 +126,6 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         btnregister.setOnClickListener {
             register()
         }
-    }
-
-    private fun initializeViews(){
-        tilUsername = findViewById(R.id.til_username)
-        tilPassword = findViewById(R.id.til_password)
-        etUsername = findViewById(R.id.et_username)
-        etPassword = findViewById(R.id.et_password)
-        btnlogin = findViewById(R.id.btn_login)
-        btnregister = findViewById(R.id.btn_nav_register)
-    }
-
-    private fun initializeViewModel(){
-        viewModel = ViewModelProvider(this, AccountInjection.provideViewModelFactory()).get(
-           AccountViewModel::class.java)
-        viewModel.user.observe(this, observeLogin)
-    }
-
-    private val observeLogin = Observer<User>{
-        //on success call login
-        login()
-    }
-
-
-    private fun login() = startActivity(Intent(this, PrivilegedUserActivity::class.java))
-
-    private fun register() = startActivity(Intent(this, RegisterActivity::class.java))
-
-
-    override fun checkCurrentValidity(resource: String) {
-        when(resource){
-            "username" -> if(etUsername.text.toString().length > MIN_USERNAME_LENGTH) {tilUsername.error = null; }
-            "password" -> if(etPassword.text.toString().length > MIN_PASS_LENGTH) {tilPassword.error = null;}
-        }
-    }
-
-    override fun checkInputValidity(): Boolean {
-        if (etUsername.text.toString().length < MIN_USERNAME_LENGTH) {
-            tilUsername.error = "Username too short"
-            return false
-        }
-        if (etPassword.text.toString().length < MIN_PASS_LENGTH) {
-            tilPassword.error = "Password too short"
-            return false
-        }
-
-        return true
     }
 
 
