@@ -1,6 +1,6 @@
 package com.frezzcoding.bolosassuncao.utils
 
-interface ProductInputValidator {
+interface InputValidator {
 
     fun checkCurrentValidity(resource : String)
     fun checkInputValidity() : Boolean

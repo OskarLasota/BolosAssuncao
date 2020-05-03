@@ -12,7 +12,6 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,19 +20,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentEditproductBinding
-import com.frezzcoding.bolosassuncao.di.Injection
+import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
-import com.frezzcoding.bolosassuncao.utils.ProductInputValidator
+import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_editproduct.*
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.lang.Double
 
-class EditProductFragment : Fragment(), ProductInputValidator {
+class EditProductFragment : Fragment(), InputValidator {
 
 
     //binding
@@ -64,7 +60,7 @@ class EditProductFragment : Fragment(), ProductInputValidator {
     }
 
     private fun initializeViewModel(){
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this, ProductInjection.provideViewModelFactory()).get(ProductViewModel::class.java)
         viewModel.upload.observe(viewLifecycleOwner, checkResult)
     }
 

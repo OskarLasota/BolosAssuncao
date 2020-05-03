@@ -12,7 +12,7 @@ import retrofit2.Response
 
 
 
-class ProductRepository() : ProductDataSource {
+class ProductRepository : ProductDataSource {
 
     private var call: Call<ArrayList<Product>> ?= null
     private var uploadcall : Call<UploadResult> ?= null

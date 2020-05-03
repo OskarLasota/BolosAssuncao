@@ -19,16 +19,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentUpdateproductBinding
-import com.frezzcoding.bolosassuncao.di.Injection
+import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
-import com.frezzcoding.bolosassuncao.utils.ProductInputValidator
+import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.lang.Double.parseDouble
 
 
-class AddProductFragment : Fragment() , ProductInputValidator {
+class AddProductFragment : Fragment() , InputValidator {
 
 
     private lateinit var viewModel : ProductViewModel
@@ -96,7 +96,7 @@ class AddProductFragment : Fragment() , ProductInputValidator {
 
 
     private fun initializeViewModel(){
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this, ProductInjection.provideViewModelFactory()).get(ProductViewModel::class.java)
         viewModel.upload.observe(viewLifecycleOwner, checkResult)
     }
 
