@@ -5,7 +5,7 @@ import com.frezzcoding.bolosassuncao.models.ProductDataSource
 import com.frezzcoding.bolosassuncao.repo.ProductRepository
 import com.frezzcoding.bolosassuncao.viewmodel.ViewModelFactory
 
-object Injection {
+object ProductInjection {
 
     private val productDataSource : ProductDataSource = ProductRepository()
     private val productViewModelFactory = ViewModelFactory(productDataSource)

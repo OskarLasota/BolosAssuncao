@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.ViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentSettingsBinding
-import com.frezzcoding.bolosassuncao.di.Injection
+import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.view.EditProductFragment
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
@@ -63,7 +63,7 @@ class SettingsFragment : Fragment() , ViewAdapter.OnItemClickListener {
 
 
     private fun initializeViewModel(){
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this, ProductInjection.provideViewModelFactory()).get(ProductViewModel::class.java)
         viewModel.products.observe(viewLifecycleOwner, renderProducts)
     }
 
