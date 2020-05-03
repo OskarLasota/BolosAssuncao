@@ -44,12 +44,15 @@ object ApiClient {
         fun update(@Field("id") id : Int, @Field("name") name : String, @Field("image") image : String,
                    @Field("price") price : Double, @Field("desc") desc : String): Call<UploadResult>
 
+        @FormUrlEncoded
         @POST("delete.php")
         fun delete(@Field("id") id : Int): Call<UploadResult>
 
+        @FormUrlEncoded
         @POST("login.php")
         fun login(@Field("username") username : String, @Field("password") password : String): Call<UserResult>
 
+        @FormUrlEncoded
         @POST("register.php")
         fun register(@Field("username") username : String, @Field("password") password : String, @Field("email") email : String) : Call<UserResult>
 
