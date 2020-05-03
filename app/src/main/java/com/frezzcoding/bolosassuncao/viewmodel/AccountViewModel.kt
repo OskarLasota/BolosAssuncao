@@ -38,4 +38,23 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
         })
     }
 
+    fun registerUser(input : User){
+        _isViewLoading.postValue(true)
+        repository.registerUser(input, object: UploadCallBack<User> {
+            override fun onSuccess(data: User) {
+                _isViewLoading.postValue(false)
+                _user.value = data
+
+            }
+
+            override fun onError(error: String?) {
+                println(error)
+                _isViewLoading.postValue(false)
+                _onMessageError.postValue(error)
+            }
+
+        })
+    }
+
+
 }
