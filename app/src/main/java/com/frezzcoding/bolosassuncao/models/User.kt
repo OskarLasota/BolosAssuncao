@@ -2,11 +2,12 @@ package com.frezzcoding.bolosassuncao.models
 
 class User {
 
-    private var id = 0
-    private lateinit var username: String
-    private lateinit var password : String
+    var id = 0
+    lateinit var username: String
+    lateinit var password : String
+    lateinit var email : String
 
-    constructor(id : Int, username : String, password : String){
+    constructor(username : String, password : String){
         this.username = username
         this.password = password
         this.id = id
@@ -14,17 +15,16 @@ class User {
     constructor(id : Int){
         this.id = id
     }
-
-    fun getId(): Int {
-        return id
+    constructor(username : String, password: String, email :String){
+        this.username = username
+        this.password = password
+        this.email = email
     }
 
-    fun getUsername(): String {
-        return username
-    }
-    fun getPassword(): String {
-        return password
-    }
+
+
+
+
 
 }
 

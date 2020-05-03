@@ -12,9 +12,30 @@ import retrofit2.Response
 class UserRepository : UserDataSource {
 
     private var call: Call<UserResult>?= null
+    private var registercall : Call<UserResult>?= null
+
+    override fun registerUser(user: User, callback: UploadCallBack<User>) {
+        registercall = ApiClient.build()?.register(user.username, user.password, user.email)
+
+        registercall?.enqueue(object : Callback<UserResult>{
+            override fun onFailure(call: Call<UserResult>, t: Throwable) {
+                callback.onError(t.message)
+            }
+
+            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
+                var result = response.body()
+                if(result!!.error){
+                    callback.onSuccess(User(result.id))
+                }else{
+                    callback.onError("something went wrong")
+                }
+            }
+        })
+
+    }
 
     override fun retrieveUser(user: User, callback: UploadCallBack<User>) {
-        call = ApiClient.build()?.login(user.getUsername(), user.getPassword())
+        call = ApiClient.build()?.login(user.username, user.password)
 
         call?.enqueue(object : Callback<UserResult> {
             override fun onFailure(call: Call<UserResult>, t: Throwable) {

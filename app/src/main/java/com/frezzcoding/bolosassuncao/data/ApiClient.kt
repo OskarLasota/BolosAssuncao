@@ -50,6 +50,9 @@ object ApiClient {
         @POST("login.php")
         fun login(@Field("username") username : String, @Field("password") password : String): Call<UserResult>
 
+        @POST("register.php")
+        fun register(@Field("username") username : String, @Field("password") password : String, @Field("email") email : String) : Call<UserResult>
+
     }
 
 }
