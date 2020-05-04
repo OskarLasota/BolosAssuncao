@@ -33,9 +33,9 @@ class UserRepository : UserDataSource {
                response.body().let {
                    if(response.isSuccessful){
                        if(!it!!.error){
-                           callback.onSuccess(User(it.id))
+                           callback.onSuccess(User(it.id, it.privilege))
                        }else{
-                           callback.onError(response.message())
+                           callback.onError("error")
                        }
                    }
                }

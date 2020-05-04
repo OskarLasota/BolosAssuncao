@@ -1,3 +1,3 @@
 package com.frezzcoding.bolosassuncao.data
 
-data class UserResult(var error : Boolean, var id : Int)
+data class UserResult(var error : Boolean, var id : Int, var privilege : Int)
