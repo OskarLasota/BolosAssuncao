@@ -65,14 +65,11 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
     private val observeError = Observer<String>{
         //types of errors
-        println("error here ")
-        println(it)
+        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
     }
 
     private val observeLogin = Observer<User>{
         //on success call login
-        println(it.privilege)
-        println(it.id)
         when (it.privilege) {
             0 -> login()
             1 -> authorizedLogin()
@@ -97,7 +94,6 @@ class LoginActivity : AppCompatActivity(), InputValidator {
             tilPassword.error = "Password too short"
             return false
         }
-
         return true
     }
 
