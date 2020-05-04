@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     private lateinit var btnlogin : Button
     private lateinit var btnregister : Button
     private var loadingAnimation: LottieAnimationView? =null
+    private var loading : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,9 +67,11 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     private val observeLoading = Observer<Boolean>{
         //animations
         if(it){
+            loading = true
             loadingAnimation?.visibility = View.VISIBLE
             loadingAnimation?.playAnimation()
         }else{
+            loading = false
             loadingAnimation?.visibility = View.GONE
         }
     }
@@ -121,13 +124,15 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
     private fun setListeners(){
         btnlogin.setOnClickListener {
-            if(checkInputValidity()) {
+            if(checkInputValidity() && !loading) {
                 var user = User(etUsername.text.toString(), etPassword.text.toString())
                 viewModel.getUser(user)
             }
         }
         btnregister.setOnClickListener {
-            register()
+            if(!loading) {
+                register()
+            }
         }
 
         etUsername.addTextChangedListener(object : TextWatcher {
