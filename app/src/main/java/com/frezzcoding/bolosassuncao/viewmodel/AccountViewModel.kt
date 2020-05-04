@@ -20,9 +20,12 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
     val onMessageError:LiveData<Any> = _onMessageError
 
 
+    private val OPERATION_LOGIN = 0;
+    private val OPERATION_REGISTER = 1;
+
     fun getUser(input : User){
         _isViewLoading.postValue(true)
-        repository.retrieveUser(input, object: UploadCallBack<User> {
+        repository.genericOperation(OPERATION_LOGIN, input, object: UploadCallBack<User> {
             override fun onSuccess(data: User) {
                 _isViewLoading.postValue(false)
                 _user.value = data
@@ -40,7 +43,7 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
 
     fun registerUser(input : User){
         _isViewLoading.postValue(true)
-        repository.registerUser(input, object: UploadCallBack<User> {
+        repository.genericOperation(OPERATION_REGISTER, input, object: UploadCallBack<User> {
             override fun onSuccess(data: User) {
                 _isViewLoading.postValue(false)
                 _user.value = data

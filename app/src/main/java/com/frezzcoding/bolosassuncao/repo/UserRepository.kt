@@ -11,49 +11,39 @@ import retrofit2.Response
 
 class UserRepository : UserDataSource {
 
-    private var call: Call<UserResult>?= null
-    private var registercall : Call<UserResult>?= null
+    private var genericCall : Call<UserResult>?= null
 
-    override fun registerUser(user: User, callback: UploadCallBack<User>) {
-        registercall = ApiClient.build()?.register(user.username, user.password, user.email)
+    private val OPERATION_LOGIN = 0;
+    private val OPERATION_REGISTER = 1;
 
-        registercall?.enqueue(object : Callback<UserResult>{
+
+    override fun genericOperation(operation : Int, user:User, callback: UploadCallBack<User>){
+        when(operation){
+            OPERATION_LOGIN -> genericCall = ApiClient.build()?.login(user.username, user.password)
+            OPERATION_REGISTER -> genericCall = ApiClient.build()?.register(user.username, user.password, user.email)
+            else -> callback.onError("wrong operation number")
+        }
+
+        genericCall?.enqueue(object: Callback<UserResult>{
             override fun onFailure(call: Call<UserResult>, t: Throwable) {
                 callback.onError(t.message)
             }
 
             override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
-                var result = response.body()
-                if(result!!.error){
-                    callback.onSuccess(User(result.id))
-                }else{
-                    callback.onError("something went wrong")
-                }
-            }
-        })
-
-    }
-
-    override fun retrieveUser(user: User, callback: UploadCallBack<User>) {
-        call = ApiClient.build()?.login(user.username, user.password)
-
-        call?.enqueue(object : Callback<UserResult> {
-            override fun onFailure(call: Call<UserResult>, t: Throwable) {
-                callback.onError(t.message)
-            }
-
-            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
-                var result = response.body()
-                if(result!!.error){
-                    callback.onSuccess(User(result.id))
-                }else{
-                    callback.onError("something went wrong")
-                }
+               response.body().let {
+                   if(response.isSuccessful){
+                       if(!it!!.error){
+                           callback.onSuccess(User(it.id))
+                       }else{
+                           callback.onError(response.message())
+                       }
+                   }
+               }
             }
 
         })
-
     }
+
 
 
 }
