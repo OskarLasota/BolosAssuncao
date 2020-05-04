@@ -55,16 +55,28 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         viewModel = ViewModelProvider(this, AccountInjection.provideViewModelFactory()).get(
            AccountViewModel::class.java)
         viewModel.user.observe(this, observeLogin)
+        viewModel.onMessageError.observe(this, observeError)
+        viewModel.isViewLoading.observe(this, observeLoading)
+    }
+
+    private val observeLoading = Observer<Boolean>{
+        //animations
+    }
+
+    private val observeError = Observer<String>{
+        //types of errors
+        println("error here ")
+        println(it)
     }
 
     private val observeLogin = Observer<User>{
         //on success call login
-        if(it.privilege == 0) {
-            login()
-        }else if(it.privilege == 1){
-            authorizedLogin()
-        }else{
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
+        println(it.privilege)
+        println(it.id)
+        when (it.privilege) {
+            0 -> login()
+            1 -> authorizedLogin()
+            else -> Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -100,6 +112,16 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
 
     private fun setListeners(){
+        btnlogin.setOnClickListener {
+            if(checkInputValidity()) {
+                var user = User(etUsername.text.toString(), etPassword.text.toString())
+                viewModel.getUser(user)
+            }
+        }
+        btnregister.setOnClickListener {
+            register()
+        }
+
         etUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 checkCurrentValidity("username")
@@ -125,15 +147,6 @@ class LoginActivity : AppCompatActivity(), InputValidator {
             }
 
         })
-        btnlogin.setOnClickListener {
-            if(checkInputValidity()) {
-                var user = User(etUsername.text.toString(), etPassword.text.toString())
-                viewModel.getUser(user)
-            }
-        }
-        btnregister.setOnClickListener {
-            register()
-        }
     }
 
 

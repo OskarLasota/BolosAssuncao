@@ -39,10 +39,10 @@ class ProductRepository : ProductDataSource {
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
                 response.body()?.let{
                     if(response.isSuccessful) {
-                        if (!it!!.error) {
+                        if (it!!.error == null) {
                             callback.onSuccess(true)
                         } else {
-                            callback.onError(response.message())
+                            callback.onError(it!!.error)
                         }
                     }
                 }
@@ -64,7 +64,7 @@ class ProductRepository : ProductDataSource {
                         var list : ArrayList<Product> = response.body()!!
                         callback.onSuccess(list)
                     }else{
-                        callback.onError(response.message())
+                        callback.onError("Problem connecting to server")
                     }
                 }
             }

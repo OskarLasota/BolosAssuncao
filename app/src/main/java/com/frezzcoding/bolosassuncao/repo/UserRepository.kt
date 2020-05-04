@@ -21,7 +21,7 @@ class UserRepository : UserDataSource {
         when(operation){
             OPERATION_LOGIN -> genericCall = ApiClient.build()?.login(user.username, user.password)
             OPERATION_REGISTER -> genericCall = ApiClient.build()?.register(user.username, user.password, user.email)
-            else -> callback.onError("wrong operation number")
+            else -> callback.onError("technical error")
         }
 
         genericCall?.enqueue(object: Callback<UserResult>{
@@ -32,10 +32,11 @@ class UserRepository : UserDataSource {
             override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
                response.body().let {
                    if(response.isSuccessful){
-                       if(!it!!.error){
+                       //i dont like this error check, need to fix backend
+                       if(it!!.error == null){
                            callback.onSuccess(User(it.id, it.privilege))
                        }else{
-                           callback.onError("error")
+                           callback.onError(it!!.error)
                        }
                    }
                }
