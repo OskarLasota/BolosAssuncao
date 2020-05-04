@@ -1,14 +1,17 @@
 package com.frezzcoding.bolosassuncao.view
 
+import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.di.AccountInjection
 import com.frezzcoding.bolosassuncao.models.User
@@ -27,6 +30,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     private lateinit var tilPassword : TextInputLayout
     private lateinit var btnlogin : Button
     private lateinit var btnregister : Button
+    private var loadingAnimation: LottieAnimationView? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +65,12 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
     private val observeLoading = Observer<Boolean>{
         //animations
+        if(it){
+            loadingAnimation?.visibility = View.VISIBLE
+            loadingAnimation?.playAnimation()
+        }else{
+            loadingAnimation?.visibility = View.GONE
+        }
     }
 
     private val observeError = Observer<String>{
@@ -70,6 +80,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
     private val observeLogin = Observer<User>{
         //on success call login
+
         when (it.privilege) {
             0 -> login()
             1 -> authorizedLogin()
@@ -104,6 +115,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         etPassword = findViewById(R.id.et_password)
         btnlogin = findViewById(R.id.btn_login)
         btnregister = findViewById(R.id.btn_nav_register)
+        loadingAnimation = findViewById(R.id.animation)
     }
 
 
