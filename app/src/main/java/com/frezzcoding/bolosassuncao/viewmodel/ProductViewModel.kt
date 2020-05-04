@@ -33,9 +33,13 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
     private val _delete = MutableLiveData<Boolean>()
     val delete : LiveData<Boolean> = _delete
 
+    private val OPERATION_DELETE = 0;
+    private val OPERATION_UPDATE = 1;
+    private val OPERATION_UPLOAD = 2;
+
     fun delete(product : Product){
         _isViewLoading.postValue(true)
-        repository.deleteProduct(product, object:UploadCallBack<Boolean>{
+        repository.geneticOperation(OPERATION_DELETE, product, object:UploadCallBack<Boolean>{
             override fun onSuccess(data: Boolean) {
                 _isViewLoading.postValue(false)
                 _delete.value = data
@@ -52,7 +56,7 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
     fun upload(product : Product){
         _isViewLoading.postValue(true)
-        repository.uploadProduct(product, object:UploadCallBack<Boolean>{
+        repository.geneticOperation(OPERATION_UPLOAD, product, object:UploadCallBack<Boolean>{
             override fun onSuccess(data: Boolean) {
                 _isViewLoading.postValue(false)
                 _upload.value = data
@@ -69,7 +73,7 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
 
     fun update(product : Product){
         _isViewLoading.postValue(true)
-        repository.updateProduct(product, object:UploadCallBack<Boolean>{
+        repository.geneticOperation(OPERATION_UPDATE, product, object:UploadCallBack<Boolean>{
             override fun onSuccess(data: Boolean) {
                 _isViewLoading.postValue(true)
                 _update.value = data
@@ -83,7 +87,6 @@ class ProductViewModel(private val repository : ProductDataSource) : ViewModel()
         })
 
     }
-
 
     fun getProducts(){
         _isViewLoading.postValue(true)

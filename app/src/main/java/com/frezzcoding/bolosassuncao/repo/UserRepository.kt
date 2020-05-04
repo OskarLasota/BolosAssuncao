@@ -55,7 +55,5 @@ class UserRepository : UserDataSource {
 
     }
 
-    override fun cancel() {
 
-    }
 }

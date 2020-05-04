@@ -15,76 +15,41 @@ import retrofit2.Response
 class ProductRepository : ProductDataSource {
 
     private var call: Call<ArrayList<Product>> ?= null
-    private var uploadcall : Call<UploadResult> ?= null
-    private var updatecall : Call<UploadResult> ?= null
-    private var deletecall : Call<UploadResult> ?= null
+    private var genericCall : Call<UploadResult> ?= null
 
-    override fun deleteProduct(product: Product, callback: UploadCallBack<Boolean>) {
-        deletecall = ApiClient.build()?.delete(product.id)
 
-        deletecall?.enqueue(object : Callback<UploadResult>{
+    private val OPERATION_DELETE = 0;
+    private val OPERATION_UPDATE = 1;
+    private val OPERATION_UPLOAD = 2;
+
+
+    override fun geneticOperation(operation : Int, product : Product, callback: UploadCallBack<Boolean>){
+        when(operation){
+            OPERATION_DELETE -> genericCall = ApiClient.build()?.delete(product.id)
+            OPERATION_UPDATE -> genericCall = ApiClient.build()?.update(product.id, product.name, product.encode, product.price, product.description)
+            OPERATION_UPLOAD -> genericCall = ApiClient.build()?.upload(product.name, product.encode, product.price, product.description)
+            else -> callback.onError("wrong operation number")
+        }
+
+        genericCall?.enqueue(object : Callback<UploadResult>{
             override fun onFailure(call: Call<UploadResult>, t: Throwable) {
                 callback.onError(t.message)
             }
 
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-                var result = response.body()
-                if(!result!!.error){
-                    callback.onSuccess(true)
-                }else{
-                    callback.onError("something went wrong")
+                response.body()?.let{
+                    if(response.isSuccessful) {
+                        if (!it!!.error) {
+                            callback.onSuccess(true)
+                        } else {
+                            callback.onError(response.message())
+                        }
+                    }
                 }
             }
 
         })
-
     }
-
-    override fun updateProduct(product: Product, callback: UploadCallBack<Boolean>) {
-        //upload body didn't work when using @Body
-        updatecall = ApiClient.build()?.update(product.id, product.name, product.encode, product.price, product.description)
-
-        updatecall?.enqueue(object : Callback<UploadResult>{
-            override fun onFailure(call: Call<UploadResult>, t: Throwable) {
-                callback.onError(t.message)
-            }
-
-            override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-                var result = response.body()
-                // if false then error isn't present
-                if(!result!!.error){
-                    callback.onSuccess(true)
-                }else{
-                    callback.onError("something went wrong")
-                }
-            }
-        })
-
-    }
-
-    override fun uploadProduct(product: Product, callback: UploadCallBack<Boolean>) {
-        //upload body didn't work when using @Body
-        uploadcall = ApiClient.build()?.upload(product.name, product.encode, product.price, product.description)
-
-        uploadcall?.enqueue(object : Callback<UploadResult>{
-            override fun onFailure(call: Call<UploadResult>, t: Throwable) {
-                callback.onError(t.message)
-            }
-
-            override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-                var result = response.body()
-                // if false then error isn't present
-                if(!result!!.error){
-                    callback.onSuccess(true)
-                }else{
-                    callback.onError("something went wrong")
-                }
-            }
-
-        })
-
-    }
-
 
     override fun retrieveProducts(callback: OperationCallBack<Product>) {
         call= ApiClient.build()?.products()
@@ -99,7 +64,7 @@ class ProductRepository : ProductDataSource {
                         var list : ArrayList<Product> = response.body()!!
                         callback.onSuccess(list)
                     }else{
-                        callback.onError(it.toString())
+                        callback.onError(response.message())
                     }
                 }
             }
@@ -109,11 +74,6 @@ class ProductRepository : ProductDataSource {
 
 
 
-    override fun cancel() {
-        call?.let {
-            it.cancel()
-        }
-    }
 
 
 
