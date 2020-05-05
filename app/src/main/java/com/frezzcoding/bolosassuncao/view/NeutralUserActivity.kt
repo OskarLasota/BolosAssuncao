@@ -21,12 +21,13 @@ class NeutralUserActivity : AppCompatActivity()  {
        user does not  have to log in to explore the products
        user will be taken to the login screen when they want to make an order or speak to the privilaged user
        if user logs in once, their state should save automatically - find out how to get this done
+       there should be an animation for around 1-2 seconds while room database is used to obtain user data
      */
 
     /*
         todo
-        this activity should assign the user token
-        this activity should allow user to view all the products
+        /this activity should assign the user token
+        /this activity should allow user to view all the products
         there should be a search bar and maybe a filter system
         the user should be able to press on the product and see a summary of the product
         the user should have an option to log in and register
