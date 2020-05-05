@@ -23,12 +23,14 @@ In the meantime practicing Kotlin and other industry standard techiniques and li
 
 
 
-## Current UI : In progress
+## Current User UI : In progress
 
-![home screen](images/home.png) 
-![orders screen](images/orders.png)
-![chat screen](images/chat.png)
+![home screen](images/neutral_home.png) 
+![orders screen](images/neutral_orders.png)
+![chat screen](images/neutral_chat.png)
 
-![current products](images/currentProducts.png) 
-![edit product](images/editProduct.png)
-![new product](images/newProducts.png)
+## Current Admin UI : In progress
+
+![current products](images/admin_products.png) 
+![edit product](images/admin_edit.png)
+![new product](images/admin_new.png)
