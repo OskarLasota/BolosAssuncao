@@ -1,8 +1,13 @@
 package com.frezzcoding.bolosassuncao.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(tableName = "user_table")
 class User {
 
-    var id = 0
+    @PrimaryKey var id = 0
     lateinit var username: String
     lateinit var password : String
     lateinit var email : String
