@@ -2,21 +2,21 @@
 
 ## Tech Stack & Open-Library Sources : 
 + Minimum SDK level 21
-*100% Kotlin based + Coroutines
-*JetPack
-    *LiveData - notify domain layer data to views.
-    *Lifecycle - dispose observing data when lifecycle state changes.
-    *ViewModel - UI related data holder, lifecycle aware.
-    *Room Persistence - construct database.
++ 100% Kotlin based + Coroutines
++ JetPack
+   + LiveData - notify domain layer data to views.
+   + Lifecycle - dispose observing data when lifecycle state changes.
+   + ViewModel - UI related data holder, lifecycle aware.
+   + Room Persistence - construct database.
 
-*Architecture
-    *MVVM Architecture (View - DataBinding - ViewModel - Model)
-    *Repository pattern
++ Architecture
+   + MVVM Architecture (View - DataBinding - ViewModel - Model)
+   + Repository pattern
 
-*Material Design & Animations
-  *LottieFlies
++ Material Design & Animations
+   + LottieFlies
   
-*Retrofit2 & Gson - constructing the REST API
++ Retrofit2 & Gson - constructing the REST API
 
 
 ## GOAL : 
