@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="product"
             type="com.frezzcoding.bolosassuncao.models.Product"/>
     </data>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:layout_width="120dp"
-    android:layout_height="190dp"
-    android:layout_margin="25dp">
+<androidx.cardview.widget.CardView
+    android:layout_width="160dp"
+    android:layout_height="220dp"
+    android:layout_margin="25dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/image_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:text="@{product.name}" />
 
         <ImageView
             android:id="@+id/imageview_id"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="170dp"
             android:background="@color/cardview_dark_background"
              />
+
         <TextView
-            android:id="@+id/image_title"
+            android:id="@+id/image_price"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
-            android:textColor="#fff"
-            android:text="@{product.name}" />
+            android:textSize="16dp"
+            android:text="@{`R$ `+ Double.toString(product.price)}"
+            android:textColor="#fff" />
 
     </LinearLayout>
 
