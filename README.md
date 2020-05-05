@@ -8,7 +8,7 @@
    + Lifecycle - dispose observing data when lifecycle state changes.
    + ViewModel - UI related data holder, lifecycle aware.
    + Room Persistence - construct database.
-
++ Firebase Notifications
 + Architecture
    + MVVM Architecture (View - DataBinding - ViewModel - Model)
    + Repository pattern
