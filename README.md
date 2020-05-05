@@ -1,7 +1,7 @@
 # BolosAssuncao
 
 ## Tech Stack & Open-Library Sources : 
-*Minimum SDK level 21
++ Minimum SDK level 21
 *100% Kotlin based + Coroutines
 *JetPack
     *LiveData - notify domain layer data to views.
