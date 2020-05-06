@@ -33,7 +33,6 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
             }
 
             override fun onError(error: String?) {
-                println(error)
                 _isViewLoading.postValue(false)
                 _onMessageError.postValue(error)
             }
@@ -51,7 +50,6 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
             }
 
             override fun onError(error: String?) {
-                println(error)
                 _isViewLoading.postValue(false)
                 _onMessageError.postValue(error)
             }

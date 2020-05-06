@@ -60,7 +60,7 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     }
 
     private val observeRegister = Observer<User>{
-        
+        Toast.makeText(this, it.privilege, Toast.LENGTH_SHORT).show()
     }
 
     private val observeError = Observer<String>{
@@ -70,7 +70,8 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     private fun setListeners(){
         binding.btnRegister.setOnClickListener {
             if(checkInputValidity() && !loading){
-
+                var user = User(binding.etEditname.text.toString(), binding.etPassword.text.toString(), binding.etEmail.text.toString())
+                viewModel.registerUser(user)
             }
         }
 
@@ -117,7 +118,7 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
             binding.tilPassword.error = "Password too short"
             return false
         }
-        if(binding.etPassword.text.toString() == binding.etRepeatPassword.text.toString()){
+        if(binding.etPassword.text.toString() != binding.etRepeatPassword.text.toString()){
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             return false
         }
