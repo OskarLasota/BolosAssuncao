@@ -1,5 +1,6 @@
 package com.frezzcoding.bolosassuncao.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -59,13 +60,13 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         }
     }
 
+    private fun onRegisterSuccess() = startActivity(Intent(this, LoginActivity::class.java))
+
     private val observeRegister = Observer<User>{
-        Toast.makeText(this, it.privilege, Toast.LENGTH_SHORT).show()
+        onRegisterSuccess()
     }
 
-    private val observeError = Observer<String>{
-        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-    }
+    private val observeError = Observer<String>{ Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
 
     private fun setListeners(){
         binding.btnRegister.setOnClickListener {
@@ -97,7 +98,6 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
-
         })
     }
 

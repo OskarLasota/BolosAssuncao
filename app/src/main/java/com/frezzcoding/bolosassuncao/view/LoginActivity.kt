@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        //need to set up toolbar with back button to previous activity
         initializeViews()
         setSupportActionBar(toolbar)
         initializeViewModel()
@@ -77,13 +76,10 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     }
 
     private val observeError = Observer<String>{
-        //types of errors
         Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
     }
 
     private val observeLogin = Observer<User>{
-        //on success call login
-
         when (it.privilege) {
             0 -> login()
             1 -> authorizedLogin()
