@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.lottie.LottieAnimationView
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.databinding.ActivityLoginBinding
 import com.frezzcoding.bolosassuncao.di.AccountInjection
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
@@ -24,19 +25,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 class LoginActivity : AppCompatActivity(), InputValidator {
 
     private lateinit var viewModel : AccountViewModel
-    private lateinit var etUsername : TextInputEditText
-    private lateinit var etPassword : TextInputEditText
-    private lateinit var tilUsername : TextInputLayout
-    private lateinit var tilPassword : TextInputLayout
-    private lateinit var btnlogin : Button
-    private lateinit var btnregister : Button
-    private var loadingAnimation: LottieAnimationView? =null
+    private lateinit var binding : ActivityLoginBinding
     private var loading : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        initializeViews()
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         setSupportActionBar(toolbar)
         initializeViewModel()
 
@@ -67,11 +63,11 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         //animations
         if(it){
             loading = true
-            loadingAnimation?.visibility = View.VISIBLE
-            loadingAnimation?.playAnimation()
+            binding.animation?.visibility = View.VISIBLE
+            binding.animation?.playAnimation()
         }else{
             loading = false
-            loadingAnimation?.visibility = View.GONE
+            binding.animation?.visibility = View.GONE
         }
     }
 
@@ -90,48 +86,37 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
     override fun checkCurrentValidity(resource: String) {
         when(resource){
-            "username" -> if(etUsername.text.toString().length > MIN_USERNAME_LENGTH) {tilUsername.error = null; }
-            "password" -> if(etPassword.text.toString().length > MIN_PASS_LENGTH) {tilPassword.error = null;}
+            "username" -> if(binding.etUsername.text.toString().length > MIN_USERNAME_LENGTH) {binding.tilUsername.error = null; }
+            "password" -> if(binding.etPassword.text.toString().length > MIN_PASS_LENGTH) {binding.tilPassword.error = null;}
         }
     }
 
     override fun checkInputValidity(): Boolean {
-        if (etUsername.text.toString().length < MIN_USERNAME_LENGTH) {
-            tilUsername.error = "Username too short"
+        if (binding.etUsername.text.toString().length < MIN_USERNAME_LENGTH) {
+            binding.tilUsername.error = "Username too short"
             return false
         }
-        if (etPassword.text.toString().length < MIN_PASS_LENGTH) {
-            tilPassword.error = "Password too short"
+        if (binding.etPassword.text.toString().length < MIN_PASS_LENGTH) {
+            binding.tilPassword.error = "Password too short"
             return false
         }
         return true
     }
 
-    private fun initializeViews(){
-        tilUsername = findViewById(R.id.til_username)
-        tilPassword = findViewById(R.id.til_password)
-        etUsername = findViewById(R.id.et_username)
-        etPassword = findViewById(R.id.et_password)
-        btnlogin = findViewById(R.id.btn_login)
-        btnregister = findViewById(R.id.btn_nav_register)
-        loadingAnimation = findViewById(R.id.animation)
-    }
-
-
     private fun setListeners(){
-        btnlogin.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             if(checkInputValidity() && !loading) {
-                var user = User(etUsername.text.toString(), etPassword.text.toString())
+                var user = User(binding.etUsername.text.toString(), binding.etPassword.text.toString())
                 viewModel.getUser(user)
             }
         }
-        btnregister.setOnClickListener {
+        binding.btnNavRegister.setOnClickListener {
             if(!loading) {
                 register()
             }
         }
 
-        etUsername.addTextChangedListener(object : TextWatcher {
+        binding.etUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 checkCurrentValidity("username")
             }
@@ -144,7 +129,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
         })
 
-        etPassword.addTextChangedListener(object : TextWatcher{
+        binding.etPassword.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 checkCurrentValidity("password")
             }
