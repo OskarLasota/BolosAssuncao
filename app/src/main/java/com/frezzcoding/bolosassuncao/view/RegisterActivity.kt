@@ -3,12 +3,17 @@ package com.frezzcoding.bolosassuncao.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.airbnb.lottie.LottieAnimationView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.ActivityRegisterBinding
+import com.frezzcoding.bolosassuncao.di.AccountInjection
+import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +22,6 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
 
     private lateinit var binding : ActivityRegisterBinding
     private var loading : Boolean = false
-    private var loadingAnimation: LottieAnimationView? =null
     private lateinit var viewModel : AccountViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +41,33 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     }
 
     private fun initializeViewModel(){
+        viewModel = ViewModelProvider(this, AccountInjection.provideViewModelFactory()).get(
+            AccountViewModel::class.java)
+        viewModel.user.observe(this, observeRegister)
+        viewModel.onMessageError.observe(this, observeError)
+        viewModel.isViewLoading.observe(this, observeLoading)
+    }
 
+    private val observeLoading = Observer<Boolean>{
+        if(it){
+            loading = true
+            binding.animation?.visibility = View.VISIBLE
+            binding.animation?.playAnimation()
+        }else{
+            loading = false
+            binding.animation?.visibility = View.GONE
+        }
+    }
+
+    private val observeRegister = Observer<User>{
+        
+    }
+
+    private val observeError = Observer<String>{
+        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
     }
 
     private fun setListeners(){
-
         binding.btnRegister.setOnClickListener {
             if(checkInputValidity() && !loading){
 
