@@ -2,10 +2,11 @@ package com.frezzcoding.bolosassuncao.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "user_table")
-class User {
+class User : Serializable {
 
     @PrimaryKey var id = 0
     lateinit var username: String

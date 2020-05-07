@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.models.User
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -44,7 +45,10 @@ class NeutralUserActivity : AppCompatActivity()  {
         val navController = Navigation.findNavController(this,
             R.id.nav_host_fragment
         )
-
+        if(intent.extras != null){
+            var user = intent.getSerializableExtra("user") as? User
+        }
+        
         //these should be set up respecting if the user is logged in or not
         setupBottomNavMenu(navController)
         setupSideNavigationMenu(navController)
