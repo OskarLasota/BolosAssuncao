@@ -19,23 +19,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 class NeutralUserActivity : AppCompatActivity()  {
 
     /*
-       user does not  have to log in to explore the products
-       user will be taken to the login screen when they want to make an order or speak to the privilaged user
        if user logs in once, their state should save automatically - find out how to get this done
-       there should be an animation for around 1-2 seconds while room database is used to obtain user data
+       there should be an animation for around 1-2 seconds while network is used to obtain user data of orders and chat
      */
 
     /*
-        todo
-        /this activity should assign the user token
-        /this activity should allow user to view all the products
         there should be a search bar and maybe a filter system
         the user should be able to press on the product and see a summary of the product
-        the user should have an option to log in and register
      */
 
 
     private var loggedin = false
+    private lateinit var user : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +41,10 @@ class NeutralUserActivity : AppCompatActivity()  {
             R.id.nav_host_fragment
         )
         if(intent.extras != null){
-            var user = intent.getSerializableExtra("user") as? User
+            user = intent.getSerializableExtra("user") as User
+            loggedin = true
         }
-        
-        //these should be set up respecting if the user is logged in or not
+
         setupBottomNavMenu(navController)
         setupSideNavigationMenu(navController)
         setupActionBar(navController)
