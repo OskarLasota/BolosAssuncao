@@ -1,32 +1,27 @@
 package com.frezzcoding.bolosassuncao.view
 
-import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.airbnb.lottie.LottieAnimationView
-import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.ActivityLoginBinding
 import com.frezzcoding.bolosassuncao.di.AccountInjection
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import maes.tech.intentanim.CustomIntent
 
 class LoginActivity : AppCompatActivity(), InputValidator {
 
-    private lateinit var viewModel : AccountViewModel
-    private lateinit var binding : ActivityLoginBinding
-    private var loading : Boolean = false
+    private lateinit var viewModel: AccountViewModel
+    private lateinit var binding: ActivityLoginBinding
+    private var loading: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +34,24 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         setListeners()
     }
 
-    companion object{
+    companion object {
         const val MIN_PASS_LENGTH = 4
         const val MIN_USERNAME_LENGTH = 4
     }
 
-    private fun login(user : User) {
+    private fun login(user: User) {
         var intent = Intent(this, NeutralUserActivity::class.java)
         intent.putExtra("user", user)
         startActivity(intent)
+        CustomIntent.customType(this, "fadein-to-fadeout")
     }
 
     private fun authorizedLogin() = startActivity(Intent(this, PrivilegedUserActivity::class.java))
 
-    private fun register() = startActivity(Intent(this, RegisterActivity::class.java))
+    private fun register() {
+        startActivity(Intent(this, RegisterActivity::class.java))
+        CustomIntent.customType(this, "fadein-to-fadeout")
+    }
 
 
     private fun initializeViewModel(){

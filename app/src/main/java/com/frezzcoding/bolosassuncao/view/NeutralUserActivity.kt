@@ -15,6 +15,7 @@ import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import maes.tech.intentanim.CustomIntent
 
 class NeutralUserActivity : AppCompatActivity()  {
 

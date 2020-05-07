@@ -18,6 +18,7 @@ import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import maes.tech.intentanim.CustomIntent
 
 class RegisterActivity : AppCompatActivity(), InputValidator {
 
@@ -60,7 +61,10 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         }
     }
 
-    private fun onRegisterSuccess() = startActivity(Intent(this, LoginActivity::class.java))
+    private fun onRegisterSuccess() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        CustomIntent.customType(this, "fadein-to-fadeout")
+    }
 
     private val observeRegister = Observer<User>{
         onRegisterSuccess()

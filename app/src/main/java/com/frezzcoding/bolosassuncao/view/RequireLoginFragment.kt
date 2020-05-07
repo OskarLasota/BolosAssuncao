@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
+import maes.tech.intentanim.CustomIntent
 
 class RequireLoginFragment : Fragment(){
 
@@ -18,9 +19,12 @@ class RequireLoginFragment : Fragment(){
 
         login.setOnClickListener {
             Navigation.findNavController(_view).navigate(R.id.destination_login)
+            CustomIntent.customType(this.context, "fadein-to-fadeout")
         }
 
         return _view
     }
+
+
 
 }
