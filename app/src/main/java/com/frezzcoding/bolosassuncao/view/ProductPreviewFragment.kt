@@ -6,15 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.databinding.FragmentProductpreviewBinding
+import com.frezzcoding.bolosassuncao.models.Product
+import com.squareup.picasso.Picasso
 
 class ProductPreviewFragment: Fragment() {
 
     private lateinit var _view : View
+    private lateinit var product : Product
+    private lateinit var binding : FragmentProductpreviewBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _view =  inflater.inflate(R.layout.fragment_productpreview, container, false)
 
-
+        setProductValues()
         return _view
     }
+
+    private fun setProductValues(){
+        if(arguments!!.get("product") != null) {
+            product = arguments!!.get("product") as Product
+            binding.product = product
+            Picasso.get().load(product.url).into(binding.ivImage)
+        }
+    }
+
 }

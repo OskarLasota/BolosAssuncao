@@ -41,7 +41,7 @@
             app:destination="@id/destination_requirelogin2" />
         <action
             android:id="@+id/action_destination_home_to_productPreviewFragment"
-            app:destination="@id/productPreviewFragment" />
+            app:destination="@id/destination_preview" />
     </fragment>
     <fragment
         android:id="@+id/destination_orders"
@@ -92,7 +92,7 @@
             app:destination="@id/destination_login" />
     </fragment>
     <fragment
-        android:id="@+id/productPreviewFragment"
+        android:id="@+id/destination_preview"
         android:name="com.frezzcoding.bolosassuncao.view.ProductPreviewFragment"
-        android:label="ProductPreviewFragment" />
+        android:label="Product" />
 </navigation>

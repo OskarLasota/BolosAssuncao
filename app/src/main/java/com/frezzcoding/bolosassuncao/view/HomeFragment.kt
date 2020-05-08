@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.ViewAdapter
@@ -20,10 +22,9 @@ import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 class HomeFragment : Fragment(), ViewAdapter.OnItemClickListener {
 
-    private lateinit var _view : View
     private lateinit var viewModel : ProductViewModel
     private lateinit var adapter : ViewAdapter
-    private var productList : ArrayList<Product> = ArrayList<Product>()
+    private var productList : ArrayList<Product> = ArrayList()
     private lateinit var binding : FragmentHomeBinding
 
 
@@ -53,8 +54,10 @@ class HomeFragment : Fragment(), ViewAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(product: Product) {
-        Toast.makeText(this.context, "product clicked", Toast.LENGTH_SHORT).show()
+        var bundle = bundleOf("product" to product)
+        Navigation.findNavController(binding.root).navigate(R.id.destination_preview, bundle)
     }
+
 
 
 }
