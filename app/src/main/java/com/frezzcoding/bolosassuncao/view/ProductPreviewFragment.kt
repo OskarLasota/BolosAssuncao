@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentProductpreviewBinding
@@ -12,15 +13,16 @@ import com.squareup.picasso.Picasso
 
 class ProductPreviewFragment: Fragment() {
 
-    private lateinit var _view : View
     private lateinit var product : Product
     private lateinit var binding : FragmentProductpreviewBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _view =  inflater.inflate(R.layout.fragment_productpreview, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_productpreview, container, false
+        )
 
         setProductValues()
-        return _view
+        return binding.root
     }
 
     private fun setProductValues(){
