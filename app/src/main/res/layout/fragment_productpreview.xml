@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintRight_toLeftOf="@id/tv_title"
         android:layout_margin="20dp"
-        android:text="@{Double.toString(product.price)}"
+        android:text="@{`R$ `+ Double.toString(product.price)}"
         android:textSize="20sp"
         android:textStyle="bold"
         />
