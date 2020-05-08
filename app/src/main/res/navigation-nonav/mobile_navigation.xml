@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_destination_home_to_destination_requirelogin2"
             app:destination="@id/destination_requirelogin2" />
+        <action
+            android:id="@+id/action_destination_home_to_productPreviewFragment"
+            app:destination="@id/productPreviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/destination_orders"
@@ -88,4 +91,8 @@
             android:id="@+id/action_destination_requirelogin2_to_LoginActivity"
             app:destination="@id/destination_login" />
     </fragment>
+    <fragment
+        android:id="@+id/productPreviewFragment"
+        android:name="com.frezzcoding.bolosassuncao.view.ProductPreviewFragment"
+        android:label="ProductPreviewFragment" />
 </navigation>
