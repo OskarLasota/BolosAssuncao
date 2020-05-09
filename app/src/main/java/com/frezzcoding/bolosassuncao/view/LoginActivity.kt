@@ -13,6 +13,8 @@ import com.frezzcoding.bolosassuncao.databinding.ActivityLoginBinding
 import com.frezzcoding.bolosassuncao.di.AccountInjection
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
+import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
+import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import maes.tech.intentanim.CustomIntent

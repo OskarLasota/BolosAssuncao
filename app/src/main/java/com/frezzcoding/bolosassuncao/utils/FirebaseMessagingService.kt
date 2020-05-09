@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.frezzcoding.bolosassuncao.R
-import com.frezzcoding.bolosassuncao.view.PrivilegedUserActivity
+import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.google.firebase.messaging.RemoteMessage
 import okhttp3.FormBody
 import okhttp3.OkHttpClient

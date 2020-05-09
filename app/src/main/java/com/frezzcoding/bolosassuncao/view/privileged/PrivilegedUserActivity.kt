@@ -1,22 +1,15 @@
-package com.frezzcoding.bolosassuncao.view
+package com.frezzcoding.bolosassuncao.view.privileged
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import kotlinx.android.synthetic.main.activity_main.*
-import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.io.IOException
 
 
 class PrivilegedUserActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
 
 
-class OrdersFragment : Fragment() {
+class NeutralOrdersFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

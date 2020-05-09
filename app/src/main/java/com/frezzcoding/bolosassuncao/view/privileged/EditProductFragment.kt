@@ -1,4 +1,4 @@
-package com.frezzcoding.bolosassuncao.view
+package com.frezzcoding.bolosassuncao.view.privileged
 
 import android.app.Activity
 import android.content.Intent
@@ -108,7 +108,8 @@ class EditProductFragment : Fragment(), InputValidator {
             product.price = Double.valueOf(binding.etEditprice.text.toString())
             product.description = binding.etEditdesc.text.toString()
             if(product.encode != encode)
-                product.encode = encode
+                product.encode =
+                    encode
             product.name = binding.etEditname.text.toString()
 
             viewModel.update(product)
@@ -145,7 +146,7 @@ class EditProductFragment : Fragment(), InputValidator {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if(requestCode == EditProductFragment.STORAGE_PERMISSION_CODE){
+        if(requestCode == STORAGE_PERMISSION_CODE){
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this.context, "permission granted", Toast.LENGTH_LONG).show()
             }

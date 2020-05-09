@@ -1,4 +1,4 @@
-package com.frezzcoding.bolosassuncao.view
+package com.frezzcoding.bolosassuncao.view.privileged
 
 import android.app.Activity
 import android.content.Intent
@@ -64,7 +64,8 @@ class AddProductFragment : Fragment() , InputValidator {
 
     private fun submitForm(){
         if(checkInputValidity()) {
-            var product = Product(0, "", binding.etName.text.toString(), binding.etDescription.text.toString(), encode, parseDouble(binding.etPrice.text.toString()))
+            var product = Product(0, "", binding.etName.text.toString(), binding.etDescription.text.toString(),
+                encode, parseDouble(binding.etPrice.text.toString()))
             viewModel.upload(product)
         }
     }
@@ -73,7 +74,9 @@ class AddProductFragment : Fragment() , InputValidator {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+            PICK_IMAGE_REQUEST
+        )
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

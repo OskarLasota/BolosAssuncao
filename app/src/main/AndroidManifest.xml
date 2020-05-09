@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.frezzcoding.bolosassuncao.view.NeutralUserActivity"
+            android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="com.frezzcoding.bolosassuncao.view.PrivilegedUserActivity"
+            android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

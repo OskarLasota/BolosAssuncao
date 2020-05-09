@@ -1,13 +1,9 @@
-package com.frezzcoding.bolosassuncao.view
+package com.frezzcoding.bolosassuncao.view.neutral
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
-import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -18,7 +14,6 @@ import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
-import maes.tech.intentanim.CustomIntent
 
 class NeutralUserActivity : AppCompatActivity()  {
 

@@ -12,7 +12,7 @@
 
     <activity
         android:id="@+id/destination_privileged"
-        android:name="com.frezzcoding.bolosassuncao.view.PrivilegedUserActivity"
+        android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity"
         android:label="Login" />
 
     <activity
@@ -45,11 +45,11 @@
     </fragment>
     <fragment
         android:id="@+id/destination_orders"
-        android:name="OrdersFragment"
+        android:name="NeutralOrdersFragment"
         android:label="Orders" />
     <fragment
         android:id="@+id/destination_settings"
-        android:name="SettingsFragment"
+        android:name="ManageProductsFragment"
         android:label="Settings">
         <action
             android:id="@+id/action_destination_settings_to_updateProductFragment2"
@@ -64,11 +64,11 @@
         android:label="Chat" />
     <fragment
         android:id="@+id/destination_add"
-        android:name="com.frezzcoding.bolosassuncao.view.AddProductFragment"
+        android:name="com.frezzcoding.bolosassuncao.view.privileged.AddProductFragment"
         android:label="New Product" />
     <fragment
         android:id="@+id/destination_edit"
-        android:name="com.frezzcoding.bolosassuncao.view.EditProductFragment"
+        android:name="com.frezzcoding.bolosassuncao.view.privileged.EditProductFragment"
         android:label="Edit Product" >
 
         <argument
