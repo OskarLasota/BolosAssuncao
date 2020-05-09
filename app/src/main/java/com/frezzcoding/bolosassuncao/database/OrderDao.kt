@@ -15,8 +15,6 @@ interface OrderDao {
     @Delete
     fun deleteOrder(order : Order)
 
-    fun getCustomerOrders(id : Int)
-
     fun getAllOrders()
 
 
