@@ -10,9 +10,9 @@ import java.io.Serializable
 class User : Serializable {
 
     @PrimaryKey var id = 0
-    lateinit var username: String
+    @Ignore lateinit var username: String
     @Ignore lateinit var password : String
-    lateinit var email : String
+    @Ignore lateinit var email : String
     var privilege = 0;
 
     @Ignore
@@ -21,7 +21,7 @@ class User : Serializable {
         this.password = password
         this.id = id
     }
-    @Ignore
+
     constructor(id : Int, priv : Int){
         this.id = id
         this.privilege = priv
@@ -33,15 +33,9 @@ class User : Serializable {
         this.email = email
     }
 
+    //used to make room db work not sure if this is correct
+    constructor() : this(0, 0)
 
-    constructor() : this(0, 0, "", "")
-    //we dont want to store password in room db
-    constructor(id : Int, priv : Int, username : String, email :String){
-        this.id = id
-        this.privilege = priv
-        this.username = username
-        this.email = email
-    }
 
 
 

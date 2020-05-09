@@ -42,33 +42,43 @@ class NeutralUserActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_neutral)
         setSupportActionBar(toolbar)
 
-        val navController = Navigation.findNavController(this,
-            R.id.nav_host_fragment
-        )
         if(intent.extras != null){
             user = intent.getSerializableExtra("user") as User
             loggedin = true
         }
-
-        setupBottomNavMenu(navController)
-        setupSideNavigationMenu(navController)
-        setupActionBar(navController)
 
         startService(this.intent)
         FirebaseMessaging.getInstance().subscribeToTopic("test")
 
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
         viewModel.init()
-        setObservers()
 
+        setObservers()
     }
 
     private fun setObservers(){
+        //if user just creates an account then make new entry on room db
         viewModel.getUser().observe(this, Observer {
             if(it == null){
                 println("nobody is logged in")
+                if(loggedin){
+                    viewModel.insert(user)
+                }
+            }else{
+                //if logged in then obtain all data from api for chat and orders
+                loggedin = true
             }
+            setUI()
         })
+    }
+
+    private fun setUI(){
+        val navController = Navigation.findNavController(this,
+            R.id.nav_host_fragment
+        )
+        setupBottomNavMenu(navController)
+        setupSideNavigationMenu(navController)
+        setupActionBar(navController)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
