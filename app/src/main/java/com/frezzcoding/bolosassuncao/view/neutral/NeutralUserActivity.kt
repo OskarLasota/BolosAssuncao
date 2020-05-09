@@ -1,5 +1,6 @@
 package com.frezzcoding.bolosassuncao.view.neutral
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
+import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,12 +57,18 @@ class NeutralUserActivity : AppCompatActivity()  {
         //if user just creates an account then make new entry on room db
         viewModel.getUser().observe(this, Observer {
             if(it == null){
-                println("nobody is logged in")
                 if(loggedin){
                     viewModel.insert(user)
                 }
             }else{
                 //if logged in then obtain all data from api for chat and orders
+
+                //this redirection needs an alternative
+                if(it.privilege == 1){
+                    intent = Intent(this, PrivilegedUserActivity::class.java)
+                    intent.putExtra("user", it)
+                    startActivity(intent)
+                }
                 loggedin = true
             }
             setUI()

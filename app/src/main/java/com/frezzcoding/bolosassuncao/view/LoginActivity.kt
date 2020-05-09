@@ -42,13 +42,17 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     }
 
     private fun login(user: User) {
-        var intent = Intent(this, NeutralUserActivity::class.java)
+        var intent : Intent
+
+        if(user.privilege == 0) {
+            intent = Intent(this, NeutralUserActivity::class.java)
+        }else{
+            intent = Intent(this, PrivilegedUserActivity::class.java)
+        }
         intent.putExtra("user", user)
         startActivity(intent)
         CustomIntent.customType(this, "fadein-to-fadeout")
     }
-
-    private fun authorizedLogin() = startActivity(Intent(this, PrivilegedUserActivity::class.java))
 
     private fun register() {
         startActivity(Intent(this, RegisterActivity::class.java))
@@ -81,11 +85,7 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     }
 
     private val observeLogin = Observer<User>{
-        when (it.privilege) {
-            0 -> login(it)
-            1 -> authorizedLogin()
-            else -> Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
-        }
+        login(it)
     }
 
 
