@@ -1,17 +1,14 @@
 package com.frezzcoding.bolosassuncao.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.frezzcoding.bolosassuncao.models.User
 
 
 @Dao
 interface UserDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user : User)
 
     @Delete

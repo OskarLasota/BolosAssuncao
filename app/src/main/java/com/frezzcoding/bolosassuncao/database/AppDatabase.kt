@@ -7,23 +7,25 @@ import androidx.room.RoomDatabase
 import com.frezzcoding.bolosassuncao.models.User
 
 
-@Database(entities = [User::class], version = 1, exportSchema = true)
+@Database(entities = [User::class], version = 2, exportSchema = true)
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao() : UserDao
 
-    companion object{
-
-        @Volatile private var instance: AppDatabase? = null
-        private val LOCK = Any()
-
-        operator fun invoke(context:Context) = instance?: synchronized(LOCK){
-            instance ?: buildDatabase(context).also { instance = it }
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+        fun getInstance(context: Context): AppDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDatabase::class.java,
+                        "user_database"
+                    ).build()
+                }
+                return instance
+            }
         }
-
-        private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                AppDatabase::class.java, "user.db")
-                .build()
     }
-
 }
