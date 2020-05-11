@@ -16,6 +16,7 @@ import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import maes.tech.intentanim.CustomIntent
 
 class NeutralUserActivity : AppCompatActivity()  {
 
@@ -68,6 +69,7 @@ class NeutralUserActivity : AppCompatActivity()  {
                     intent = Intent(this, PrivilegedUserActivity::class.java)
                     intent.putExtra("user", it)
                     startActivity(intent)
+                    CustomIntent.customType(this, "fadein-to-fadeout")
                 }
                 loggedin = true
             }
