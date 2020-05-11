@@ -19,4 +19,5 @@ class Order {
     lateinit var order_date : String
     lateinit var delivery_date : String
     var cost : Double = 0.0
+    lateinit var status : String
 }
