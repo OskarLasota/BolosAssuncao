@@ -1,20 +1,17 @@
 package com.frezzcoding.bolosassuncao.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.CardviewBinding
 import com.frezzcoding.bolosassuncao.models.Product
 import com.squareup.picasso.Picasso
 
-class ViewAdapter(private val _data : List<Product>, var listener : OnItemClickListener) : RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
+class ProductViewAdapter(private val _data : List<Product>, var listener : OnItemClickListener) : RecyclerView.Adapter<ProductViewAdapter.ViewHolder>() {
 
     private lateinit var binding : CardviewBinding
 
