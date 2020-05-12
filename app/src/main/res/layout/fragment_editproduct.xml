@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:hint="price"
-            android:text="@{Double.toString(product.price)}"
+            android:text="@{String.format(`%.2f`, product.price)}"
             android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
