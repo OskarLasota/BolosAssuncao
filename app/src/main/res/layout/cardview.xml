@@ -20,8 +20,9 @@
         <TextView
             android:id="@+id/image_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:background="@color/cardview_dark_background"
+            android:maxLines="1"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="16dp"
@@ -38,11 +39,12 @@
         <TextView
             android:id="@+id/image_price"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
+            android:maxLines="1"
             android:textSize="16dp"
-            android:text="@{`R$ `+ Double.toString(product.price)}"
+            android:text="@{`R$ `+ String.format(`%.2f`, product.price)}"
             android:textColor="#fff" />
 
     </LinearLayout>

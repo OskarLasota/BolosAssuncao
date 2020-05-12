@@ -43,11 +43,9 @@ class EditProductFragment : Fragment(), InputValidator {
         initializeViewModel()
         setProductValues()
         setListeners()
-        /*
-        pass on product to the fragment
-        use the product to initialize all of the views
-        connect to view model so user is able to edit or delete the product
-        */
+
+        setObservers()
+
         return binding.root
     }
 
@@ -56,11 +54,24 @@ class EditProductFragment : Fragment(), InputValidator {
         var encode = ""
         const val STORAGE_PERMISSION_CODE = 123
         const val PICK_IMAGE_REQUEST = 1
+        var imageUpdated = false
     }
 
     private fun initializeViewModel(){
         viewModel = ViewModelProvider(this, ProductInjection.provideViewModelFactory()).get(ProductViewModel::class.java)
+    }
+
+    private fun setObservers(){
         viewModel.upload.observe(viewLifecycleOwner, checkResult)
+        viewModel.isViewLoading.observe(viewLifecycleOwner, checkLoading)
+    }
+
+    private val checkLoading = Observer<Boolean>{
+        if(it){
+            println("loading is true")
+        }else{
+            println("loading is false - not loading")
+        }
     }
 
     private val checkResult = Observer<Boolean>{
@@ -106,9 +117,9 @@ class EditProductFragment : Fragment(), InputValidator {
         if(checkInputValidity()) {
             product.price = binding.etEditprice.text.toString().toDouble()
             product.description = binding.etEditdesc.text.toString()
-            if(product.encode != encode)
-                product.encode =
-                    encode
+            if(imageUpdated) {
+                product.encode = encode
+            }
             product.name = binding.etEditname.text.toString()
 
             viewModel.update(product)
@@ -155,6 +166,7 @@ class EditProductFragment : Fragment(), InputValidator {
 
 
     private fun encodeImage(bm: Bitmap): String {
+        imageUpdated = true
         val baos = ByteArrayOutputStream()
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val b: ByteArray = baos.toByteArray()
