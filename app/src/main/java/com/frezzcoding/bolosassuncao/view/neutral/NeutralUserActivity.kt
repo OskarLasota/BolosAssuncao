@@ -54,10 +54,7 @@ class NeutralUserActivity : AppCompatActivity()  {
         setObservers()
         setUI()
     }
-
-    override fun onBackPressed() {
-        finishAffinity()
-    }
+    
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
