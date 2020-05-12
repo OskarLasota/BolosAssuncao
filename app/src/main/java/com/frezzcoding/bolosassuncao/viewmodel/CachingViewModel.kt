@@ -21,7 +21,7 @@ class CachingViewModel(var _application: Application) : AndroidViewModel(_applic
 
     fun init(){
         repository = CachingRepository(_application)
-        user = repository!!.getCurrentUser1()
+        user = repository!!.getCurrentUser()
     }
 
 

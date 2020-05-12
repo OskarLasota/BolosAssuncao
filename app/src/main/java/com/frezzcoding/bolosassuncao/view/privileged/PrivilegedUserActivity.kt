@@ -37,6 +37,8 @@ class PrivilegedUserActivity : AppCompatActivity() {
             loggedin = true
         }
 
+
+        //todo this has to be done in the login activity
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
         viewModel.init()
 

@@ -20,13 +20,8 @@ class CachingRepository(_application : Application) : CoroutineScope {
         userDao = AppDatabase.getInstance(_application).userDao()
     }
 
-    fun getCurrentUser1() = userDao.getUser()
+    fun getCurrentUser() = userDao.getUser()
 
-    //var user : LiveData<User> = userDao.getUser()
-
-     //fun getCurrentUser() : LiveData<User>{
-    //     return user
-   // }
 
     suspend fun insert(_user : User){
         userDao.insert(_user)
