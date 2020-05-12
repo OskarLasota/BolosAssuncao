@@ -1,20 +1,37 @@
 package com.frezzcoding.bolosassuncao.repo
 
+import android.app.Application
 import androidx.lifecycle.LiveData
+import com.frezzcoding.bolosassuncao.database.AppDatabase
 import com.frezzcoding.bolosassuncao.database.UserDao
 import com.frezzcoding.bolosassuncao.models.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlin.coroutines.CoroutineContext
 
-class CachingRepository(var userDao: UserDao) {
+class CachingRepository(_application : Application) : CoroutineScope {
 
-    var user : LiveData<User> = userDao.getUser()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
 
-     fun getCurrentUser() : LiveData<User>{
-         return user
+    var userDao : UserDao
+
+    init {
+        userDao = AppDatabase.getInstance(_application).userDao()
     }
+
+    fun getCurrentUser1() = userDao.getUser()
+
+    //var user : LiveData<User> = userDao.getUser()
+
+     //fun getCurrentUser() : LiveData<User>{
+    //     return user
+   // }
 
     suspend fun insert(_user : User){
         userDao.insert(_user)
     }
+
 
 
 }

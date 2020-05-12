@@ -15,14 +15,13 @@ import kotlinx.coroutines.launch
 class CachingViewModel(var _application: Application) : AndroidViewModel(_application) {
 
     private var repository : CachingRepository? = null
-
     private var _user = MutableLiveData<User>()
     private var user : LiveData<User> = _user
 
+
     fun init(){
-        val userDao = AppDatabase.getInstance(_application).userDao()
-        repository = CachingRepository(userDao)
-        user = repository!!.getCurrentUser()
+        repository = CachingRepository(_application)
+        user = repository!!.getCurrentUser1()
     }
 
 
@@ -30,8 +29,8 @@ class CachingViewModel(var _application: Application) : AndroidViewModel(_applic
         return user
     }
 
-    fun insert(tempuser: User) = viewModelScope.launch(Dispatchers.IO) {
-        repository?.insert(tempuser)
+    fun insert(tempUser: User) = viewModelScope.launch(Dispatchers.IO) {
+        repository?.insert(tempUser)
     }
 
 }
