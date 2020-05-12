@@ -52,28 +52,13 @@ class NeutralUserActivity : AppCompatActivity()  {
         viewModel.init()
 
         setObservers()
+        setUI()
     }
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
         viewModel.user.observe(this, Observer {
-            if(it == null){
-                if(loggedin){
-                    viewModel.insert(user)
-                }
-            }else{
-                //if logged in then obtain all data from api for chat and orders
-
-                //this redirection needs an alternative
-                if(it.privilege == 1){
-                    intent = Intent(this, PrivilegedUserActivity::class.java)
-                    intent.putExtra("user", it)
-                    startActivity(intent)
-                    CustomIntent.customType(this, "fadein-to-fadeout")
-                }
-                loggedin = true
-            }
-            setUI()
+            println("user loaded")
         })
     }
 

@@ -30,9 +30,11 @@ class CachingViewModel(var _application: Application) : AndroidViewModel(_applic
 
 
     fun insert(tempUser: User) = viewModelScope.launch(Dispatchers.IO) {
+        println("entered insert")
         _loading.postValue(true)
         repository?.insert(tempUser)
         _loading.postValue(false)
+        println("completed insert")
     }
 
 }

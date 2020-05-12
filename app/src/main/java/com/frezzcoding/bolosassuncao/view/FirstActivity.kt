@@ -30,7 +30,7 @@ class FirstActivity : AppCompatActivity() {
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
         viewModel.user.observe(this, Observer {
-            if(it == null){
+            if(it == null || it.privilege == 0){
                 intent = Intent(this, NeutralUserActivity::class.java)
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")

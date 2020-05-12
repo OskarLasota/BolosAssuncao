@@ -43,22 +43,14 @@ class PrivilegedUserActivity : AppCompatActivity() {
         viewModel.init()
 
         setObservers()
-
+        setUI()
 
     }
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
         viewModel.user.observe(this, Observer {
-            if(it == null){
-                if(loggedin){
-                    viewModel.insert(user)
-                }
-            }else{
-                //if logged in then obtain all data from api for chat and orders
-                loggedin = true
-            }
-            setUI()
+            println("user loaded")
         })
 
         viewModel.loading.observe(this, Observer{

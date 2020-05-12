@@ -16,14 +16,17 @@ import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import maes.tech.intentanim.CustomIntent
 
 class LoginActivity : AppCompatActivity(), InputValidator {
 
     private lateinit var viewModel: AccountViewModel
+    private lateinit var cachingViewModel : CachingViewModel
     private lateinit var binding: ActivityLoginBinding
     private var loading: Boolean = false
+    private lateinit var _user : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +69,18 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         viewModel.user.observe(this, observeLogin)
         viewModel.onMessageError.observe(this, observeError)
         viewModel.isViewLoading.observe(this, observeLoading)
+
+        cachingViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
+        cachingViewModel.init()
+        cachingViewModel.loading.observe(this, observeCachingLoading)
+
+    }
+
+    private val observeCachingLoading = Observer<Boolean>{
+        //when process finishes loading
+        if(!it){
+            login(_user)
+        }
     }
 
     private val observeLoading = Observer<Boolean>{
@@ -85,7 +100,8 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     }
 
     private val observeLogin = Observer<User>{
-        login(it)
+        _user = it
+        cachingViewModel.insert(it)
     }
 
 
