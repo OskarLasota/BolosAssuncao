@@ -16,7 +16,10 @@ class CachingViewModel(var _application: Application) : AndroidViewModel(_applic
 
     private var repository : CachingRepository? = null
     private var _user = MutableLiveData<User>()
-    private var user : LiveData<User> = _user
+    var user : LiveData<User> = _user
+
+    private var _loading = MutableLiveData<Boolean>()
+    var loading : LiveData<Boolean> = _loading
 
 
     fun init(){
@@ -25,12 +28,11 @@ class CachingViewModel(var _application: Application) : AndroidViewModel(_applic
     }
 
 
-    fun getUser() : LiveData<User>{
-        return user
-    }
 
     fun insert(tempUser: User) = viewModelScope.launch(Dispatchers.IO) {
+        _loading.postValue(true)
         repository?.insert(tempUser)
+        _loading.postValue(false)
     }
 
 }

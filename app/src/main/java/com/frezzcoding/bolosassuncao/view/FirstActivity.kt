@@ -29,7 +29,7 @@ class FirstActivity : AppCompatActivity() {
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
-        viewModel.getUser().observe(this, Observer {
+        viewModel.user.observe(this, Observer {
             if(it == null){
                 intent = Intent(this, NeutralUserActivity::class.java)
                 startActivity(intent)

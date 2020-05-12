@@ -49,9 +49,8 @@ class PrivilegedUserActivity : AppCompatActivity() {
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db
-        viewModel.getUser().observe(this, Observer {
+        viewModel.user.observe(this, Observer {
             if(it == null){
-                println("nobody is logged in")
                 if(loggedin){
                     viewModel.insert(user)
                 }
@@ -61,6 +60,15 @@ class PrivilegedUserActivity : AppCompatActivity() {
             }
             setUI()
         })
+
+        viewModel.loading.observe(this, Observer{
+            if(it){
+                println("loading")
+            }else{
+                println("finished loading")
+            }
+        })
+
     }
 
 
