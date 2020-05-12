@@ -27,7 +27,6 @@ import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import java.lang.Double
 
 class EditProductFragment : Fragment(), InputValidator {
 
@@ -105,7 +104,7 @@ class EditProductFragment : Fragment(), InputValidator {
 
     private fun submitForm(){
         if(checkInputValidity()) {
-            product.price = Double.valueOf(binding.etEditprice.text.toString())
+            product.price = binding.etEditprice.text.toString().toDouble()
             product.description = binding.etEditdesc.text.toString()
             if(product.encode != encode)
                 product.encode =
