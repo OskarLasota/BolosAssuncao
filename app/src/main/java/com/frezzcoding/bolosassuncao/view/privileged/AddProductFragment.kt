@@ -18,7 +18,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
-import com.frezzcoding.bolosassuncao.databinding.FragmentUpdateproductBinding
+import com.frezzcoding.bolosassuncao.databinding.FragmentAddproductBinding
 import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.utils.InputValidator
@@ -32,7 +32,7 @@ class AddProductFragment : Fragment() , InputValidator {
 
 
     private lateinit var viewModel : ProductViewModel
-    private lateinit var binding : FragmentUpdateproductBinding
+    private lateinit var binding : FragmentAddproductBinding
 
     companion object{
         const val minNameLength = 4;
@@ -42,7 +42,7 @@ class AddProductFragment : Fragment() , InputValidator {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentUpdateproductBinding.inflate(inflater)
+        binding = FragmentAddproductBinding.inflate(inflater)
 
         initializeListeners()
         initializeViewModel()
