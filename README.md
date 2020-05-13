@@ -10,6 +10,7 @@
    + Room Persistence - construct database.
    + Jetpack Navigation
 + Firebase Notifications
++ Data Binding
 + Architecture
    + MVVM Architecture (View - DataBinding - ViewModel - Model)
    + Repository pattern
