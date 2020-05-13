@@ -8,8 +8,8 @@ import com.frezzcoding.bolosassuncao.models.Product
 @Dao
 interface BasketDao {
 
-    @Insert
-    fun addProduct()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addProduct(product : Product)
 
     @Delete
     fun deleteProduct(product : Product)
@@ -17,7 +17,7 @@ interface BasketDao {
     @Query("DELETE FROM basket_table")
     fun deleteBasket()
 
-    @Query("SELECT product FROM basket_table")
+    @Query("SELECT * FROM basket_table")
     fun getAllProducts() : LiveData<List<Product>>
 
 

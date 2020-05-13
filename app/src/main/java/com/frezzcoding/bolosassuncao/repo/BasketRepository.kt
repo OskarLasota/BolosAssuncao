@@ -3,6 +3,7 @@ package com.frezzcoding.bolosassuncao.repo
 import android.app.Application
 import com.frezzcoding.bolosassuncao.database.AppDatabase
 import com.frezzcoding.bolosassuncao.database.BasketDao
+import com.frezzcoding.bolosassuncao.models.Product
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -19,5 +20,13 @@ class BasketRepository(application : Application) : CoroutineScope {
     }
 
     fun getProducts() = basketDao.getAllProducts()
+
+    suspend fun deleteAll(){
+        basketDao.deleteBasket()
+    }
+
+    suspend fun insert(product : Product){
+        basketDao.addProduct(product)
+    }
 
 }

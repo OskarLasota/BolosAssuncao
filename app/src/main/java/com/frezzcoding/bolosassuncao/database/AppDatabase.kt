@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.models.User
 
 
-@Database(entities = [User::class], version = 2, exportSchema = true)
+@Database(entities = [User::class, Product::class], version = 2, exportSchema = true)
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao() : UserDao
     abstract fun basketDao() : BasketDao

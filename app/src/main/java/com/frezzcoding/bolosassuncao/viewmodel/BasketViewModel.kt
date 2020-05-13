@@ -4,9 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.frezzcoding.bolosassuncao.models.Basket
+import androidx.lifecycle.viewModelScope
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.repo.BasketRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BasketViewModel(var _application: Application) : AndroidViewModel(_application) {
 
@@ -21,6 +23,18 @@ class BasketViewModel(var _application: Application) : AndroidViewModel(_applica
     fun init(){
         repository = BasketRepository(_application)
         basket = repository!!.getProducts()
+    }
+
+    fun deleteAll() = viewModelScope.launch(Dispatchers.IO){
+        _loading.postValue(true)
+        repository?.deleteAll()
+        _loading.postValue(false)
+    }
+
+    fun insert(product : Product) = viewModelScope.launch(Dispatchers.IO) {
+        _loading.postValue(true)
+        repository?.insert(product)
+        _loading.postValue(false)
     }
 
 }
