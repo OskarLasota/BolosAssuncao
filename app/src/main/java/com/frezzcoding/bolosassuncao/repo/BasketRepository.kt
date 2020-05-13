@@ -18,5 +18,6 @@ class BasketRepository(application : Application) : CoroutineScope {
         basketDao = AppDatabase.getInstance(application).basketDao()
     }
 
+    fun getProducts() = basketDao.getAllProducts()
 
 }
