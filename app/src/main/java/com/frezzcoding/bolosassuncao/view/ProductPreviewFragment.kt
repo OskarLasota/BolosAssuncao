@@ -22,7 +22,19 @@ class ProductPreviewFragment: Fragment() {
         )
 
         setProductValues()
+        setListeners()
         return binding.root
+    }
+
+    private fun setListeners(){
+        binding.fabBasket.setOnClickListener {
+            //on click we need to run animation if added to the db
+            //the basket should only be stored on the room database
+            //the order will be stored on the main database
+            //how will it be stored on the main database?
+            //todo 1. store product on room database when its added user is allowed to add it again
+            //todo 2. create the adapter to show all of the items in the basket
+        }
     }
 
     private fun setProductValues(){
