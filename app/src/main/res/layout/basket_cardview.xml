@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="product"
+            type="com.frezzcoding.bolosassuncao.models.Product"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="220dp"
+        android:layout_margin="25dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/image_title"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/cardview_dark_background"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#fff"
+                android:text="@{product.name}" />
+
+            <ImageView
+                android:id="@+id/imageview_id"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/cardview_dark_background"
+                />
+
+            <TextView
+                android:id="@+id/image_price"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/cardview_dark_background"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="16dp"
+                android:text="@{`R$ `+ String.format(`%.2f`, product.price)}"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
