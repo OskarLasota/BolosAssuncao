@@ -8,7 +8,7 @@ import com.frezzcoding.bolosassuncao.models.Product
 @Dao
 interface BasketDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun addProduct(product : Product)
 
     @Delete

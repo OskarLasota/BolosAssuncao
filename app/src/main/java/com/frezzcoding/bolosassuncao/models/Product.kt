@@ -8,7 +8,8 @@ import java.io.Serializable
 
 @Entity(tableName = "basket_table")
 class Product : Serializable{
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    var unique : Int = 0;
     var id : Int = 0
     var url:String
     var name:String
