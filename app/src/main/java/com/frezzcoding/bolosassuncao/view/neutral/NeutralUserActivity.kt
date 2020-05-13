@@ -31,7 +31,7 @@ class NeutralUserActivity : AppCompatActivity()  {
      */
 
 
-    private var loggedin = false
+    var loggedin = false
     private lateinit var user : User
     private lateinit var viewModel : CachingViewModel
 
@@ -54,7 +54,8 @@ class NeutralUserActivity : AppCompatActivity()  {
         setObservers()
         setUI()
     }
-    
+
+
 
     private fun setObservers(){
         //if user just creates an account then make new entry on room db

@@ -8,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentProductpreviewBinding
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
 import com.squareup.picasso.Picasso
 
@@ -29,6 +31,7 @@ class ProductPreviewFragment: Fragment() {
         basketViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
         basketViewModel.init()
 
+
         setProductValues()
         setListeners()
         return binding.root
@@ -41,10 +44,14 @@ class ProductPreviewFragment: Fragment() {
         })
 
         binding.fabBasket.setOnClickListener {
-            if(!inProgress) {
-                if (arguments!!.get("product") != null) {
-                    basketViewModel.insert(arguments!!.get("product") as Product)
+            if((activity as NeutralUserActivity).loggedin) {
+                if (!inProgress) {
+                    if (arguments!!.get("product") != null) {
+                        basketViewModel.insert(arguments!!.get("product") as Product)
+                    }
                 }
+            }else{
+                Navigation.findNavController(binding.root).navigate(R.id.destination_requirelogin1)
             }
         }
     }
