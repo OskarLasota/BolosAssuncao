@@ -13,6 +13,7 @@ import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentProductpreviewBinding
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
+import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
 import com.squareup.picasso.Picasso
 
@@ -43,17 +44,23 @@ class ProductPreviewFragment: Fragment() {
             inProgress = it
         })
 
-        binding.fabBasket.setOnClickListener {
-            if((activity as NeutralUserActivity).loggedin) {
-                if (!inProgress) {
-                    if (arguments!!.get("product") != null) {
-                        basketViewModel.insert(arguments!!.get("product") as Product)
+        if(activity is PrivilegedUserActivity){
+            binding.fabBasket.hide()
+        }else{
+            binding.fabBasket.setOnClickListener {
+                if ((activity as NeutralUserActivity).loggedin) {
+                    if (!inProgress) {
+                        if (arguments!!.get("product") != null) {
+                            basketViewModel.insert(arguments!!.get("product") as Product)
+                        }
                     }
+                } else {
+                    Navigation.findNavController(binding.root)
+                        .navigate(R.id.destination_requirelogin1)
                 }
-            }else{
-                Navigation.findNavController(binding.root).navigate(R.id.destination_requirelogin1)
             }
         }
+
     }
 
     private fun setProductValues(){
