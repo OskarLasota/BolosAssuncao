@@ -19,12 +19,13 @@ class ProductPreviewFragment: Fragment() {
     private lateinit var product : Product
     private lateinit var binding : FragmentProductpreviewBinding
     private lateinit var basketViewModel : BasketViewModel
+    private var inProgress : Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_productpreview, container, false
         )
-
+        //todo add loading animations
         basketViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
         basketViewModel.init()
 
@@ -34,29 +35,16 @@ class ProductPreviewFragment: Fragment() {
     }
 
     private fun setListeners(){
-        basketViewModel.basket.observe(viewLifecycleOwner, Observer{
-            println("reached")
-            println(it.size)
-        })
-
+        //User is only to add again after first call is finished
         basketViewModel.loading.observe(viewLifecycleOwner, Observer{
-            if(it){
-                println("loading")
-            }else{
-                println("loading finished")
-            }
+            inProgress = it
         })
 
         binding.fabBasket.setOnClickListener {
-            //on click we need to run animation if added to the db
-            //the basket should only be stored on the room database
-            //the order will be stored on the main database
-            //how will it be stored on the main database?
-            //todo 1. store product on room database when its added user is allowed to add it again
-            //todo 2. create the adapter to show all of the items in the basket
-            println("clicked")
-            if(arguments!!.get("product") != null){
-                basketViewModel.insert(arguments!!.get("product") as Product)
+            if(!inProgress) {
+                if (arguments!!.get("product") != null) {
+                    basketViewModel.insert(arguments!!.get("product") as Product)
+                }
             }
         }
     }
