@@ -7,7 +7,7 @@
         android:title="Home" />
     <item
         android:id="@+id/destination_orders"
-        android:icon="@drawable/ic_orders"
+        android:icon="@drawable/ic_cake"
         android:title="Orders" />
     <item
         android:id="@+id/destination_chat"
@@ -16,7 +16,7 @@
         />
     <item
         android:id="@+id/destination_requirelogin1"
-        android:icon="@drawable/ic_orders"
+        android:icon="@drawable/ic_cake"
         android:title="Orders"
         android:visible="false"/>
     <item

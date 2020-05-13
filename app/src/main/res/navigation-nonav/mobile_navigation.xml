@@ -95,4 +95,8 @@
         android:id="@+id/destination_preview"
         android:name="com.frezzcoding.bolosassuncao.view.ProductPreviewFragment"
         android:label="Product" />
+    <fragment
+        android:id="@+id/destination_basket"
+        android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralBasketFragment"
+        android:label="Basket" />
 </navigation>

@@ -6,5 +6,9 @@
         android:icon="@drawable/ic_edit"
         app:showAsAction="ifRoom"
         android:title="Settings" />
-
+    <item
+        android:id="@+id/destination_basket"
+        android:icon="@drawable/ic_orders_white"
+        app:showAsAction="ifRoom"
+        android:title="Settings" />
 </menu>
