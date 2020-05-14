@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.BasketViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentBasketBinding
@@ -18,7 +19,7 @@ class NeutralBasketFragment : Fragment() {
 
     private lateinit var viewModel : BasketViewModel
     private lateinit var adapterProduct : BasketViewAdapter
-    private var productList : ArrayList<Product> = ArrayList()
+    private var productList : List<Product> = ArrayList()
     private lateinit var binding : FragmentBasketBinding
 
 
@@ -37,6 +38,16 @@ class NeutralBasketFragment : Fragment() {
         viewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
         viewModel.init()
         viewModel.loading.observe(viewLifecycleOwner, observeLoading)
+        viewModel.basket.observe(viewLifecycleOwner, observeBasket)
+    }
+
+    private val observeBasket = Observer<List<Product>>{
+        println("reached")
+        println(it.size)
+        productList = it
+        adapterProduct = BasketViewAdapter(productList)
+        binding.ordersRecycler.layoutManager = GridLayoutManager(this.requireContext(), 1)
+        binding.ordersRecycler.adapter = adapterProduct
     }
 
     private val observeLoading = Observer<Boolean>{
