@@ -7,7 +7,7 @@
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="160dp"
         android:layout_margin="25dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp">
@@ -20,14 +20,14 @@
 
             <TextView
                 android:id="@+id/image_title"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintLeft_toRightOf="@id/imageview_id"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:maxLines="1"
-                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/image_price"
+                android:layout_margin="20dp"
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:textColor="#fff"
@@ -47,13 +47,13 @@
             <TextView
                 android:id="@+id/image_price"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@id/imageview_id"
                 app:layout_constraintTop_toBottomOf="@id/image_title"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="0"
+                android:layout_margin="20dp"
                 android:gravity="center"
-                android:maxLines="1"
                 android:textSize="16dp"
                 android:text="@{`R$ `+ String.format(`%.2f`, product.price)}"
                 android:textColor="#fff" />

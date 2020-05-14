@@ -27,7 +27,12 @@ class NeutralBasketFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_basket, container, false
         )
-
+        /*
+        todo
+        user has to be able to proceed to order from this screen
+        user is able to see the sub-total cost excluding delivery
+        user is able to delete a product from basket
+         */
         initializeViewModel()
 
         return binding.root
@@ -42,8 +47,6 @@ class NeutralBasketFragment : Fragment() {
     }
 
     private val observeBasket = Observer<List<Product>>{
-        println("reached")
-        println(it.size)
         productList = it
         adapterProduct = BasketViewAdapter(productList)
         binding.ordersRecycler.layoutManager = GridLayoutManager(this.requireContext(), 1)
