@@ -25,6 +25,12 @@ class BasketViewModel(var _application: Application) : AndroidViewModel(_applica
         basket = repository!!.getProducts()
     }
 
+    fun delete(product : Product) = viewModelScope.launch(Dispatchers.IO){
+        _loading.postValue(true)
+        repository?.delete(product)
+        _loading.postValue(false)
+    }
+
     fun deleteAll() = viewModelScope.launch(Dispatchers.IO){
         _loading.postValue(true)
         repository?.deleteAll()

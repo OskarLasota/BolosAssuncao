@@ -21,6 +21,10 @@ class BasketRepository(application : Application) : CoroutineScope {
 
     fun getProducts() = basketDao.getAllProducts()
 
+    suspend fun delete(product : Product){
+        basketDao.deleteProduct(product)
+    }
+
     suspend fun deleteAll(){
         basketDao.deleteBasket()
     }
