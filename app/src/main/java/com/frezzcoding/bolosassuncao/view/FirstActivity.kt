@@ -38,20 +38,17 @@ class FirstActivity : AppCompatActivity() {
     private fun setObservers(){
         viewModel.user.observe(this, Observer {
             binding.animation?.visibility = View.GONE
-            if(it == null || it.privilege == 0){
-                intent = Intent(this, NeutralUserActivity::class.java)
+            intent = Intent(this, NeutralUserActivity::class.java)
+            if(it == null){
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")
             }else{
-                //if logged in then obtain all data from api for chat and orders
-
-                //this redirection needs an alternative
-                if(it.privilege == 1){
+                if(it.privilege == 1) {
                     intent = Intent(this, PrivilegedUserActivity::class.java)
-                    intent.putExtra("user", it)
-                    startActivity(intent)
-                    CustomIntent.customType(this, "fadein-to-fadeout")
                 }
+                intent.putExtra("user", it)
+                startActivity(intent)
+                CustomIntent.customType(this, "fadein-to-fadeout")
             }
         })
     }
