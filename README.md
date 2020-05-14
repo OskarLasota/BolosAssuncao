@@ -47,6 +47,8 @@ In the meantime practicing Kotlin and other industry standard techiniques and li
 ![home screen](images/neutral_home.png) 
 ![orders screen](images/neutral_orders.png)
 ![chat screen](images/neutral_chat.png)
+![basket screen](images/neutral_basket.png)
+![preview screen](images/neutral_preview.png)
 
 ## Current Admin UI : In progress
 
