@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0"
         android:scrollbars="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -44,6 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:textColor="#fff"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:text="R$ : 10.00"
             />
 
