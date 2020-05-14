@@ -34,10 +34,15 @@ class NeutralBasketFragment : Fragment() {
         user is able to delete a product from basket
          */
         initializeViewModel()
-
+        setObservers()
         return binding.root
     }
 
+    private fun setObservers(){
+        binding.btnSubmitbasket.setOnClickListener {
+
+        }
+    }
 
     private fun initializeViewModel(){
         viewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
@@ -48,7 +53,7 @@ class NeutralBasketFragment : Fragment() {
 
     private val observeBasket = Observer<List<Product>>{
         productList = it
-        adapterProduct = BasketViewAdapter(productList)
+        adapterProduct = BasketViewAdapter(productList, viewModel)
         binding.ordersRecycler.layoutManager = GridLayoutManager(this.requireContext(), 1)
         binding.ordersRecycler.adapter = adapterProduct
     }
