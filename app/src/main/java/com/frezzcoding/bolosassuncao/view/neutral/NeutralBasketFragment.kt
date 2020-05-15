@@ -14,6 +14,9 @@ import com.frezzcoding.bolosassuncao.adapters.BasketViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentBasketBinding
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_neutral.*
+import kotlinx.android.synthetic.main.activity_neutral.bottom_nav
 
 class NeutralBasketFragment : Fragment() {
 
@@ -28,13 +31,25 @@ class NeutralBasketFragment : Fragment() {
             inflater, R.layout.fragment_basket, container, false
         )
 
+        if(activity is NeutralUserActivity){
+            (activity as NeutralUserActivity)?.hideBottombar(true)
+        }
+
         initializeViewModel()
         setObservers()
         return binding.root
     }
 
+    override fun onDestroyView() {
+        (activity as NeutralUserActivity)?.hideBottombar(false)
+        super.onDestroyView()
+    }
+
     private fun setObservers(){
-        binding.btnSubmitbasket.setOnClickListener {
+        binding.btnCollection.setOnClickListener {
+
+        }
+        binding.btnDelivery.setOnClickListener {
 
         }
     }

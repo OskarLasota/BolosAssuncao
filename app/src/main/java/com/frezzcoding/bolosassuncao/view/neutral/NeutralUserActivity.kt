@@ -3,6 +3,7 @@ package com.frezzcoding.bolosassuncao.view.neutral
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,9 @@ import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottom_nav
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_neutral.*
 
 class NeutralUserActivity : AppCompatActivity()  {
 
@@ -39,7 +43,13 @@ class NeutralUserActivity : AppCompatActivity()  {
         setUI()
     }
 
-
+    fun hideBottombar(isHidden : Boolean){
+        if(isHidden){
+            bottom_nav?.visibility = View.GONE
+        }else{
+            bottom_nav?.visibility = View.VISIBLE
+        }
+    }
 
     private fun setObservers(){
         viewModel.user.observe(this, Observer {
