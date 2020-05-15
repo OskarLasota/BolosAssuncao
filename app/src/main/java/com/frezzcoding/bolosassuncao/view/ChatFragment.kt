@@ -13,19 +13,6 @@ class ChatFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        /*
-        button_home.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.next_action)
-        }
 
-        arguments?.let {
-            val safeArgs = PhotosFragmentArgs.fromBundle(it)
-            textView_num.text = "Number of photos: ${safeArgs.numOfPhotos}"
-        }
-
-         */
-    }
 
 }

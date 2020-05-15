@@ -31,7 +31,6 @@ import java.io.InputStream
 class EditProductFragment : Fragment(), InputValidator {
 
 
-    //binding
     private lateinit var binding : FragmentEditproductBinding
     private lateinit var product : Product
     private lateinit var viewModel : ProductViewModel
@@ -43,7 +42,6 @@ class EditProductFragment : Fragment(), InputValidator {
         initializeViewModel()
         setProductValues()
         setListeners()
-
         setObservers()
 
         return binding.root

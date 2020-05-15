@@ -27,18 +27,12 @@ class PrivilegedUserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        //check if this line below works
-        startService(this.intent)
-        FirebaseMessaging.getInstance().subscribeToTopic("test")
-
-
         if(intent.extras != null){
             user = intent.getSerializableExtra("user") as User
             loggedin = true
         }
 
 
-        //todo this has to be done in the login activity
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
         viewModel.init()
 

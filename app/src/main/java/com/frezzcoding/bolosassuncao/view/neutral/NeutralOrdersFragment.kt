@@ -13,19 +13,5 @@ class NeutralOrdersFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_orders, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        /*
-        button_photos.setOnClickListener {
-            val random = Random()
-
-            val nextAction = CameraFragmentDirections.nextAction()
-            nextAction.setNumOfPhotos(random.nextInt(100))
-
-            Navigation.findNavController(it).navigate(nextAction)
-        }
-
-         */
-    }
 }

@@ -28,7 +28,7 @@ class ProductPreviewFragment: Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_productpreview, container, false
         )
-        //todo add loading animations
+
         basketViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
         basketViewModel.init()
 

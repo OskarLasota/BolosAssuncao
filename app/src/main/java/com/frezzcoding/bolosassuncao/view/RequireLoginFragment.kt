@@ -13,16 +13,15 @@ import maes.tech.intentanim.CustomIntent
 class RequireLoginFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var _view =  inflater.inflate(R.layout.fragment_loginrequired, container, false)
-
-        var login = _view.findViewById<Button>(R.id.btn_login_request)
+        var view =  inflater.inflate(R.layout.fragment_loginrequired, container, false)
+        var login = view.findViewById<Button>(R.id.btn_login_request)
 
         login.setOnClickListener {
-            Navigation.findNavController(_view).navigate(R.id.destination_login)
+            Navigation.findNavController(view).navigate(R.id.destination_login)
             CustomIntent.customType(this.context, "fadein-to-fadeout")
         }
 
-        return _view
+        return view
     }
 
 

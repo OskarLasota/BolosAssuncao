@@ -1,6 +1,5 @@
 package com.frezzcoding.bolosassuncao.view.neutral
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,23 +11,11 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
-import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
-import maes.tech.intentanim.CustomIntent
 
 class NeutralUserActivity : AppCompatActivity()  {
-
-    /*
-       if user logs in once, their state should save automatically - find out how to get this done
-       there should be an animation for around 1-2 seconds while network is used to obtain user data of orders and chat
-     */
-
-    /*
-        there should be a search bar and maybe a filter system
-        the user should be able to press on the product and see a summary of the product
-     */
 
 
     var loggedin = false
@@ -45,9 +32,6 @@ class NeutralUserActivity : AppCompatActivity()  {
             loggedin = true
         }
 
-        startService(this.intent)
-        FirebaseMessaging.getInstance().subscribeToTopic("test")
-
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
         viewModel.init()
 
@@ -58,9 +42,8 @@ class NeutralUserActivity : AppCompatActivity()  {
 
 
     private fun setObservers(){
-        //if user just creates an account then make new entry on room db
         viewModel.user.observe(this, Observer {
-            println("user loaded")
+
         })
     }
 

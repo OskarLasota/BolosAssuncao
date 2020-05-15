@@ -28,6 +28,7 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //if user is on home fragment prevent to go back to loading activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 
@@ -43,7 +44,6 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
         initializeViewModel()
         viewModel.getProducts()
 
-        //todo home fragment should carry out other api calls
 
         return binding.root
     }
