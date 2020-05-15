@@ -27,12 +27,7 @@ class NeutralBasketFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_basket, container, false
         )
-        /*
-        todo
-        user has to be able to proceed to order from this screen
-        user is able to see the sub-total cost excluding delivery
-        user is able to delete a product from basket
-         */
+
         initializeViewModel()
         setObservers()
         return binding.root
@@ -56,6 +51,11 @@ class NeutralBasketFragment : Fragment() {
         adapterProduct = BasketViewAdapter(productList, viewModel)
         binding.ordersRecycler.layoutManager = GridLayoutManager(this.requireContext(), 1)
         binding.ordersRecycler.adapter = adapterProduct
+        var sum = 0.0
+        for(product in it){
+            sum =+ product.price
+        }
+        binding.tvLabelsubtotal.text = "R$ " + String.format("%.2f", sum)
     }
 
     private val observeLoading = Observer<Boolean>{
