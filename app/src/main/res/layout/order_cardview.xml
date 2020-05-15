@@ -28,7 +28,7 @@
                 android:layout_margin="20dp"
                 android:gravity="left"
                 android:textStyle="bold"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="#fff"
                 android:text="@{order.customer_name}" />
 
@@ -41,7 +41,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_customername"
                 android:gravity="center"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:text="@{order.order_date}"
                 android:textColor="#fff" />
 
@@ -54,7 +54,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_orderdate"
                 android:gravity="center"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:text="@{order.delivery_date}"
                 android:textColor="#fff" />
 
@@ -67,7 +67,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_deliverydate"
                 android:gravity="center"
-                android:textSize="22dp"
+                android:textSize="22sp"
                 android:text="@{order.status}"
                 android:textColor="#fff" />
 
