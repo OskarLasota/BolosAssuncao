@@ -103,4 +103,8 @@
         android:id="@+id/destination_delivery"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralDeliveryFragment"
         android:label="Delivery" />
+    <fragment
+        android:id="@+id/destination_collection"
+        android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralCollectionFragment"
+        android:label="Collection" />
 </navigation>

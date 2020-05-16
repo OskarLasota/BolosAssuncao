@@ -22,6 +22,7 @@
                 android:textColor="#fff"
                 android:textAlignment="center"
                 android:textSize="22sp"
+                android:paddingBottom="15dp"
                 android:text="Who are we delivering it to?"
                 />
 
@@ -68,6 +69,7 @@
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                android:paddingBottom="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -87,6 +89,7 @@
                 android:textColor="#fff"
                 android:textAlignment="center"
                 android:textSize="22sp"
+                android:paddingBottom="15dp"
                 android:text="Where are we delivering it to?"
                 />
 
@@ -186,6 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                android:paddingBottom="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -205,11 +209,13 @@
                 android:textColor="#fff"
                 android:textAlignment="center"
                 android:textSize="22sp"
+                android:paddingBottom="15dp"
                 android:text="How would you like to pay?"
                 />
             <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp">
                 <RadioButton
                     android:id="@+id/radio_one"
                     android:layout_width="match_parent"

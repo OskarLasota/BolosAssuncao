@@ -44,7 +44,7 @@ class NeutralBasketFragment : Fragment() {
 
     private fun setObservers(){
         binding.btnCollection.setOnClickListener {
-
+            Navigation.findNavController(binding.root).navigate(R.id.destination_collection)
         }
         binding.btnDelivery.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.destination_delivery)
