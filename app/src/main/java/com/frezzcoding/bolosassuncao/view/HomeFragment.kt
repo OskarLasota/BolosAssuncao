@@ -16,6 +16,7 @@ import com.frezzcoding.bolosassuncao.adapters.ProductViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentHomeBinding
 import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
 
@@ -40,6 +41,9 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false
         )
+        if(activity is NeutralUserActivity){
+            (activity as NeutralUserActivity)?.hideBottombar(true)
+        }
 
         initializeViewModel()
         viewModel.getProducts()

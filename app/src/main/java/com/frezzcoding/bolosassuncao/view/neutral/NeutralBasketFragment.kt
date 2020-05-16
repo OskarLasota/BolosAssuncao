@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.BasketViewAdapter
@@ -40,17 +41,13 @@ class NeutralBasketFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        (activity as NeutralUserActivity)?.hideBottombar(false)
-        super.onDestroyView()
-    }
 
     private fun setObservers(){
         binding.btnCollection.setOnClickListener {
 
         }
         binding.btnDelivery.setOnClickListener {
-
+            Navigation.findNavController(binding.root).navigate(R.id.destination_delivery)
         }
     }
 
