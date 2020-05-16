@@ -17,6 +17,9 @@ class NeutralDeliveryFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_delivery, container, false
         )
+        if(activity is NeutralUserActivity){
+            (activity as NeutralUserActivity)?.hideBottombar(true)
+        }
 
 
         return binding.root

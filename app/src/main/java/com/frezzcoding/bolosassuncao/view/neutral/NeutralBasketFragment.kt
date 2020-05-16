@@ -41,10 +41,6 @@ class NeutralBasketFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        (activity as NeutralUserActivity)?.hideBottombar(false)
-        super.onDestroyView()
-    }
 
     private fun setObservers(){
         binding.btnCollection.setOnClickListener {
