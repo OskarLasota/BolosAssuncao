@@ -16,5 +16,8 @@
     <string name="close_navigation">Close Navigation</string>
     <string name="product_name_error">Please enter a name</string>
     <string name="product_price_error">Please enter the cost</string>
+    <string name="incorrect_mobile">Please enter correct number</string>
+    <string name="incorrect_address">Please enter correct address</string>
+    <string name="incorrect_postcode">Please enter correct post code</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
 </resources>
