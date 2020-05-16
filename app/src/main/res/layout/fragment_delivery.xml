@@ -211,6 +211,39 @@
                 android:textColor="#fff"
                 android:textAlignment="center"
                 android:textSize="22sp"
+                android:paddingBottom="20dp"
+                android:text="Request Collection Date"
+                />
+
+            <TextView
+                android:id="@+id/tv_selecttime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SELECT TIME ▼"
+                android:paddingTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="30dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tv_selectdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SELECT DATE ▼"
+                android:padding="10dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textAlignment="center"
+                android:textSize="22sp"
                 android:paddingBottom="15dp"
                 android:text="How would you like to pay?"
                 />

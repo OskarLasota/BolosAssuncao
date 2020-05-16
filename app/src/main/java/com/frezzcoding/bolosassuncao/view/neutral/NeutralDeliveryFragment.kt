@@ -1,5 +1,8 @@
 package com.frezzcoding.bolosassuncao.view.neutral
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,6 +26,10 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
     private val MIN_ADDRESS_LENGTH = 6
     private val POSTCODE_LENGTH = 6
     private var inProcess = false
+    private var TIME_SELECTED = false
+    private var DATE_SELECTED = false
+    private val SELECT_DATE = 2
+    private val SELECT_TIME = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -38,6 +45,50 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
 
         return binding.root
     }
+
+    //todo admin should be able to select which dates and times are available
+    private fun getAvailableDates() : Array<String>{
+        var result = arrayOf("")
+        //this should be called from api (manager should provide which times are available)
+        return result
+    }
+
+    private fun getAvailableTimes() : Array<String>{
+        var result = arrayOf("")
+        //this should be called from api (manager should provide which times are available)
+        return result
+    }
+
+    private fun showPopup(action : Int){
+        var result: Array<String> = when(action){
+            1 -> getAvailableTimes()
+            2 -> getAvailableDates()
+            else -> return
+        }
+        var dialog = Dialog(context!!)
+        dialog.setContentView(R.layout.popup_select_time)
+
+
+        var builder = AlertDialog.Builder(this.context)
+        builder.setSingleChoiceItems(result, -1){
+                dialog: DialogInterface?, which: Int ->
+            if(action==1){
+                builder.setTitle("Select Delivery Time")
+                binding.tvSelecttime.text = result[which] + " ▼"
+                TIME_SELECTED = true
+            }else{
+                builder.setTitle("Select Delivery Day")
+                binding.tvSelectdate.text = result[which] + " ▼"
+                DATE_SELECTED = true
+            }
+            dialog?.dismiss()
+        }
+        dialog = builder.create()
+        dialog.show()
+
+
+    }
+
 
 
     override fun checkCurrentValidity(resource: String) {
@@ -67,6 +118,16 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             binding.tilPostcode.error = getString(R.string.incorrect_postcode )
             return false
         }
+        if(!TIME_SELECTED){
+            var animation = AnimationUtils.loadAnimation(this.context, R.anim.shake)
+            binding.tvSelecttime?.startAnimation(animation)
+            return false
+        }
+        if(!DATE_SELECTED){
+            var animation = AnimationUtils.loadAnimation(this.context, R.anim.shake)
+            binding.tvSelectdate?.startAnimation(animation)
+            return false
+        }
         if(binding.radioGrp.checkedRadioButtonId < 0 ){
             Toast.makeText(this.context, "Select payment method", Toast.LENGTH_SHORT).show()
             return false
@@ -84,7 +145,12 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             }
             inProcess = false
         }
-
+        binding.tvSelectdate.setOnClickListener {
+            showPopup(SELECT_DATE)
+        }
+        binding.tvSelecttime.setOnClickListener {
+            showPopup(SELECT_TIME)
+        }
         binding.etName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 checkCurrentValidity("name")
