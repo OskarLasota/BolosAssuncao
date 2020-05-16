@@ -67,6 +67,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_selecttime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SELECT TIME ▼"
@@ -76,6 +77,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_selectdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SELECT DATE ▼"
