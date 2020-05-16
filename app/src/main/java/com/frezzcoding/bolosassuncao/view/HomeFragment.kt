@@ -42,7 +42,7 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
             inflater, R.layout.fragment_home, container, false
         )
         if(activity is NeutralUserActivity){
-            (activity as NeutralUserActivity)?.hideBottombar(true)
+            (activity as NeutralUserActivity)?.hideBottombar(false)
         }
 
         initializeViewModel()
