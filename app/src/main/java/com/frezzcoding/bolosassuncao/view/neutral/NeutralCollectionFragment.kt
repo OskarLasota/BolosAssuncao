@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
@@ -20,12 +23,13 @@ import com.frezzcoding.bolosassuncao.utils.InputValidator
 class NeutralCollectionFragment : Fragment(), InputValidator {
 
     private lateinit var binding : FragmentCollectionBinding
-    private val SELECT_DATE = 1
-    private val SELECT_TIME = 2
+    private val SELECT_DATE = 2
+    private val SELECT_TIME = 1
     private var TIME_SELECTED = false
     private var DATE_SELECTED = false
     private var PAYMENT_SELECTED = false
     private var MIN_NAME_LENGTH = 2
+    private var inProcess = false
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -65,13 +69,15 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
 
 
         var builder = AlertDialog.Builder(this.context)
-        builder.setTitle("Select Delivery Day")
         builder.setSingleChoiceItems(result, -1){
             dialog: DialogInterface?, which: Int ->
-            binding.tvSelectdate.text = result[which] + " ▼"
             if(action==1){
+                builder.setTitle("Select Delivery Time")
+                binding.tvSelecttime.text = result[which] + " ▼"
                 TIME_SELECTED = true
             }else{
+                builder.setTitle("Select Delivery Day")
+                binding.tvSelectdate.text = result[which] + " ▼"
                 DATE_SELECTED = true
             }
             dialog?.dismiss()
@@ -90,12 +96,30 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             showPopup(SELECT_TIME)
         }
         binding.btnOrder.setOnClickListener {
-            checkInputValidity()
+            if(checkInputValidity() && !inProcess){
+                inProcess=true
+                //loading animation here + call the api with retrofit
+            }
+            inProcess = false
         }
+        binding.etName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                checkCurrentValidity("name")
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
     }
 
     override fun checkCurrentValidity(resource: String) {
-        TODO("Not yet implemented")
+        when(resource){
+            "name" -> if(binding.etName.text.toString().length >= MIN_NAME_LENGTH) {binding.tilName.error = null; }
+        }
     }
 
     override fun checkInputValidity(): Boolean {
@@ -103,9 +127,18 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             binding.tilName.error = getString(R.string.product_name_error)
             return false
         }
+        if(!TIME_SELECTED){
+            var animation = AnimationUtils.loadAnimation(this.context, R.anim.shake)
+            binding.tvSelecttime?.startAnimation(animation)
+            return false
+        }
         if(!DATE_SELECTED){
             var animation = AnimationUtils.loadAnimation(this.context, R.anim.shake)
             binding.tvSelectdate?.startAnimation(animation)
+            return false
+        }
+        if(binding.radioGroup.checkedRadioButtonId < 0 ){
+            Toast.makeText(this.context, "Select payment method", Toast.LENGTH_SHORT).show()
             return false
         }
 
