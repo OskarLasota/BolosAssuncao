@@ -65,7 +65,7 @@ class NeutralBasketFragment : Fragment() {
         binding.ordersRecycler.adapter = adapterProduct
         var sum = 0.0
         for(product in it){
-            sum =+ product.price
+            sum += product.price
         }
         binding.tvLabelsubtotal.text = "R$ " + String.format("%.2f", sum)
     }
