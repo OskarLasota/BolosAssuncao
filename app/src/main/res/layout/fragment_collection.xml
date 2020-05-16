@@ -43,6 +43,7 @@
                     app:layout_constraintTop_toBottomOf="@id/divider"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
+                    android:paddingBottom="20dp"
                     >
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_name"
@@ -54,10 +55,51 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:paddingBottom="20dp"
+                    android:text="Request Collection Date"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT TIME ▼"
+                    android:padding="10dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT DATE ▼"
+                    android:padding="10dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:padding="20dp"
+                    android:text="How would you like to pay?"
+                    />
 
                 <RadioGroup
+                    android:id="@+id/radio_group"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp">
                     <RadioButton
                         android:id="@+id/radio_one"
                         android:layout_width="match_parent"
