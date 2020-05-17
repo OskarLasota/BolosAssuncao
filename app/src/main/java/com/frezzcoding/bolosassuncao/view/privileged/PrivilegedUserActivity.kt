@@ -69,8 +69,12 @@ class PrivilegedUserActivity : AppCompatActivity() {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
+        setupActionBar(navController)
     }
 
+    private fun setupActionBar(navController: NavController) {
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+    }
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.menu?.findItem(R.id.destination_orders)?.isVisible = false

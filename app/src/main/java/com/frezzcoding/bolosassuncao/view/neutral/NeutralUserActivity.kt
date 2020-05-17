@@ -58,6 +58,7 @@ class NeutralUserActivity : AppCompatActivity()  {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
+        setupActionBar(navController)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -70,6 +71,10 @@ class NeutralUserActivity : AppCompatActivity()  {
         return super.onPrepareOptionsMenu(menu)
     }
 
+    //name of fragment used from map graph
+    private fun setupActionBar(navController: NavController) {
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+    }
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.menu?.findItem(R.id.destination_priv_orders)?.isVisible = false
