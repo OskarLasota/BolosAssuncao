@@ -8,7 +8,7 @@
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         android:layout_margin="25dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp">
@@ -26,54 +26,57 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="left"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="#fff"
-                android:text="@{order.customer_name}" />
+                android:text="@{`Name : ` + order.customer_name + `    R$ ` + String.format(`%.2f`, order.cost) }" />
 
             <TextView
                 android:id="@+id/tv_orderdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_customername"
-                android:gravity="center"
                 android:textSize="16sp"
-                android:text="@{order.delivery_date}"
+                android:text="@{`Due date : `+order.delivery_date + ` ` +order.delivery_time}"
                 android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/tv_deliverydate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_orderdate"
-                android:gravity="center"
                 android:textSize="16sp"
-                android:text="@{order.delivery_collection}"
+                android:text="@{`Order Type : ` + order.delivery_collection}"
                 android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/tv_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_deliverydate"
-                android:gravity="center"
-                android:textSize="22sp"
-                android:text="@{order.status}"
+                android:textSize="16sp"
+                android:text="@{`Status : ` + order.status}"
                 android:textColor="#fff" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.cardview.widget.CardView>
 </layout>
