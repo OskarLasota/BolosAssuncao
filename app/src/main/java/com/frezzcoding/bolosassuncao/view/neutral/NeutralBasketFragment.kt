@@ -15,9 +15,6 @@ import com.frezzcoding.bolosassuncao.adapters.BasketViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentBasketBinding
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_neutral.*
-import kotlinx.android.synthetic.main.activity_neutral.bottom_nav
 
 class NeutralBasketFragment : Fragment() {
 

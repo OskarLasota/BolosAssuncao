@@ -13,7 +13,6 @@ import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import com.google.firebase.messaging.FirebaseMessaging
 
 
 class PrivilegedUserActivity : AppCompatActivity() {

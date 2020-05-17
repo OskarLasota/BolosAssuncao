@@ -1,10 +1,7 @@
 package com.frezzcoding.bolosassuncao.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R

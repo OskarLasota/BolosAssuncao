@@ -3,7 +3,6 @@ package com.frezzcoding.bolosassuncao.models
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.io.File
 import java.io.Serializable
 
 @Entity(tableName = "basket_table")

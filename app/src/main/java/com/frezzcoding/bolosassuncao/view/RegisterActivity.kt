@@ -7,11 +7,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.airbnb.lottie.LottieAnimationView
-import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.ActivityRegisterBinding
 import com.frezzcoding.bolosassuncao.di.AccountInjection
 import com.frezzcoding.bolosassuncao.models.User

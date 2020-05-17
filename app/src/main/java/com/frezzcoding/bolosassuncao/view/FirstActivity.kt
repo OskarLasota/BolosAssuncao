@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.ActivityFirstBinding
 import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity

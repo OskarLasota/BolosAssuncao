@@ -5,10 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.frezzcoding.bolosassuncao.database.AppDatabase
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.repo.CachingRepository
-import com.frezzcoding.bolosassuncao.repo.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

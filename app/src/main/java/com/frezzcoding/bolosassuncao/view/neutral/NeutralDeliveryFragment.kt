@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentDeliveryBinding
 import com.frezzcoding.bolosassuncao.utils.InputValidator
-import retrofit2.http.POST
 
 class NeutralDeliveryFragment : Fragment(), InputValidator {
 

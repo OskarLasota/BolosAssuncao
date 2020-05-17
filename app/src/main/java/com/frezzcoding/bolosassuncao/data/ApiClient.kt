@@ -1,13 +1,13 @@
 package com.frezzcoding.bolosassuncao.data
 
 import com.frezzcoding.bolosassuncao.models.Product
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 object ApiClient {
 

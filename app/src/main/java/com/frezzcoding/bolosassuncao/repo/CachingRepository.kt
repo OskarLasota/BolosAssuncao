@@ -1,7 +1,6 @@
 package com.frezzcoding.bolosassuncao.repo
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import com.frezzcoding.bolosassuncao.database.AppDatabase
 import com.frezzcoding.bolosassuncao.database.UserDao
 import com.frezzcoding.bolosassuncao.models.User

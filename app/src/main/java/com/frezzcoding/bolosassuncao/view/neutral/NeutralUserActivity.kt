@@ -13,11 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
-import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.bottom_nav
-import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_neutral.*
 
 class NeutralUserActivity : AppCompatActivity()  {
 
