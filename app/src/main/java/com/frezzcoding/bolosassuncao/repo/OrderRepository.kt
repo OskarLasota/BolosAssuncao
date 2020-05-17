@@ -11,7 +11,7 @@ class OrderRepository : OrderDataSource {
         TODO("Not yet implemented")
     }
 
-    override fun retrieveOrders(callback: OperationCallBack<Product>) {
+    override fun retrieveOrders(callback: OperationCallBack<Order>) {
         TODO("Not yet implemented")
     }
 }
