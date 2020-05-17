@@ -69,8 +69,6 @@ class PrivilegedUserActivity : AppCompatActivity() {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
-        //setupSideNavigationMenu(navController)
-        //setupActionBar(navController)
     }
 
 
@@ -78,6 +76,11 @@ class PrivilegedUserActivity : AppCompatActivity() {
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.destination_basket)?.isVisible = false
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
