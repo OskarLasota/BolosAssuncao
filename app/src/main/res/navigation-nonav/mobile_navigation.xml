@@ -108,4 +108,8 @@
         android:id="@+id/destination_collection"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralCollectionFragment"
         android:label="Collection" />
+    <fragment
+        android:id="@+id/destination_priv_orders"
+        android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedOrderFragment"
+        android:label="Orders" />
 </navigation>

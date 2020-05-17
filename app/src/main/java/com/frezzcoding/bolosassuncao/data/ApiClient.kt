@@ -1,5 +1,6 @@
 package com.frezzcoding.bolosassuncao.data
 
+import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.Product
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -29,6 +30,9 @@ object ApiClient {
 
 
     interface ServicesApiInterface{
+
+        @GET("orders.php")
+        fun orders(): Call<ArrayList<Order>>
 
         @GET("products.php")
         fun products(): Call<ArrayList<Product>>

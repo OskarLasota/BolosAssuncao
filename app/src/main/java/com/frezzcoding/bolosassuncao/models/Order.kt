@@ -1,23 +1,8 @@
 package com.frezzcoding.bolosassuncao.models
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+
+data class Order(val id : Int, val user_id : Int, var cost : Double,var customer_name : String, var delivery_time : String, var delivery_date : String,
+            var mobile : String, var address_1 : String, var address_2 : String, var postcode : String, var delivery_collection : String, var instructions : String,
+            var payment_type : String, var status : String)
 
 
-@Entity(foreignKeys = [ForeignKey(entity = User::class,
-    parentColumns = arrayOf("id"),
-    childColumns = arrayOf("userid"),
-    onDelete = ForeignKey.CASCADE)]
-)
-class Order {
-    @PrimaryKey
-    var orderid : Int = 0
-    var userid : Int = 0
-    lateinit var customer_name : String
-    var homedelivery : Boolean = false
-    lateinit var order_date : String
-    lateinit var delivery_date : String
-    var cost : Double = 0.0
-    lateinit var status : String
-}
