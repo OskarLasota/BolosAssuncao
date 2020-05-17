@@ -81,6 +81,7 @@ class PrivilegedUserActivity : AppCompatActivity() {
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menu?.findItem(R.id.destination_basket)?.isVisible = false
+        menu?.findItem(R.id.destination_login)?.isVisible = false
         return super.onPrepareOptionsMenu(menu)
     }
 
