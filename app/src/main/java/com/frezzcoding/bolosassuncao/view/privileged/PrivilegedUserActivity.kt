@@ -73,6 +73,7 @@ class PrivilegedUserActivity : AppCompatActivity() {
 
 
     private fun setupBottomNavMenu(navController: NavController) {
+        bottom_nav?.menu?.findItem(R.id.destination_orders)?.isVisible = false
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
         }

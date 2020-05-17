@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_orders_white"
         app:showAsAction="ifRoom"
         android:title="Settings" />
+    <item
+        android:id="@+id/destination_login"
+        android:icon="@drawable/ic_account"
+        app:showAsAction="ifRoom"
+        android:title="Settings" />
 </menu>

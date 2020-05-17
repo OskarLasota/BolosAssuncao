@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
+        android:id="@+id/destination_orders"
+        android:icon="@drawable/ic_cake"
+        android:title="Orders" />
+    <item
         android:id="@+id/destination_priv_orders"
         android:icon="@drawable/ic_cake"
         android:title="Orders" />
@@ -14,15 +18,4 @@
         android:icon="@drawable/ic_chat"
         android:title="Chat"
         />
-    <item
-        android:id="@+id/destination_requirelogin1"
-        android:icon="@drawable/ic_cake"
-        android:title="Orders"
-        android:visible="false"/>
-    <item
-        android:id="@+id/destination_requirelogin2"
-        android:icon="@drawable/ic_chat"
-        android:title="Chat"
-        tools:ignore="DuplicateIds"
-        android:visible="false"/>
 </menu>

@@ -62,17 +62,20 @@ class NeutralUserActivity : AppCompatActivity()  {
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menu?.findItem(R.id.destination_settings)?.isVisible = false
+        if(!loggedin){
+            menu?.findItem(R.id.destination_basket)?.isVisible = false
+        }else{
+            menu?.findItem(R.id.destination_login)?.isVisible = false
+        }
         return super.onPrepareOptionsMenu(menu)
     }
 
 
     private fun setupBottomNavMenu(navController: NavController) {
-        if(!loggedin) {
-            bottom_nav?.menu?.findItem(R.id.destination_chat)?.isVisible = loggedin
-            bottom_nav?.menu?.findItem(R.id.destination_orders)?.isVisible = loggedin
-            bottom_nav?.menu?.findItem(R.id.destination_requirelogin1)?.isVisible = !loggedin
-            bottom_nav?.menu?.findItem(R.id.destination_requirelogin2)?.isVisible = !loggedin
-        }
+        bottom_nav?.menu?.findItem(R.id.destination_priv_orders)?.isVisible = false
+        bottom_nav?.menu?.findItem(R.id.destination_chat)?.isEnabled = loggedin
+        bottom_nav?.menu?.findItem(R.id.destination_orders)?.isEnabled = loggedin
+
 
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
