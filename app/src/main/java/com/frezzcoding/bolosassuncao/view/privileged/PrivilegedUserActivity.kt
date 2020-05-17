@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
+import androidx.core.view.forEachIndexed
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -25,6 +27,9 @@ class PrivilegedUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+
+
 
         if(intent.extras != null){
             user = intent.getSerializableExtra("user") as User
@@ -64,8 +69,8 @@ class PrivilegedUserActivity : AppCompatActivity() {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
-        setupSideNavigationMenu(navController)
-        setupActionBar(navController)
+        //setupSideNavigationMenu(navController)
+        //setupActionBar(navController)
     }
 
 
@@ -73,16 +78,6 @@ class PrivilegedUserActivity : AppCompatActivity() {
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
         }
-    }
-
-    private fun setupSideNavigationMenu(navController: NavController) {
-        nav_view?.let {
-            NavigationUI.setupWithNavController(it, navController)
-        }
-    }
-
-    private fun setupActionBar(navController: NavController) {
-        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

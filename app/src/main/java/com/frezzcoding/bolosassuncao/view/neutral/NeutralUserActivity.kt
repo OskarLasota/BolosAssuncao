@@ -58,8 +58,6 @@ class NeutralUserActivity : AppCompatActivity()  {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
-        setupSideNavigationMenu(navController)
-        setupActionBar(navController)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -81,15 +79,6 @@ class NeutralUserActivity : AppCompatActivity()  {
         }
     }
 
-    private fun setupSideNavigationMenu(navController: NavController) {
-        nav_view?.let {
-            NavigationUI.setupWithNavController(it, navController)
-        }
-    }
-
-    private fun setupActionBar(navController: NavController) {
-        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
