@@ -6,7 +6,7 @@
             type="com.frezzcoding.bolosassuncao.models.Product"/>
     </data>
 <androidx.cardview.widget.CardView
-    android:layout_width="160dp"
+    android:layout_width="match_parent"
     android:layout_height="220dp"
     android:layout_margin="15dp"
     app:cardCornerRadius="8dp"
