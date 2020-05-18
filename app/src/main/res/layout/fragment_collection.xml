@@ -20,7 +20,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:text="Who are we delivering it to?"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="Name"
                     android:textStyle="bold"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:paddingTop="15dp"
                     />
 
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:paddingBottom="20dp"
@@ -74,7 +74,7 @@
                     android:paddingTop="20dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="30dp"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:textStyle="bold"
                     />
 
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="SELECT DATE ▼"
                     android:padding="10dp"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:textStyle="bold"
                     />
 
@@ -92,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#fff"
+                    android:textColor="#c6c1c1"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:padding="20dp"
@@ -108,12 +108,14 @@
                         android:id="@+id/radio_one"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textColor="#c6c1c1"
                         android:text="Debit Card"
                         />
                     <RadioButton
                         android:id="@+id/radio_two"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textColor="#c6c1c1"
                         android:text="Cash on delivery"
                         />
                 </RadioGroup>
@@ -123,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20dp"
+                    android:backgroundTint="@color/colorPrimary"
                     android:text="Place your order"
                     />
 

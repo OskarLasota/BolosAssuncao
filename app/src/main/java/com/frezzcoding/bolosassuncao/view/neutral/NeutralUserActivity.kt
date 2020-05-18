@@ -62,7 +62,7 @@ class NeutralUserActivity : AppCompatActivity()  {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menu?.findItem(R.id.destination_settings)?.isVisible = false
+        menu?.findItem(R.id.destination_edit)?.isVisible = false
         if(!loggedin){
             menu?.findItem(R.id.destination_basket)?.isVisible = false
         }else{

@@ -58,6 +58,6 @@ class ManageProductsFragment : Fragment() , ProductViewAdapter.OnItemClickListen
 
     override fun onItemClick(product: Product) {
         var bundle = bundleOf("product" to product)
-        Navigation.findNavController(binding.root).navigate(R.id.destination_edit, bundle)
+        Navigation.findNavController(binding.root).navigate(R.id.destination_editproduct, bundle)
     }
 }

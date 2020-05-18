@@ -27,7 +27,7 @@
         android:label="Home" >
         <action
             android:id="@+id/action_destination_home_to_destination_settings"
-            app:destination="@id/destination_settings" />
+            app:destination="@id/destination_edit" />
         <action
             android:id="@+id/action_destination_home_to_destination_orders"
             app:destination="@id/destination_orders" />
@@ -49,15 +49,15 @@
         android:name="NeutralOrdersFragment"
         android:label="Orders" />
     <fragment
-        android:id="@+id/destination_settings"
+        android:id="@+id/destination_edit"
         android:name="ManageProductsFragment"
-        android:label="Settings">
+        android:label="Edit">
         <action
             android:id="@+id/action_destination_settings_to_updateProductFragment2"
             app:destination="@id/destination_add" />
         <action
             android:id="@+id/action_destination_settings_to_editProductFragment"
-            app:destination="@id/destination_edit" />
+            app:destination="@id/destination_editproduct" />
     </fragment>
     <fragment
         android:id="@+id/destination_chat"
@@ -68,7 +68,7 @@
         android:name="com.frezzcoding.bolosassuncao.view.privileged.AddProductFragment"
         android:label="New Product" />
     <fragment
-        android:id="@+id/destination_edit"
+        android:id="@+id/destination_editproduct"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.EditProductFragment"
         android:label="Edit Product" >
 

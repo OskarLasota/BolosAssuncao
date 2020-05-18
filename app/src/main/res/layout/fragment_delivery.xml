@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
 
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mobile"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="Address Line 1"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="Address Line 2"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text="Postcode"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:text="Delivery Instructions"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -208,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="20dp"
@@ -223,7 +223,7 @@
                 android:paddingTop="20dp"
                 android:paddingLeft="10dp"
                 android:paddingBottom="30dp"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textStyle="bold"
                 />
 
@@ -233,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:text="SELECT DATE ▼"
                 android:padding="10dp"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textStyle="bold"
                 />
 
@@ -241,7 +241,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#fff"
+                android:textColor="#c6c1c1"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -256,12 +256,14 @@
                     android:id="@+id/radio_one"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="#c6c1c1"
                     android:text="Debit Card"
                     />
                 <RadioButton
                     android:id="@+id/radio_two"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="#c6c1c1"
                     android:text="Cash on delivery"
                     />
             </RadioGroup>

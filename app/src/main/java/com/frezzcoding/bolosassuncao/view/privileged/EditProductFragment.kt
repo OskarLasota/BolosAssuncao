@@ -74,7 +74,7 @@ class EditProductFragment : Fragment(), InputValidator {
 
     private val checkResult = Observer<Boolean>{
         if(it){
-            Navigation.findNavController(binding.root).navigate(R.id.destination_settings)
+            Navigation.findNavController(binding.root).navigate(R.id.destination_edit)
         }else{
             Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
         }
