@@ -45,13 +45,16 @@ In the meantime practicing Kotlin and other industry standard techiniques and li
 ## Current User UI : In progress
 
 ![home screen](images/neutral_home.png) 
-![orders screen](images/neutral_orders.png)
-![chat screen](images/neutral_chat.png)
+![login screen](images/neutral_login.png) 
+![register screen](images/neutral_register.png) 
+![product screen](images/neutral_preview.png)
 ![basket screen](images/neutral_basket.png)
-![preview screen](images/neutral_preview.png)
+![delivery screen](images/neutral_delivery.png)
 
 ## Current Admin UI : In progress
 
 ![current products](images/admin_products.png) 
 ![edit product](images/admin_edit.png)
 ![new product](images/admin_new.png)
+![orders](images/admin_orders.png)
+![admin_chat](images/admin_chat.png)
