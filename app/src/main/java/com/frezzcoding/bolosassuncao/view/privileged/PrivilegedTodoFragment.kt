@@ -18,7 +18,11 @@ class PrivilegedTodoFragment : Fragment() {
         )
 
         //initializeViewModel()
-
+        /*
+        todo
+        this fragment will present the products that have a due date of the current day to inform the baker
+        which cakes need to be baked
+         */
 
 
         return binding.root
