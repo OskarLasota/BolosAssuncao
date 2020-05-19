@@ -77,6 +77,7 @@ class NeutralUserActivity : AppCompatActivity()  {
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
+        bottom_nav?.menu?.findItem(R.id.destination_timetable)?.isVisible = false
         bottom_nav?.menu?.findItem(R.id.destination_priv_orders)?.isVisible = false
         bottom_nav?.menu?.findItem(R.id.destination_chat)?.isEnabled = loggedin
         bottom_nav?.menu?.findItem(R.id.destination_orders)?.isEnabled = loggedin

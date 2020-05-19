@@ -21,7 +21,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/mobile_navigation"
+        app:navGraph="@navigation/mobile_admin_navigation"
         app:defaultNavHost="true" />
 
 
@@ -30,6 +30,6 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_navigation"/>
+        app:menu="@menu/menu_priv_navigation"/>
 
 </LinearLayout>
