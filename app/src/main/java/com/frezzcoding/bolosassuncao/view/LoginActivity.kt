@@ -28,6 +28,8 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     private lateinit var binding: ActivityLoginBinding
     private var loading: Boolean = false
     private lateinit var _user : User
+    private val MIN_PASS_LENGTH = 4
+    private val MIN_USERNAME_LENGTH = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +42,6 @@ class LoginActivity : AppCompatActivity(), InputValidator {
         setListeners()
     }
 
-    companion object {
-        const val MIN_PASS_LENGTH = 4
-        const val MIN_USERNAME_LENGTH = 4
-    }
 
     private fun login(user: User) {
         var intent : Intent

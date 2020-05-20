@@ -23,6 +23,8 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     private lateinit var binding : ActivityRegisterBinding
     private var loading : Boolean = false
     private lateinit var viewModel : AccountViewModel
+    private val MIN_PASS_LENGTH = 4
+    private val MIN_USERNAME_LENGTH = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +37,6 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         setListeners()
     }
 
-    companion object{
-        const val MIN_PASS_LENGTH = 4
-        const val MIN_USERNAME_LENGTH = 4
-    }
 
     private fun initializeViewModel(){
         viewModel = ViewModelProvider(this, AccountInjection.provideViewModelFactory()).get(
