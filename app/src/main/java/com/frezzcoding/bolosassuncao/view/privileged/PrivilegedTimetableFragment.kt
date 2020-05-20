@@ -30,9 +30,24 @@ class PrivilegedTimetableFragment : Fragment() {
         //initializeViewModel()
 
         setListeners()
-
+        initializeTimePickers()
 
         return binding.root
+    }
+
+    private fun initializeTimePickers(){
+        val mins = arrayOf("0", "30")
+        binding.timePickerStartHour.minValue = 0
+        binding.timePickerStartHour.maxValue = 23
+        binding.timePickerStartMin.minValue = 0
+        binding.timePickerStartMin.maxValue = 1
+        binding.timePickerStartMin.displayedValues = mins
+
+        binding.timePickerEndHour.minValue = 0
+        binding.timePickerEndHour.maxValue = 23
+        binding.timePickerEndMin.minValue = 0
+        binding.timePickerEndMin.maxValue = 1
+        binding.timePickerEndMin.displayedValues = mins
     }
 
     private fun setListeners(){
