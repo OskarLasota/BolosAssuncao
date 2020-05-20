@@ -44,13 +44,12 @@ class LoginActivity : AppCompatActivity(), InputValidator {
 
 
     private fun login(user: User) {
-        var intent : Intent
-
-        if(user.privilege == 0) {
-            intent = Intent(this, NeutralUserActivity::class.java)
-        }else{
-            intent = Intent(this, PrivilegedUserActivity::class.java)
-        }
+        var intent =
+            if(user.privilege == 0)
+                Intent(this, NeutralUserActivity::class.java)
+            else
+                Intent(this, PrivilegedUserActivity::class.java)
+        
         intent.putExtra("user", user)
         startActivity(intent)
         CustomIntent.customType(this, "fadein-to-fadeout")

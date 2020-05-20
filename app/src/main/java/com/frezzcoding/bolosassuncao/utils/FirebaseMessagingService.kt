@@ -17,10 +17,7 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
 
 
     override fun onNewToken(token: String) {
-        //Log.e("new token", token)
-        //CoroutineScope(IO).launch {
-            storeToken(token)
-        //}
+        storeToken(token)
         super.onNewToken(token)
     }
     private fun storeToken(token : String) {

@@ -40,11 +40,10 @@ class NeutralUserActivity : AppCompatActivity()  {
     }
 
     fun hideBottombar(isHidden : Boolean){
-        if(isHidden){
+        if(isHidden)
             bottom_nav?.visibility = View.GONE
-        }else{
+        else
             bottom_nav?.visibility = View.VISIBLE
-        }
     }
 
     private fun setObservers(){
