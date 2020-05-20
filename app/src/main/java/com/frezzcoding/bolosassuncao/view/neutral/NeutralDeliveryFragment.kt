@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
@@ -150,54 +151,19 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
         binding.tvSelecttime.setOnClickListener {
             showPopup(SELECT_TIME)
         }
-        binding.etName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("name")
-            }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-        binding.etMobile.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("number")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-        binding.etAddress1.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("address")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-        binding.etPostcode.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("postcode")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
+        binding.etName.doAfterTextChanged {
+            checkCurrentValidity("name")
+        }
+        binding.etMobile.doAfterTextChanged{
+            checkCurrentValidity("number")
+        }
+        binding.etAddress1.doAfterTextChanged {
+            checkCurrentValidity("address")
+        }
+        binding.etPostcode.doAfterTextChanged {
+            checkCurrentValidity("postcode")
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.databinding.ActivityLoginBinding
@@ -136,32 +137,12 @@ class LoginActivity : AppCompatActivity(), InputValidator {
                 register()
             }
         }
-
-        binding.etUsername.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("username")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-
-        binding.etPassword.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("password")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
+        binding.etUsername.doAfterTextChanged {
+            checkCurrentValidity("username")
+        }
+        binding.etPassword.doAfterTextChanged {
+            checkCurrentValidity("password")
+        }
     }
 
 

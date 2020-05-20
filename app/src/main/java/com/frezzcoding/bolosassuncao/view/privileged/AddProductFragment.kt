@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -120,25 +121,12 @@ class AddProductFragment : Fragment() , InputValidator {
             selectImage()
         }
 
-        binding.etName.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("name")
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
-        binding.etPrice.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("price")
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
+        binding.etName.doAfterTextChanged {
+            checkCurrentValidity("name")
+        }
+        binding.etPrice.doAfterTextChanged {
+            checkCurrentValidity("price")
+        }
 
     }
 

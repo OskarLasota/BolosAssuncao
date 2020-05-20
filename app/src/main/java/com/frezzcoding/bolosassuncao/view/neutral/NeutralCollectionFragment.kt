@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.frezzcoding.bolosassuncao.R
@@ -99,18 +100,9 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             }
             inProcess = false
         }
-        binding.etName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkCurrentValidity("name")
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
+        binding.etName.doAfterTextChanged {
+            checkCurrentValidity("name")
+        }
     }
 
     override fun checkCurrentValidity(resource: String) {
