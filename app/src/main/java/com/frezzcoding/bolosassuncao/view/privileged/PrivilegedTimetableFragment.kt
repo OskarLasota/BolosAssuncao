@@ -28,6 +28,10 @@ class PrivilegedTimetableFragment : Fragment() {
         )
 
         //initializeViewModel()
+        /*
+        todo
+        mysql database should either contain column for each week day and the time of start and end of shift
+         */
 
         setListeners()
         initializeTimePickers()

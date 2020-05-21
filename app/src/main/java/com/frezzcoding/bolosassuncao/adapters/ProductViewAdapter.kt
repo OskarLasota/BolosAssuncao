@@ -35,15 +35,12 @@ class ProductViewAdapter(private val _data : List<Product>, var listener : OnIte
 
 
     class ViewHolder(binding: CardviewBinding) : RecyclerView.ViewHolder(binding.root) {
-        private var image : ImageView? = null
-        private var tvTitle : TextView? = null
+        private var image : ImageView = binding.imageviewId
         private lateinit var product : Product
         private lateinit var _listener : OnItemClickListener
-        private var _binding : CardviewBinding
+        private var _binding : CardviewBinding = binding
+
         init{
-            image = itemView.findViewById(R.id.imageview_id)
-            tvTitle = itemView.findViewById(R.id.image_title)
-            _binding = binding
             itemView.setOnClickListener {
                 _listener.onItemClick(product)
             }
