@@ -1,6 +1,7 @@
 package com.frezzcoding.bolosassuncao.data
 
 import com.frezzcoding.bolosassuncao.models.Order
+import com.frezzcoding.bolosassuncao.models.Privileged
 import com.frezzcoding.bolosassuncao.models.Product
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -31,6 +32,9 @@ object ApiClient {
 
     interface ServicesApiInterface{
 
+        @GET("timetable")
+        fun privileged(): Call<Privileged>
+
         @GET("orders.php")
         fun orders(): Call<ArrayList<Order>>
 
@@ -59,6 +63,8 @@ object ApiClient {
         @FormUrlEncoded
         @POST("register.php")
         fun register(@Field("username") username : String, @Field("password") password : String, @Field("email") email : String) : Call<UserResult>
+
+
 
     }
 

@@ -12,7 +12,7 @@ import com.frezzcoding.bolosassuncao.models.Product
 class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
 
     private val _orders = MutableLiveData<ArrayList<Order>>()
-    val products : LiveData<ArrayList<Order>> = _orders
+    val orders : LiveData<ArrayList<Order>> = _orders
 
     private val _upload = MutableLiveData<Boolean>()
     val upload : LiveData<Boolean> = _upload

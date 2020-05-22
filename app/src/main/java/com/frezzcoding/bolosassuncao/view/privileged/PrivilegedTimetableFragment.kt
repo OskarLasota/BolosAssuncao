@@ -31,6 +31,7 @@ class PrivilegedTimetableFragment : Fragment() {
         /*
         todo
         mysql database should either contain column for each week day and the time of start and end of shift
+        store the timetable entries on room for caching, but if user submits new entry then send it to main db
          */
 
         setListeners()
