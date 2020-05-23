@@ -39,7 +39,7 @@ object ApiClient {
                             @Field("sunday") sunday : String,@Field("start_time") start : String,@Field("end_time") end : String): Call<UploadResult>
 
         @GET("timetable.php")
-        fun privileged(): Call<Privileged>
+        fun privileged(): Call<ArrayList<Privileged>>
 
         @GET("orders.php")
         fun orders(): Call<ArrayList<Order>>

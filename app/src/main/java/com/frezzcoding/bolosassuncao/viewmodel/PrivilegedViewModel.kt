@@ -3,6 +3,7 @@ package com.frezzcoding.bolosassuncao.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.frezzcoding.bolosassuncao.data.OperationCallBack
 import com.frezzcoding.bolosassuncao.data.UploadCallBack
 import com.frezzcoding.bolosassuncao.data.UploadResult
 import com.frezzcoding.bolosassuncao.models.PrivilegeDataSource
@@ -40,13 +41,14 @@ class PrivilegedViewModel (private val repository : PrivilegeDataSource) : ViewM
 
     fun getPrivileged(){
         _isViewLoading.postValue(true)
-        repository.retrievePrivileged(object : UploadCallBack<Privileged>{
-            override fun onSuccess(data: Privileged) {
+        repository.retrievePrivileged(object : OperationCallBack<Privileged> {
+            override fun onSuccess(data: ArrayList<Privileged>) {
                 _isViewLoading.postValue(false)
-                _priv.value = data
+                _priv.value = data[0]
             }
             override fun onError(error: String?) {
                 _isViewLoading.postValue(false)
+                println("reached")
                 println(error)
             }
 

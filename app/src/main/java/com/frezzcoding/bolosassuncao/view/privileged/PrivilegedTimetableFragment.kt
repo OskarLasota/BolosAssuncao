@@ -7,8 +7,13 @@ import android.view.ViewGroup
 import androidx.core.graphics.drawable.toDrawable
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentTimetableBinding
+import com.frezzcoding.bolosassuncao.di.PrivilegedInjection
+import com.frezzcoding.bolosassuncao.models.Privileged
+import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
 
 class PrivilegedTimetableFragment : Fragment() {
 
@@ -20,14 +25,14 @@ class PrivilegedTimetableFragment : Fragment() {
     private var friPressed = false
     private var satPressed = false
     private var sunPressed = false
-
+    private lateinit var viewModel : PrivilegedViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_timetable, container, false
         )
 
-        //initializeViewModel()
+        initializeViewModel()
         /*
         todo
         mysql database should either contain column for each week day and the time of start and end of shift
@@ -36,8 +41,18 @@ class PrivilegedTimetableFragment : Fragment() {
 
         setListeners()
         initializeTimePickers()
-
+        viewModel.getPrivileged()
         return binding.root
+    }
+
+    private fun initializeViewModel(){
+        viewModel = ViewModelProvider(this, PrivilegedInjection.provideViewModelFactory()).get(PrivilegedViewModel::class.java)
+        viewModel.priv.observe(viewLifecycleOwner, getPrivData)
+    }
+
+    private val getPrivData = Observer<Privileged>{
+        //handle getting the stored data
+        println(it.monday)
     }
 
     private fun initializeTimePickers(){

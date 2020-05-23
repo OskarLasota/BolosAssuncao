@@ -37,7 +37,7 @@ class PrivilegedOrderFragment : Fragment() {
 
     private fun initializeViewModel(){
         viewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(OrderViewModel::class.java)
-        viewModel.products.observe(viewLifecycleOwner, renderOrders)
+        viewModel.orders.observe(viewLifecycleOwner, renderOrders)
     }
 
     private val renderOrders = Observer<ArrayList<Order>>{

@@ -11,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PrivilegeRepository: PrivilegeDataSource {
-    private var call: Call<Privileged> ?= null
+    private var call: Call<ArrayList<Privileged>> ?= null
     private var genericCall : Call<UploadResult>?= null
 
     override fun geneticOperation(operation: Int, priv: Privileged, callback: UploadCallBack<Boolean>) {
@@ -21,7 +21,7 @@ class PrivilegeRepository: PrivilegeDataSource {
                 callback.onError(t.message)
             }
             override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
-                response?.body().let{
+                response.body().let{
                     if(response.body()?.error.equals("false")){
                         callback.onSuccess(true)
                     }else{
@@ -34,17 +34,18 @@ class PrivilegeRepository: PrivilegeDataSource {
     }
 
 
-    override fun retrievePrivileged(callback: UploadCallBack<Privileged>) {
+
+    override fun retrievePrivileged(callback: OperationCallBack<Privileged>) {
         call= ApiClient.build()?.privileged()
-        call?.enqueue(object : Callback<Privileged> {
-            override fun onFailure(call: Call<Privileged>, t: Throwable) {
+        call?.enqueue(object : Callback<ArrayList<Privileged>> {
+            override fun onFailure(call: Call<ArrayList<Privileged>>, t: Throwable) {
                 callback.onError(t.message)
             }
 
-            override fun onResponse(call: Call<Privileged>, response: Response<Privileged>) {
-                response?.body()?.let {
+            override fun onResponse(call: Call<ArrayList<Privileged>>, response: Response<ArrayList<Privileged>>) {
+                response.body()?.let {
                     if (response.isSuccessful){
-                        var list : Privileged = response.body()!!
+                        var list : ArrayList<Privileged> = response.body()!!
                         callback.onSuccess(list)
                     }else{
                         callback.onError("Problem connecting to server")
