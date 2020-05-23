@@ -32,7 +32,7 @@ object ApiClient {
 
     interface ServicesApiInterface{
 
-        @GET("timetable")
+        @GET("timetable.php")
         fun privileged(): Call<Privileged>
 
         @GET("orders.php")
