@@ -14,6 +14,7 @@ import com.frezzcoding.bolosassuncao.databinding.FragmentTimetableBinding
 import com.frezzcoding.bolosassuncao.di.PrivilegedInjection
 import com.frezzcoding.bolosassuncao.models.Privileged
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
+import java.lang.Integer.parseInt
 
 class PrivilegedTimetableFragment : Fragment() {
 
@@ -26,6 +27,8 @@ class PrivilegedTimetableFragment : Fragment() {
     private var satPressed = false
     private var sunPressed = false
     private lateinit var viewModel : PrivilegedViewModel
+    private var updated = false
+    private val minuteChoices = arrayOf("00", "30")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -51,27 +54,62 @@ class PrivilegedTimetableFragment : Fragment() {
     }
 
     private val getPrivData = Observer<Privileged>{
-        //handle getting the stored data
-        println(it.monday)
+        updateTimetableUI(it)
+        updated = true
+    }
+
+    private fun updateTimetableUI(priv : Privileged){
+        monPressed = priv.monday.toBoolean()
+        tuePressed = priv.tuesday.toBoolean()
+        wedPressed = priv.wednesday.toBoolean()
+        thuPressed = priv.thursday.toBoolean()
+        friPressed = priv.friday.toBoolean()
+        satPressed = priv.saturday.toBoolean()
+        sunPressed = priv.sunday.toBoolean()
+        if(monPressed)
+            binding.tvMonday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(tuePressed)
+            binding.tvTuesday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(wedPressed)
+            binding.tvWednesday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(thuPressed)
+            binding.tvThursday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(friPressed)
+            binding.tvFriday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(satPressed)
+            binding.tvSaturday.setBackgroundResource(R.drawable.ic_dayselected)
+        if(sunPressed)
+            binding.tvSunday.setBackgroundResource(R.drawable.ic_dayselected)
+        binding.timePickerStartHour.value = parseInt(priv.start_time.substring(0,2))
+        binding.timePickerStartMin.value = parseInt(priv.start_time.substring(3,5))
+
+        binding.timePickerEndHour.value = parseInt(priv.end_time.substring(0,2))
+        binding.timePickerEndMin.value = parseInt(priv.end_time.substring(3,5))
     }
 
     private fun initializeTimePickers(){
-        val mins = arrayOf("0", "30")
         binding.timePickerStartHour.minValue = 0
         binding.timePickerStartHour.maxValue = 23
         binding.timePickerStartMin.minValue = 0
         binding.timePickerStartMin.maxValue = 1
-        binding.timePickerStartMin.displayedValues = mins
+        binding.timePickerStartMin.displayedValues = minuteChoices
 
         binding.timePickerEndHour.minValue = 0
         binding.timePickerEndHour.maxValue = 23
         binding.timePickerEndMin.minValue = 0
         binding.timePickerEndMin.maxValue = 1
-        binding.timePickerEndMin.displayedValues = mins
+        binding.timePickerEndMin.displayedValues = minuteChoices
     }
 
     private fun setListeners(){
         //state of date selected should be stored on viewmodel and result should be sent to the database
+        binding.btnConfirm.setOnClickListener {
+            viewModel.updateTimetable(Privileged(0, monPressed.toString(), tuePressed.toString(), wedPressed.toString(),
+                thuPressed.toString(), friPressed.toString(), satPressed.toString(), sunPressed.toString(),
+                (binding.timePickerStartHour.value.toString() + ":" + minuteChoices[binding.timePickerStartMin.value]),
+                (binding.timePickerEndHour.value.toString() + ":" + minuteChoices[binding.timePickerEndMin.value])))
+        }
+
         binding.tvMonday.setOnClickListener {
             if(monPressed) {
                 binding.tvMonday.background = null
