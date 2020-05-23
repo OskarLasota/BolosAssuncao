@@ -32,6 +32,12 @@ object ApiClient {
 
     interface ServicesApiInterface{
 
+        @FormUrlEncoded
+        @POST("update_timetable.php")
+        fun updateTimetable(@Field("monday") monday : String, @Field("tuesday") tuesday : String,@Field("wednesday") wednesday : String,
+                            @Field("thursday") thursday : String,@Field("friday") friday : String,@Field("saturday") saturday : String,
+                            @Field("sunday") sunday : String,@Field("start_time") start : String,@Field("end_time") end : String): Call<UploadResult>
+
         @GET("timetable.php")
         fun privileged(): Call<Privileged>
 

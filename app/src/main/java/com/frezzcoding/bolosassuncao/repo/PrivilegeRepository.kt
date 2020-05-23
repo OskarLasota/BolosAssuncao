@@ -15,7 +15,22 @@ class PrivilegeRepository: PrivilegeDataSource {
     private var genericCall : Call<UploadResult>?= null
 
     override fun geneticOperation(operation: Int, priv: Privileged, callback: UploadCallBack<Boolean>) {
-        TODO("Not yet implemented")
+        genericCall = ApiClient.build()?.updateTimetable(priv.monday, priv.tuesday, priv.wednesday, priv.thursday, priv.friday, priv.saturday, priv.sunday, priv.start_time, priv.end_time)
+        genericCall?.enqueue(object: Callback<UploadResult>{
+            override fun onFailure(call: Call<UploadResult>, t: Throwable) {
+                callback.onError(t.message)
+            }
+            override fun onResponse(call: Call<UploadResult>, response: Response<UploadResult>) {
+                response?.body().let{
+                    if(response.body()?.error.equals("false")){
+                        callback.onSuccess(true)
+                    }else{
+                        callback.onSuccess(false)
+                    }
+                }
+            }
+
+        })
     }
 
 
