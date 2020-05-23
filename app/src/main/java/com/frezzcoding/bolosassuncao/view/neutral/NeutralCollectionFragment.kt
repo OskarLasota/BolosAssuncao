@@ -115,7 +115,33 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
     }
 
     private fun findAvailableTimes(it : Privileged){
-        
+        var startHour = Integer.parseInt(it.start_time.substring(0,2))
+        var startMin = Integer.parseInt(it.start_time.substring(3,5))
+
+        var endHour = Integer.parseInt(it.end_time.substring(0,2))
+        var endMin = Integer.parseInt(it.end_time.substring(3,5))
+
+        var tempMin = ""
+
+        while(startHour < endHour) {
+            if(startHour == endHour && endMin == 30){
+                timesAvailable = timesAvailable.plus("$startHour:$endMin")
+            }
+            if (startMin == 30) {
+                startMin = 0
+                tempMin = startMin.toString()+"0"
+                startHour ++
+            }else{
+                startMin += 30
+            }
+            if(startMin == 0){
+                timesAvailable = timesAvailable.plus("$startHour:$tempMin")
+            }else {
+                timesAvailable = timesAvailable.plus("$startHour:$startMin")
+            }
+        }
+
+
     }
 
     private fun showPopup(action : Int){
