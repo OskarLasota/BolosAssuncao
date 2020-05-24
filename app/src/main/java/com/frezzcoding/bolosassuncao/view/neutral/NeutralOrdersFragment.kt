@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.OrderViewAdapter
-import com.frezzcoding.bolosassuncao.adapters.PrivOrderViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentOrdersBinding
 import com.frezzcoding.bolosassuncao.di.OrderInjection
 import com.frezzcoding.bolosassuncao.models.Order
