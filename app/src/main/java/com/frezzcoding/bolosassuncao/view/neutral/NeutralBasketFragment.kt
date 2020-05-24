@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -23,7 +24,6 @@ class NeutralBasketFragment : Fragment() {
     private var productList : List<Product> = ArrayList()
     private lateinit var binding : FragmentBasketBinding
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_basket, container, false
@@ -40,11 +40,20 @@ class NeutralBasketFragment : Fragment() {
 
 
     private fun setObservers(){
+        var bundle : Bundle
         binding.btnCollection.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.destination_collection)
+            if(productList.isNotEmpty()) {
+                bundle = bundleOf("products" to productList)
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.destination_collection, bundle)
+            }
         }
         binding.btnDelivery.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.destination_delivery)
+            if(productList.isNotEmpty()) {
+                bundle = bundleOf("products" to productList)
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.destination_delivery, bundle)
+            }
         }
     }
 
