@@ -14,8 +14,8 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val _orders = MutableLiveData<ArrayList<Order>>()
     val orders : LiveData<ArrayList<Order>> = _orders
 
-    private val _upload = MutableLiveData<Boolean>()
-    val upload : LiveData<Boolean> = _upload
+    private val _upload = MutableLiveData<Int>()
+    val upload : LiveData<Int> = _upload
 
     private val _isEmptyList = MutableLiveData<Boolean>()
     val isEmptyList : LiveData<Boolean> = _isEmptyList
@@ -30,15 +30,14 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
 
     fun upload(order: Order){
         _isViewLoading.postValue(true)
-        repository.geneticOperation(OPERATION_UPLOAD, order, object: UploadCallBack<Boolean> {
-            override fun onSuccess(data: Boolean) {
+        repository.geneticOperation(OPERATION_UPLOAD, order, object: UploadCallBack<Int> {
+            override fun onSuccess(data: Int) {
                 _isViewLoading.postValue(false)
                 _upload.value = data
             }
 
             override fun onError(error: String?) {
                 _isViewLoading.postValue(false)
-                _upload.value = false
                 _onMessageError.postValue(error)
             }
 

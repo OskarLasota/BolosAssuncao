@@ -16,9 +16,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentDeliveryBinding
+import com.frezzcoding.bolosassuncao.di.OrderInjection
 import com.frezzcoding.bolosassuncao.di.PrivilegedInjection
+import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.Privileged
+import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
+import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
 import java.util.*
 
@@ -36,9 +42,12 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
     private val SELECT_DATE = 2
     private val SELECT_TIME = 1
     private lateinit var viewModel : PrivilegedViewModel
+    private lateinit var cachingViewModel : CachingViewModel
+    private lateinit var orderViewModel : OrderViewModel
     private var daysAvailable = emptyArray<String>()
     private var timesAvailable = emptyArray<String>()
-
+    private lateinit var currentUser : User
+    private lateinit var productList : List<Product>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -46,6 +55,11 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
         )
         if(activity is NeutralUserActivity){
             (activity as NeutralUserActivity)?.hideBottombar(true)
+        }
+        if(arguments!!.get("products") != null) {
+            productList = arguments!!.get("products") as List<Product>
+        }else{
+            //handle miss communication
         }
 
         //call api to create an order in the main database ( not local database ) & remove all basket items
@@ -60,8 +74,23 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
         viewModel = ViewModelProvider(this, PrivilegedInjection.provideViewModelFactory()).get(
             PrivilegedViewModel::class.java)
         viewModel.priv.observe(viewLifecycleOwner, getPrivData)
+
+        cachingViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(CachingViewModel(activity!!.application).javaClass)
+        cachingViewModel.init()
+        cachingViewModel.user.observe(viewLifecycleOwner, getCachedUser)
+
+        orderViewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(
+            OrderViewModel::class.java)
+        orderViewModel.upload.observe(viewLifecycleOwner, getUploadStatus)
     }
 
+    private val getUploadStatus = Observer<Boolean>{
+        //upload complete
+    }
+
+    private val getCachedUser = Observer<User>{
+        currentUser = it
+    }
 
     private val getPrivData = Observer<Privileged>{
         daysAvailable = emptyArray()
@@ -233,8 +262,21 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
 
     private fun setObservers(){
         binding.btnOrderdelivery.setOnClickListener {
-            if(checkInputValidity() && inProcess){
+            if(checkInputValidity() && !inProcess){
                 inProcess = true
+                var sum = 0.0
+                for(element in productList){
+                    sum += element.price
+                }
+                var payment_type = "Cash On Delivery"
+                if(binding.radioOne.isSelected){
+                    payment_type = "Debit card"
+                }
+                orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString(), binding.tvSelectdate.text.toString(),
+                  binding.etMobile.text.toString(), binding.etAddress1.text.toString(), binding.etAddress2.text.toString(), binding.etPostcode.text.toString(), "delivery",
+                  binding.etInstructions.text.toString(),payment_type, "0"))
+
+
             }
             inProcess = false
         }

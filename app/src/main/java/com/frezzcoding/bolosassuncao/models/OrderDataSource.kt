@@ -5,7 +5,8 @@ import com.frezzcoding.bolosassuncao.data.UploadCallBack
 
 interface OrderDataSource {
 
-    fun geneticOperation(operation : Int, Order : Order, callback : UploadCallBack<Boolean>)
+    fun uploadOrderProducts(productId : Int, orderId : Int, callback : UploadCallBack<Boolean>)
+    fun geneticOperation(operation : Int, Order : Order, callback : UploadCallBack<Int>)
     fun retrieveOrders(callback : OperationCallBack<Order>)
 
 }
