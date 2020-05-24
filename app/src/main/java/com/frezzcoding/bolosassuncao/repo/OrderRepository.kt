@@ -15,10 +15,25 @@ import kotlin.math.absoluteValue
 class OrderRepository : OrderDataSource {
     private var call: Call<ArrayList<Order>> ?= null
     private var genericCall : Call<Int>?= null
+    private var productCall : Call<Boolean>?= null
 
     private val OPERATION_UPLOAD = 1
 
     override fun uploadOrderProducts(productId: Int, orderId: Int, callback: UploadCallBack<Boolean>) {
+        productCall = ApiClient.build()?.submit_order_product(productId, orderId)
+        productCall?.enqueue(object: Callback<Boolean>{
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                callback.onError(t.message)
+            }
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                response.body().let {
+                    if(response.isSuccessful){
+                        callback.onSuccess(true)
+                    }
+                }
+            }
+
+        })
 
     }
 
@@ -28,6 +43,7 @@ class OrderRepository : OrderDataSource {
             genericCall = ApiClient.build()?.submit_order(
                 order.id,
                 order.user_id,
+                order.cost,
                 order.customer_name,
                 order.delivery_time,
                 order.delivery_date,

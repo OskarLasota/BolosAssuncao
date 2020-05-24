@@ -17,6 +17,9 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val _upload = MutableLiveData<Int>()
     val upload : LiveData<Int> = _upload
 
+    private val _productupload = MutableLiveData<Boolean>()
+    val productupload : LiveData<Boolean> = _productupload
+
     private val _isEmptyList = MutableLiveData<Boolean>()
     val isEmptyList : LiveData<Boolean> = _isEmptyList
 
@@ -43,6 +46,23 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
 
         })
     }
+
+    fun upload(productid: Int, orderid : Int){
+        _isViewLoading.postValue(true)
+        repository.uploadOrderProducts(productid, orderid, object: UploadCallBack<Boolean> {
+            override fun onSuccess(data: Boolean) {
+                _isViewLoading.postValue(false)
+                _productupload.value = data
+            }
+
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(false)
+                _onMessageError.postValue(error)
+            }
+
+        })
+    }
+
 
     fun getOrders(){
         _isViewLoading.postValue(true)

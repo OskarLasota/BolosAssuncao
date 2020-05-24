@@ -82,10 +82,18 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
         orderViewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(
             OrderViewModel::class.java)
         orderViewModel.upload.observe(viewLifecycleOwner, getUploadStatus)
+        orderViewModel.productupload.observe(viewLifecycleOwner, getProductUploadStatus)
     }
 
-    private val getUploadStatus = Observer<Boolean>{
-        //upload complete
+    private val getProductUploadStatus = Observer<Boolean>{
+        println("complete")
+    }
+
+    private val getUploadStatus = Observer<Int>{
+        for(element in productList){
+            orderViewModel.upload(element.id, it)
+            println("upload sent")
+        }
     }
 
     private val getCachedUser = Observer<User>{
@@ -272,7 +280,8 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
                 if(binding.radioOne.isSelected){
                     payment_type = "Debit card"
                 }
-                orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString(), binding.tvSelectdate.text.toString(),
+                orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
+                    binding.tvSelectdate.text.toString().substring(0,10),
                   binding.etMobile.text.toString(), binding.etAddress1.text.toString(), binding.etAddress2.text.toString(), binding.etPostcode.text.toString(), "delivery",
                   binding.etInstructions.text.toString(),payment_type, "0"))
 

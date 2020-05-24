@@ -72,7 +72,7 @@ object ApiClient {
 
         @FormUrlEncoded
         @POST("submit_order.php")
-        fun submit_order(@Field("id") username : Int, @Field("user_id") user_id : Int, @Field("customer_name") name : String,
+        fun submit_order(@Field("id") username : Int, @Field("user_id") user_id : Int,@Field("cost") cost : Double , @Field("customer_name") name : String,
                          @Field("delivery_time") delivery_time : String, @Field("delivery_date") delivery_date : String,
                          @Field("mobile") mobile : String, @Field("address_1") address_1 : String, @Field("address_2") address_2 : String,
                          @Field("postcode") postcode : String,@Field("delivery_collection") delivery_collection : String,
@@ -80,7 +80,7 @@ object ApiClient {
 
         @FormUrlEncoded
         @POST("submit_order_product.php")
-        fun submit_order_product(@Field("bolo_id") bolo_id : Int, @Field("order_id") order_id : Int) : Call<UploadResult>
+        fun submit_order_product(@Field("bolo_id") bolo_id : Int, @Field("order_id") order_id : Int) : Call<Boolean>
 
     }
 
