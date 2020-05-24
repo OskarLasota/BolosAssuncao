@@ -16,9 +16,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentCollectionBinding
+import com.frezzcoding.bolosassuncao.di.OrderInjection
 import com.frezzcoding.bolosassuncao.di.PrivilegedInjection
+import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.Privileged
+import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
+import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
 import java.util.*
 
@@ -35,6 +41,10 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
     private lateinit var viewModel : PrivilegedViewModel
     private var daysAvailable = emptyArray<String>()
     private var timesAvailable = emptyArray<String>()
+    private lateinit var productList : List<Product>
+    private lateinit var cachingViewModel : CachingViewModel
+    private lateinit var orderViewModel : OrderViewModel
+    private lateinit var currentUser : User
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -43,6 +53,12 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
         if(activity is NeutralUserActivity){
             (activity as NeutralUserActivity)?.hideBottombar(true)
         }
+        if(arguments!!.get("products") != null) {
+            productList = arguments!!.get("products") as List<Product>
+        }else{
+            //handle miss communication
+        }
+
         setListeners()
         initializeViewModel()
         viewModel.getPrivileged()
@@ -53,6 +69,29 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
     private fun initializeViewModel(){
         viewModel = ViewModelProvider(this, PrivilegedInjection.provideViewModelFactory()).get(PrivilegedViewModel::class.java)
         viewModel.priv.observe(viewLifecycleOwner, getPrivData)
+        cachingViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(
+            CachingViewModel(activity!!.application).javaClass)
+        cachingViewModel.init()
+        cachingViewModel.user.observe(viewLifecycleOwner, getCachedUser)
+
+        orderViewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(
+            OrderViewModel::class.java)
+        orderViewModel.upload.observe(viewLifecycleOwner, getUploadStatus)
+        orderViewModel.productupload.observe(viewLifecycleOwner, getProductUploadStatus)
+    }
+
+    private val getProductUploadStatus = Observer<Boolean>{
+        //animation here
+    }
+
+    private val getUploadStatus = Observer<Int>{
+        for(element in productList){
+            orderViewModel.upload(element.id, it)
+        }
+    }
+
+    private val getCachedUser = Observer<User>{
+        currentUser = it
     }
 
     private val getPrivData = Observer<Privileged>{
@@ -175,18 +214,34 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
     }
 
     private fun setListeners(){
+        binding.btnOrder.setOnClickListener {
+            if(checkInputValidity() && !inProcess){
+                inProcess = true
+                var sum = 0.0
+                for(element in productList){
+                    sum += element.price
+                }
+                var payment_type = "Cash On Delivery"
+                if(binding.radioOne.isSelected){
+                    payment_type = "Debit card"
+                }
+                orderViewModel.upload(
+                    Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
+                        binding.tvSelectdate.text.toString().substring(0,10),
+                        binding.etMobile.text.toString(), "collection",
+                        payment_type, "0")
+                )
+
+
+            }
+            inProcess = false
+        }
+
         binding.tvSelectdate.setOnClickListener {
             showPopup(SELECT_DATE)
         }
         binding.tvSelecttime.setOnClickListener {
             showPopup(SELECT_TIME)
-        }
-        binding.btnOrder.setOnClickListener {
-            if(checkInputValidity() && !inProcess){
-                inProcess=true
-                //loading animation here + call the api with retrofit
-            }
-            inProcess = false
         }
         binding.etName.doAfterTextChanged {
             checkCurrentValidity("name")
