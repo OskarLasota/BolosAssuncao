@@ -1,4 +1,4 @@
-package com.frezzcoding.bolosassuncao.view
+package com.frezzcoding.bolosassuncao.view.neutral
 
 import android.os.Bundle
 import android.view.LayoutInflater

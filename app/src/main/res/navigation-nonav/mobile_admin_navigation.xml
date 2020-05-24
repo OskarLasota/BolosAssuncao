@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/destination_requirelogin1"
-        android:name="com.frezzcoding.bolosassuncao.view.RequireLoginFragment"
+        android:name="com.frezzcoding.bolosassuncao.view.neutral.RequireLoginFragment"
         android:label="Login Required" >
         <action
             android:id="@+id/action_destination_requirelogin1_to_LoginActivity"
@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/destination_requirelogin2"
-        android:name="com.frezzcoding.bolosassuncao.view.RequireLoginFragment"
+        android:name="com.frezzcoding.bolosassuncao.view.neutral.RequireLoginFragment"
         android:label="Login Required" >
         <action
             android:id="@+id/action_destination_requirelogin2_to_LoginActivity"

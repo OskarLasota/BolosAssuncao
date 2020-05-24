@@ -43,6 +43,7 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
         )
         if(activity is NeutralUserActivity){
             (activity as NeutralUserActivity)?.hideBottombar(false)
+            (activity as NeutralUserActivity)?.hideToolbar(false)
         }
 
         initializeViewModel()

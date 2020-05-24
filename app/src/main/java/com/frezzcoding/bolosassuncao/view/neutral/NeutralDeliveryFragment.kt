@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.FragmentDeliveryBinding
 import com.frezzcoding.bolosassuncao.di.OrderInjection
@@ -26,6 +27,7 @@ import com.frezzcoding.bolosassuncao.utils.InputValidator
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
+import maes.tech.intentanim.CustomIntent
 import java.util.*
 
 
@@ -86,7 +88,8 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
     }
 
     private val getProductUploadStatus = Observer<Boolean>{
-        println("complete")
+        Navigation.findNavController(binding.root).navigate(R.id.destination_ordersuccess)
+        CustomIntent.customType(this.context, "fadein-to-fadeout")
     }
 
     private val getUploadStatus = Observer<Int>{

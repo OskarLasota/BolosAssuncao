@@ -39,6 +39,15 @@ class NeutralUserActivity : AppCompatActivity()  {
         setUI()
     }
 
+    fun hideToolbar(isHidden: Boolean){
+        if(isHidden){
+            supportActionBar?.hide()
+        }else{
+            supportActionBar?.show()
+        }
+
+    }
+
     fun hideBottombar(isHidden : Boolean){
         if(isHidden)
             bottom_nav?.visibility = View.GONE
