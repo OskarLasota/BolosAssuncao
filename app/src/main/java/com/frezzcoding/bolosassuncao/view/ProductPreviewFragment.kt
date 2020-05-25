@@ -30,6 +30,7 @@ class ProductPreviewFragment: Fragment() {
         )
 
         basketViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
+        basketViewModel.loading.observe(viewLifecycleOwner, observeLoading)
         basketViewModel.init()
 
 
@@ -38,11 +39,26 @@ class ProductPreviewFragment: Fragment() {
         return binding.root
     }
 
+    private val observeLoading = Observer<Boolean>{
+        //on loading complete run animation
+        if(!it){
+            inProgress = false
+            binding.animation?.visibility = View.VISIBLE
+            binding.animation?.playAnimation()
+            binding.animation?.addAnimatorUpdateListener { valueAnimator ->
+                val progress = (valueAnimator.animatedValue as Float * 100).toInt()
+                if(progress == 95){
+                    binding.animation?.visibility = View.GONE
+                }
+            }
+        }else{
+            inProgress = true
+            binding.animation?.visibility = View.GONE
+        }
+    }
+
     private fun setListeners(){
         //User is only to add again after first call is finished
-        basketViewModel.loading.observe(viewLifecycleOwner, Observer{
-            inProgress = it
-        })
 
         if(activity is PrivilegedUserActivity){
             binding.fabBasket.hide()
