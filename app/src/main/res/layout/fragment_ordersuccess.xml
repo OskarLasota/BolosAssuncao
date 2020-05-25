@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:textColor="#19BF40"
+        android:textColor="@color/brownish"
         android:text="Order Complete !"
         />
 

@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_editprice"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="Update"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/brownish"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
