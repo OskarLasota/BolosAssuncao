@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 
 class OrderSuccessFragment : Fragment() {
+
+    private lateinit var basketViewModel : BasketViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,10 @@ class OrderSuccessFragment : Fragment() {
             (activity as NeutralUserActivity)?.hideBottombar(false)
             (activity as NeutralUserActivity)?.hideToolbar(true)
         }
+
+        basketViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(BasketViewModel(activity!!.application).javaClass)
+        basketViewModel.init()
+        basketViewModel.deleteAll()
 
         return view
     }
