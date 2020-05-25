@@ -34,19 +34,14 @@ class OrderViewAdapter(private val _data : List<Order>, private val viewModel : 
         private lateinit var order : Order
 
         init{
-            /*
             binding.ivRemove.setOnClickListener {
                 viewModel.delete(order)
             }
-
-             */
         }
 
         fun bind(_order : Order){
             binding.order = _order
             order = _order
-            //set image using picasso library, try to add this code in the model so we can databind
-            //Picasso.get().load(_order.url).into(binding.imageviewId)
         }
 
 

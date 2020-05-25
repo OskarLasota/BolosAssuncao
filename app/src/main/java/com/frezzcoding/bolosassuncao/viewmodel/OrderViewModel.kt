@@ -47,6 +47,10 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
         })
     }
 
+    fun delete(order : Order){
+
+    }
+
     fun upload(productid: Int, orderid : Int){
         _isViewLoading.postValue(true)
         repository.uploadOrderProducts(productid, orderid, object: UploadCallBack<Boolean> {
