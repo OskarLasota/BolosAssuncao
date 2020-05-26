@@ -19,11 +19,13 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var viewModel : CachingViewModel
     private lateinit var binding: ActivityFirstBinding
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         startService(this.intent)
         FirebaseMessaging.getInstance().subscribeToTopic("test")
 
@@ -33,6 +35,7 @@ class FirstActivity : AppCompatActivity() {
         binding.animation?.visibility = View.VISIBLE
         binding.animation?.playAnimation()
     }
+
 
     private fun setObservers(){
         viewModel.user.observe(this, Observer {
