@@ -8,7 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
+import com.frezzcoding.bolosassuncao.adapters.TodoViewAdapter
 import com.frezzcoding.bolosassuncao.data.OrdersOverviewResult
 import com.frezzcoding.bolosassuncao.databinding.FragmentTodoBinding
 import com.frezzcoding.bolosassuncao.di.OrderInjection
@@ -23,6 +25,7 @@ class PrivilegedTodoFragment : Fragment() {
     private lateinit var viewModel : ProductViewModel
     private lateinit var orderViewModel : OrderViewModel
     var productList = HashMap<String, Int>()
+    private lateinit var adapterTodo : TodoViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -59,9 +62,11 @@ class PrivilegedTodoFragment : Fragment() {
 
     private val obtainOrders = Observer<ArrayList<OrdersOverviewResult>>{
         for(order in it){
-            println(order.name + " " + order.delivery_collection + " " + order.delivery_date)
-            productList[order.name] = productList[order.name]!! + 1
+            productList[order.url] = productList[order.name]!! + 1
         }
+        adapterTodo = TodoViewAdapter(productList)
+        binding.recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 1)
+        binding.recyclerView.adapter = adapterTodo
 
     }
 
