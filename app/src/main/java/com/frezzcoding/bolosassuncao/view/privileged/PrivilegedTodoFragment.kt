@@ -19,19 +19,28 @@ import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.ViewModelFactory
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class PrivilegedTodoFragment : Fragment() {
     private lateinit var binding : FragmentTodoBinding
     private lateinit var orderViewModel : OrderViewModel
     var productList = HashMap<String, Int>()
     private lateinit var adapterTodo : TodoViewAdapter
+    private lateinit var calendar : Calendar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_todo, container, false
         )
+
+        var dt = Date()
+        calendar = Calendar.getInstance()
+        calendar.time = dt
+
         initializeViewModel()
-        
+
         return binding.root
     }
 
@@ -46,7 +55,9 @@ class PrivilegedTodoFragment : Fragment() {
             if(productList[order.url] == null){
                 productList[order.url] = 0
             }
-            productList[order.url] = productList[order.url]!! + 1
+            if(order.delivery_date.contains(calendar.time.toString().substring(0,10))){
+                productList[order.url] = productList[order.url]!! + 1
+            }
         }
         adapterTodo = TodoViewAdapter(productList)
         binding.recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 1)
