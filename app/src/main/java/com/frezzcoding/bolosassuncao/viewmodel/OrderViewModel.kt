@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.frezzcoding.bolosassuncao.data.OperationCallBack
+import com.frezzcoding.bolosassuncao.data.OrdersOverviewResult
 import com.frezzcoding.bolosassuncao.data.UploadCallBack
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.OrderDataSource
@@ -20,6 +21,9 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val _productupload = MutableLiveData<Boolean>()
     val productupload : LiveData<Boolean> = _productupload
 
+    private val _ordersoverview = MutableLiveData<ArrayList<OrdersOverviewResult>>()
+    val ordersoverview : LiveData<ArrayList<OrdersOverviewResult>> = _ordersoverview
+
     private val _isEmptyList = MutableLiveData<Boolean>()
     val isEmptyList : LiveData<Boolean> = _isEmptyList
 
@@ -30,6 +34,21 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     val onMessageError:LiveData<Any> = _onMessageError
 
     private val OPERATION_UPLOAD = 1
+    private val OPERATION_RETRIEVE_ORDERS = 2
+
+    fun getOrderOverview(){
+        _isViewLoading.postValue(true)
+        repository.retrieveOrdersOverview(OPERATION_RETRIEVE_ORDERS, object : OperationCallBack<OrdersOverviewResult>{
+            override fun onSuccess(data: ArrayList<OrdersOverviewResult>) {
+                _isViewLoading.postValue(false)
+                _ordersoverview.value = data
+            }
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(false)
+                _onMessageError.postValue(error)
+            }
+        })
+    }
 
     fun upload(order: Order){
         _isViewLoading.postValue(true)

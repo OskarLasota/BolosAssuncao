@@ -32,6 +32,7 @@ object ApiClient {
 
     interface ServicesApiInterface{
 
+
         @FormUrlEncoded
         @POST("update_timetable.php")
         fun updateTimetable(@Field("monday") monday : String, @Field("tuesday") tuesday : String,@Field("wednesday") wednesday : String,
@@ -46,6 +47,9 @@ object ApiClient {
 
         @GET("products.php")
         fun products(): Call<ArrayList<Product>>
+
+        @GET("order_overview.php")
+        fun order_overview(): Call<ArrayList<OrdersOverviewResult>>
 
         //using POST requests for all below requests due to issues with php
         @FormUrlEncoded

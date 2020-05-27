@@ -1,9 +1,6 @@
 package com.frezzcoding.bolosassuncao.repo
 
-import com.frezzcoding.bolosassuncao.data.ApiClient
-import com.frezzcoding.bolosassuncao.data.OperationCallBack
-import com.frezzcoding.bolosassuncao.data.UploadCallBack
-import com.frezzcoding.bolosassuncao.data.UploadResult
+import com.frezzcoding.bolosassuncao.data.*
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.OrderDataSource
 import com.frezzcoding.bolosassuncao.models.Product
@@ -16,6 +13,7 @@ class OrderRepository : OrderDataSource {
     private var call: Call<ArrayList<Order>> ?= null
     private var genericCall : Call<Int>?= null
     private var productCall : Call<Boolean>?= null
+    private var ordersCall : Call<ArrayList<OrdersOverviewResult>>?= null
 
     private val OPERATION_UPLOAD = 1
 
@@ -84,6 +82,27 @@ class OrderRepository : OrderDataSource {
                 response?.body()?.let {
                     if (response.isSuccessful){
                         var list : ArrayList<Order> = response.body()!!
+                        callback.onSuccess(list)
+                    }else{
+                        callback.onError("Problem connecting to server")
+                    }
+                }
+            }
+
+        })
+    }
+
+    override fun retrieveOrdersOverview(operation: Int, callback: OperationCallBack<OrdersOverviewResult>) {
+        ordersCall = ApiClient.build()?.order_overview()
+        ordersCall?.enqueue(object: Callback<ArrayList<OrdersOverviewResult>>{
+            override fun onFailure(call: Call<ArrayList<OrdersOverviewResult>>, t: Throwable) {
+                callback.onError(t.message)
+            }
+
+            override fun onResponse(call: Call<ArrayList<OrdersOverviewResult>>, response: Response<ArrayList<OrdersOverviewResult>>) {
+                response?.body()?.let {
+                    if(response.isSuccessful){
+                        var list : ArrayList<OrdersOverviewResult> = response.body()!!
                         callback.onSuccess(list)
                     }else{
                         callback.onError("Problem connecting to server")
