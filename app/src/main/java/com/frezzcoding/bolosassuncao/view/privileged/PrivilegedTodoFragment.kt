@@ -58,8 +58,11 @@ class PrivilegedTodoFragment : Fragment() {
     }
 
     private val obtainOrders = Observer<ArrayList<OrdersOverviewResult>>{
-        println(it.size)
-        println("reached")
+        for(order in it){
+            println(order.name + " " + order.delivery_collection + " " + order.delivery_date)
+            productList[order.name] = productList[order.name]!! + 1
+        }
+
     }
 
     private val listenProducts = Observer<ArrayList<Product>>{
