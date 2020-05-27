@@ -33,7 +33,6 @@ class TodoViewAdapter (private val _data : HashMap<String, Int>) : RecyclerView.
     class ViewHolder(private val binding: TodoCardviewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(url : String, amount : Int){
-            println("`url ` "+ url)
             Picasso.get().load(url).into(binding.imageviewId)
             binding.tvAmount.text = amount.toString()
         }

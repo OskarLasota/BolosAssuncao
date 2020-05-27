@@ -30,21 +30,8 @@ class PrivilegedTodoFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_todo, container, false
         )
-
-        //initializeViewModel()
-        /*
-        todo
-        this fragment will present the products that have a due date of the current day to inform the baker
-        which cakes need to be baked
-        todo show current date
-        todo get list of products
-        todo put cardview with the product image
-        todo need to create a backend script that will provide cakes for current day or will provide product_id with each order call
-         */
-
         initializeViewModel()
-
-
+        
         return binding.root
     }
 
