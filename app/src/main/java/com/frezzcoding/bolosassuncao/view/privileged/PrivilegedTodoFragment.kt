@@ -22,7 +22,6 @@ import com.frezzcoding.bolosassuncao.viewmodel.ViewModelFactory
 
 class PrivilegedTodoFragment : Fragment() {
     private lateinit var binding : FragmentTodoBinding
-    private lateinit var viewModel : ProductViewModel
     private lateinit var orderViewModel : OrderViewModel
     var productList = HashMap<String, Int>()
     private lateinit var adapterTodo : TodoViewAdapter
@@ -50,19 +49,17 @@ class PrivilegedTodoFragment : Fragment() {
     }
 
     private fun initializeViewModel(){
-        viewModel = ViewModelProvider(this, ProductInjection.provideViewModelFactory()).get(ProductViewModel::class.java)
-        viewModel.products.observe(viewLifecycleOwner, listenProducts)
-        viewModel.getProducts()
-
         orderViewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(OrderViewModel::class.java)
         orderViewModel.ordersoverview.observe(viewLifecycleOwner, obtainOrders)
         orderViewModel.getOrderOverview()
-
     }
 
     private val obtainOrders = Observer<ArrayList<OrdersOverviewResult>>{
         for(order in it){
-            productList[order.url] = productList[order.name]!! + 1
+            if(productList[order.url] == null){
+                productList[order.url] = 0
+            }
+            productList[order.url] = productList[order.url]!! + 1
         }
         adapterTodo = TodoViewAdapter(productList)
         binding.recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 1)
@@ -70,10 +67,5 @@ class PrivilegedTodoFragment : Fragment() {
 
     }
 
-    private val listenProducts = Observer<ArrayList<Product>>{
-        for(product in it){
-            productList[product.name] = 0
-        }
-    }
 
 }
