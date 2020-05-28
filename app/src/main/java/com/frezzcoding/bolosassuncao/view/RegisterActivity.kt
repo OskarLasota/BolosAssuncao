@@ -116,7 +116,7 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         for(element in usernameList){
             if(binding.etEditname.text.toString() == element.username){
                 Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
-                break
+                return false
             }
         }
         return true
