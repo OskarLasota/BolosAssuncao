@@ -28,6 +28,7 @@ class OrderRepository : OrderDataSource {
                     if(response.isSuccessful){
                         callback.onSuccess(true)
                     }
+                    response.raw().close()
                 }
             }
 
@@ -65,6 +66,7 @@ class OrderRepository : OrderDataSource {
                     if(response.isSuccessful){
                         callback.onSuccess(it)
                     }
+                    response.raw().close()
                 }
             }
 
@@ -86,6 +88,7 @@ class OrderRepository : OrderDataSource {
                     }else{
                         callback.onError("Problem connecting to server")
                     }
+                    response.raw().close()
                 }
             }
 
