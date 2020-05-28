@@ -67,7 +67,6 @@ class ProductRepository : ProductDataSource {
                     }else{
                         callback.onError("Problem connecting to server")
                     }
-                    response.raw().close()
                 }
             }
 

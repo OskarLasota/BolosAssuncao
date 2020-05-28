@@ -29,7 +29,6 @@ class UserRepository : UserDataSource {
                     if(response.isSuccessful){
                         if (it != null) {
                             callback.onSuccess(it)
-                            response.raw().close()
                         }
                     }
                 }
@@ -61,7 +60,6 @@ class UserRepository : UserDataSource {
                            callback.onError(it!!.error)
                        }
                    }
-                   response.raw().close()
                }
             }
 

@@ -28,7 +28,6 @@ class PrivilegeRepository: PrivilegeDataSource {
                         callback.onSuccess(false)
                     }
                 }
-                response.raw().close()
             }
 
         })
@@ -51,7 +50,6 @@ class PrivilegeRepository: PrivilegeDataSource {
                     }else{
                         callback.onError("Problem connecting to server")
                     }
-                    response.raw().close()
                 }
             }
 
