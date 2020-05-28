@@ -39,11 +39,17 @@ class NeutralOrdersFragment : Fragment() {
     private fun initializeViewModel(){
         viewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(OrderViewModel::class.java)
         viewModel.orders.observe(viewLifecycleOwner, renderOrders)
-
+        viewModel.deleted.observe(viewLifecycleOwner, refreshList)
         cachingViewModel = ViewModelProvider.AndroidViewModelFactory(activity!!.application).create(
             CachingViewModel(activity!!.application).javaClass)
         cachingViewModel.init()
         cachingViewModel.user.observe(viewLifecycleOwner, getCachedUser)
+    }
+
+    private val refreshList = Observer<Int>{
+        if(it == 1 ){
+            viewModel.getOrders()
+        }
     }
 
     private val getCachedUser = Observer<User>{

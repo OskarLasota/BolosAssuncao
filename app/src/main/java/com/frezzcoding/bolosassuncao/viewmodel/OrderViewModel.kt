@@ -24,6 +24,9 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val _ordersoverview = MutableLiveData<ArrayList<OrdersOverviewResult>>()
     val ordersoverview : LiveData<ArrayList<OrdersOverviewResult>> = _ordersoverview
 
+    private val _deleted = MutableLiveData<Int>()
+    val deleted : LiveData<Int> = _deleted
+
     private val _isEmptyList = MutableLiveData<Boolean>()
     val isEmptyList : LiveData<Boolean> = _isEmptyList
 
@@ -35,6 +38,8 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
 
     private val OPERATION_UPLOAD = 1
     private val OPERATION_RETRIEVE_ORDERS = 2
+    private val OPERATION_DELETE = 3
+    private val DELETE_SUCCESS = 1
 
     fun getOrderOverview(){
         _isViewLoading.postValue(true)
@@ -67,7 +72,18 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     }
 
     fun delete(order : Order){
+        _isViewLoading.postValue(true)
+        repository.geneticOperation(OPERATION_DELETE, order, object: UploadCallBack<Int>{
+            override fun onSuccess(data: Int) {
+                _isViewLoading.postValue(false)
+                _deleted.postValue(DELETE_SUCCESS)
+            }
 
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(false)
+            }
+
+        })
     }
 
     fun upload(productid: Int, orderid : Int){

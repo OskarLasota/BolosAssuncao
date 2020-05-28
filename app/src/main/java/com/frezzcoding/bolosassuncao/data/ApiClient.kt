@@ -56,6 +56,11 @@ object ApiClient {
         fun order_overview(): Call<ArrayList<OrdersOverviewResult>>
 
         //using POST requests for all below requests due to issues with php
+
+        @FormUrlEncoded
+        @POST("delete_order.php")
+        fun deleteOrder(@Field("id") id : Int): Call<Int>
+
         @FormUrlEncoded
         @POST("upload.php")
         fun upload(@Field("name") name : String, @Field("image") image : String,

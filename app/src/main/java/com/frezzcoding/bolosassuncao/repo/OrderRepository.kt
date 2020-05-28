@@ -16,6 +16,7 @@ class OrderRepository : OrderDataSource {
     private var ordersCall : Call<ArrayList<OrdersOverviewResult>>?= null
 
     private val OPERATION_UPLOAD = 1
+    private val OPERATION_DELETE = 3
 
     override fun uploadOrderProducts(productId: Int, orderId: Int, callback: UploadCallBack<Boolean>) {
         productCall = ApiClient.build()?.submit_order_product(productId, orderId)
@@ -54,6 +55,9 @@ class OrderRepository : OrderDataSource {
                 order.payment_type,
                 order.status
             )
+        }
+        if(operation == OPERATION_DELETE){
+            genericCall = ApiClient.build()?.deleteOrder(order.id)
         }
         genericCall?.enqueue(object: Callback<Int>{
             override fun onFailure(call: Call<Int>, t: Throwable) {
