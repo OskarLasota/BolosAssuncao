@@ -233,7 +233,7 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
                     Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
                         binding.tvSelectdate.text.toString().substring(0,10),
                         binding.etMobile.text.toString(), "collection",
-                        payment_type, "0")
+                        payment_type, "pending")
                 )
 
 

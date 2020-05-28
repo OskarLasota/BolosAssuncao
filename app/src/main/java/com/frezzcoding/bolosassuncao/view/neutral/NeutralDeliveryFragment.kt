@@ -286,7 +286,7 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
                 orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
                     binding.tvSelectdate.text.toString().substring(0,10),
                   binding.etMobile.text.toString(), binding.etAddress1.text.toString(), binding.etAddress2.text.toString(), binding.etPostcode.text.toString(), "delivery",
-                  binding.etInstructions.text.toString(),payment_type, "0"))
+                  binding.etInstructions.text.toString(),payment_type, "pending"))
 
 
             }
