@@ -24,6 +24,7 @@ import com.frezzcoding.bolosassuncao.models.Privileged
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.InputValidator
+import com.frezzcoding.bolosassuncao.utils.NetworkChecker
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
@@ -59,6 +60,10 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             productList = arguments!!.get("products") as List<Product>
         }else{
             //handle miss communication
+        }
+
+        if(!NetworkChecker.isNetworkAvailable(this.context!!)){
+            Toast.makeText(this.context, "Please check your internet connection", Toast.LENGTH_SHORT).show()
         }
 
         setListeners()

@@ -1,8 +1,11 @@
-
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
@@ -16,6 +19,7 @@ import com.frezzcoding.bolosassuncao.adapters.ProductViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentHomeBinding
 import com.frezzcoding.bolosassuncao.di.ProductInjection
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.utils.NetworkChecker
 import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.ProductViewModel
 
@@ -48,7 +52,9 @@ class HomeFragment : Fragment(), ProductViewAdapter.OnItemClickListener {
 
         initializeViewModel()
         viewModel.getProducts()
-
+        if(!NetworkChecker.isNetworkAvailable(this.context!!)){
+            Toast.makeText(this.context, "Please check your internet connection", Toast.LENGTH_SHORT).show()
+        }
 
         return binding.root
     }

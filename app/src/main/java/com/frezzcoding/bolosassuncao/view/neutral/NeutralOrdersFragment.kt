@@ -2,6 +2,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import com.frezzcoding.bolosassuncao.databinding.FragmentOrdersBinding
 import com.frezzcoding.bolosassuncao.di.OrderInjection
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.User
+import com.frezzcoding.bolosassuncao.utils.NetworkChecker
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 
@@ -29,7 +31,9 @@ class NeutralOrdersFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_orders, container, false
         )
-
+        if(!NetworkChecker.isNetworkAvailable(this.context!!)){
+            Toast.makeText(this.context, "Please check your internet connection", Toast.LENGTH_SHORT).show()
+        }
         initializeViewModel()
         viewModel.getOrders()
 
