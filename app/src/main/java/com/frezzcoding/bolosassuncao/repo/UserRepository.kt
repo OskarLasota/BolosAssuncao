@@ -12,9 +12,30 @@ import retrofit2.Response
 class UserRepository : UserDataSource {
 
     private var genericCall : Call<UserResult>?= null
-
+    private var usernameCall : Call<ArrayList<User>>?= null
     private val OPERATION_LOGIN = 0;
     private val OPERATION_REGISTER = 1;
+
+
+    override fun usernameOperation(callback: UploadCallBack<ArrayList<User>>) {
+        usernameCall = ApiClient.build()?.usernames()
+        usernameCall?.enqueue(object: Callback<ArrayList<User>>{
+            override fun onFailure(call: Call<ArrayList<User>>, t: Throwable) {
+                callback.onError(t.message)
+            }
+
+            override fun onResponse(call: Call<ArrayList<User>>, response: Response<ArrayList<User>>) {
+                response.body().let{
+                    if(response.isSuccessful){
+                        if (it != null) {
+                            callback.onSuccess(it)
+                        }
+                    }
+                }
+            }
+
+        })
+    }
 
 
     override fun genericOperation(operation : Int, user:User, callback: UploadCallBack<User>){

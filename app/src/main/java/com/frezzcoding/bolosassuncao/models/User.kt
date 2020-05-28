@@ -26,6 +26,11 @@ class User : Serializable {
         this.id = id
         this.privilege = priv
     }
+
+    constructor(username: String){
+        this.username = username
+    }
+
     @Ignore
     constructor(username : String, password: String, email :String){
         this.username = username

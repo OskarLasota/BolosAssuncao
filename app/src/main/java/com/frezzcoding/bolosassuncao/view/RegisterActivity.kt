@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     private lateinit var viewModel : AccountViewModel
     private val MIN_PASS_LENGTH = 4
     private val MIN_USERNAME_LENGTH = 4
+    private lateinit var usernameList : ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,14 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         viewModel.user.observe(this, observeRegister)
         viewModel.onMessageError.observe(this, observeError)
         viewModel.isViewLoading.observe(this, observeLoading)
+        viewModel.usernames.observe(this, usernames)
+
+
+        viewModel.getUsernames()
+    }
+
+    private val usernames = Observer<ArrayList<User>>{
+        usernameList = it
     }
 
     private val observeLoading = Observer<Boolean>{
@@ -71,7 +80,7 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
     private fun setListeners(){
         binding.btnRegister.setOnClickListener {
             if(checkInputValidity() && !loading){
-                var user = User(binding.etEditname.text.toString(), binding.etPassword.text.toString(), binding.etEmail.text.toString())
+                val user = User(binding.etEditname.text.toString(), binding.etPassword.text.toString(), binding.etEmail.text.toString())
                 viewModel.registerUser(user)
             }
         }
@@ -103,6 +112,12 @@ class RegisterActivity : AppCompatActivity(), InputValidator {
         if(binding.etPassword.text.toString() != binding.etRepeatPassword.text.toString()){
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             return false
+        }
+        for(element in usernameList){
+            if(binding.etEditname.text.toString() == element.username){
+                Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
+                break
+            }
         }
         return true
     }

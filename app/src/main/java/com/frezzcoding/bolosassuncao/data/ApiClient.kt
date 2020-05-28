@@ -3,6 +3,7 @@ package com.frezzcoding.bolosassuncao.data
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.Privileged
 import com.frezzcoding.bolosassuncao.models.Product
+import com.frezzcoding.bolosassuncao.models.User
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -41,6 +42,9 @@ object ApiClient {
 
         @GET("timetable.php")
         fun privileged(): Call<ArrayList<Privileged>>
+
+        @GET("check_username_exists.php")
+        fun usernames(): Call<ArrayList<User>>
 
         @GET("orders.php")
         fun orders(): Call<ArrayList<Order>>

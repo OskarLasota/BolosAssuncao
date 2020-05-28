@@ -13,6 +13,9 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user : LiveData<User> = _user
 
+    private val _usernames = MutableLiveData<ArrayList<User>>()
+    val usernames : LiveData<ArrayList<User>> = _usernames
+
     private val _isViewLoading=MutableLiveData<Boolean>()
     val isViewLoading:LiveData<Boolean> = _isViewLoading
 
@@ -34,6 +37,19 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
 
             override fun onError(error: String?) {
                 _isViewLoading.postValue(false)
+                _onMessageError.postValue(error)
+            }
+
+        })
+    }
+
+    fun getUsernames(){
+        repository.usernameOperation(object: UploadCallBack<ArrayList<User>>{
+            override fun onSuccess(data: ArrayList<User>) {
+                _usernames.value = data
+            }
+
+            override fun onError(error: String?) {
                 _onMessageError.postValue(error)
             }
 
