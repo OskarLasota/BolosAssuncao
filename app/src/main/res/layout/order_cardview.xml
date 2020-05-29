@@ -73,7 +73,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:gravity="center"
                 android:textSize="22sp"
-                android:text="@{`R$ : ` + order.cost}"
+                android:text="@{`R$ : ` + String.format(`%.2f`, order.cost)}"
                 android:textColor="#fff" />
 
             <ImageView
