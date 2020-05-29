@@ -13,6 +13,7 @@ class UserRepository : UserDataSource {
 
     private var genericCall : Call<UserResult>?= null
     private var usernameCall : Call<ArrayList<User>>?= null
+    private var tokenCall : Call<Int>?= null
     private val OPERATION_LOGIN = 0;
     private val OPERATION_REGISTER = 1;
 
@@ -66,6 +67,19 @@ class UserRepository : UserDataSource {
         })
     }
 
+    override fun tokenOperation(token: String, id: Int, callback: UploadCallBack<Int>) {
+        tokenCall = ApiClient.build()?.updateToken(id, token)
+        tokenCall?.enqueue(object: Callback<Int>{
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
 
 
 }

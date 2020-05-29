@@ -58,6 +58,10 @@ object ApiClient {
         //using POST requests for all below requests due to issues with php
 
         @FormUrlEncoded
+        @POST("update_token.php")
+        fun updateToken(@Field("id") id : Int, @Field("token") token : String) : Call<Int>
+
+        @FormUrlEncoded
         @POST("delete_order.php")
         fun deleteOrder(@Field("id") id : Int): Call<Int>
 

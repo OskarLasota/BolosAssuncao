@@ -23,8 +23,24 @@ class AccountViewModel(private val repository : UserDataSource) : ViewModel() {
     val onMessageError:LiveData<String> = _onMessageError
 
 
-    private val OPERATION_LOGIN = 0;
-    private val OPERATION_REGISTER = 1;
+    private val OPERATION_LOGIN = 0
+    private val OPERATION_REGISTER = 1
+
+
+    fun updateToken(token : String, userid : Int){
+        _isViewLoading.postValue(true)
+        repository.tokenOperation(token, userid, object: UploadCallBack<Int>{
+            override fun onSuccess(data: Int) {
+                _isViewLoading.postValue(false)
+            }
+
+            override fun onError(error: String?) {
+                _isViewLoading.postValue(true)
+                _onMessageError.postValue(error)
+            }
+
+        })
+    }
 
     fun getUser(input : User){
         _isViewLoading.postValue(true)

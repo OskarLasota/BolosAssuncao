@@ -10,7 +10,9 @@ import com.frezzcoding.bolosassuncao.databinding.ActivityFirstBinding
 import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import maes.tech.intentanim.CustomIntent
 
 
@@ -26,8 +28,6 @@ class FirstActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        startService(this.intent)
-        FirebaseMessaging.getInstance().subscribeToTopic("test")
 
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CachingViewModel(application).javaClass)
         viewModel.init()
@@ -48,6 +48,11 @@ class FirstActivity : AppCompatActivity() {
                 if(it.privilege == 1) {
                     intent = Intent(this, PrivilegedUserActivity::class.java)
                 }
+                startService(this.intent)
+                FirebaseMessaging.getInstance().subscribeToTopic("test")
+                println("token is : " + FirebaseInstanceId.getInstance().token)
+                //update the user with the token on the db
+
                 intent.putExtra("user", it)
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")
