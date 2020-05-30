@@ -71,11 +71,16 @@ class UserRepository : UserDataSource {
         tokenCall = ApiClient.build()?.updateToken(id, token)
         tokenCall?.enqueue(object: Callback<Int>{
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                TODO("Not yet implemented")
+                callback.onError(t.message)
+                println(t.message)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                TODO("Not yet implemented")
+                response.body().let{
+                    if(response.isSuccessful){
+                        callback.onSuccess(it!!)
+                    }
+                }
             }
 
         })
