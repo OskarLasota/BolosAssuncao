@@ -46,7 +46,6 @@ class FirstActivity : AppCompatActivity() {
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")
             }
-            println("reached in loading $it")
         })
 
         viewModel.user.observe(this, Observer {
