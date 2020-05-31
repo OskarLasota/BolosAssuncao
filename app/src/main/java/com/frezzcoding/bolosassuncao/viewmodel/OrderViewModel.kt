@@ -64,6 +64,7 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
             }
 
             override fun onError(error: String?) {
+                _upload.value = 0
                 _isViewLoading.postValue(false)
                 _onMessageError.postValue(error)
             }
@@ -117,7 +118,6 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
             }
 
             override fun onError(error: String?) {
-                println(error)
                 _isViewLoading.postValue(false)
                 _onMessageError.postValue(error)
             }

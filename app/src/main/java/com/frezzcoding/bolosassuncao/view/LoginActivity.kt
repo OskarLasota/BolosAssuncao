@@ -18,6 +18,7 @@ import com.frezzcoding.bolosassuncao.view.neutral.NeutralUserActivity
 import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import maes.tech.intentanim.CustomIntent
 
@@ -100,6 +101,8 @@ class LoginActivity : AppCompatActivity(), InputValidator {
     private val observeLogin = Observer<User>{
         _user = it
         cachingViewModel.insert(it)
+        //store token
+        FirebaseInstanceId.getInstance().token?.let { it1 -> viewModel.updateToken(it1, it.id)}
     }
 
 
