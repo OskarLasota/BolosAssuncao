@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,6 +44,10 @@ class ProductPreviewFragment: Fragment() {
     private val observeLoading = Observer<Boolean>{
         //on loading complete run animation
         if(!it){
+            var animation: Animation = AnimationUtils.loadAnimation(this.context, R.anim.shake)
+            //activity!!.binding.?.startAnimation(animation)
+            var men = activity!!.findViewById<View>(R.id.destination_basket)
+            men.startAnimation(animation)
             inProgress = false
             binding.animation?.visibility = View.VISIBLE
             binding.animation?.playAnimation()
