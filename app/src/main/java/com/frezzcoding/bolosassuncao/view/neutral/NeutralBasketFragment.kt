@@ -13,16 +13,22 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.adapters.BasketViewAdapter
+import com.frezzcoding.bolosassuncao.adapters.OrderViewAdapter
 import com.frezzcoding.bolosassuncao.databinding.FragmentBasketBinding
+import com.frezzcoding.bolosassuncao.di.OrderInjection
+import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.models.Product
 import com.frezzcoding.bolosassuncao.viewmodel.BasketViewModel
+import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 
 class NeutralBasketFragment : Fragment() {
 
     private lateinit var viewModel : BasketViewModel
+    private lateinit var ordersViewModel : OrderViewModel
     private lateinit var adapterProduct : BasketViewAdapter
     private var productList : List<Product> = ArrayList()
     private lateinit var binding : FragmentBasketBinding
+    private var allowOrder = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -34,6 +40,7 @@ class NeutralBasketFragment : Fragment() {
         }
 
         initializeViewModel()
+        ordersViewModel.getOrders()
         setObservers()
         return binding.root
     }
@@ -42,14 +49,14 @@ class NeutralBasketFragment : Fragment() {
     private fun setObservers(){
         var bundle : Bundle
         binding.btnCollection.setOnClickListener {
-            if(productList.isNotEmpty()) {
+            if(productList.isNotEmpty() && allowOrder) {
                 bundle = bundleOf("products" to productList)
                 Navigation.findNavController(binding.root)
                     .navigate(R.id.destination_collection, bundle)
             }
         }
         binding.btnDelivery.setOnClickListener {
-            if(productList.isNotEmpty()) {
+            if(productList.isNotEmpty() && allowOrder) {
                 bundle = bundleOf("products" to productList)
                 Navigation.findNavController(binding.root)
                     .navigate(R.id.destination_delivery, bundle)
@@ -62,6 +69,16 @@ class NeutralBasketFragment : Fragment() {
         viewModel.init()
         viewModel.loading.observe(viewLifecycleOwner, observeLoading)
         viewModel.basket.observe(viewLifecycleOwner, observeBasket)
+
+        ordersViewModel = ViewModelProvider(this, OrderInjection.provideViewModelFactory()).get(
+            OrderViewModel::class.java)
+        ordersViewModel.orders.observe(viewLifecycleOwner, renderOrders)
+    }
+
+    private val renderOrders = Observer<ArrayList<Order>>{
+        if(it.size > 1){
+            allowOrder = false
+        }
     }
 
     private val observeBasket = Observer<List<Product>>{
