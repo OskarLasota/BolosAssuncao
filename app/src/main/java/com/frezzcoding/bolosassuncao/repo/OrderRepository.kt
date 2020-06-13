@@ -80,6 +80,7 @@ class OrderRepository : OrderDataSource {
         statusCall = ApiClient.build()?.update_order_status(status, order.id)
         statusCall?.enqueue(object: Callback<Int>{
             override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("error")
                 callback.onError(t.message)
             }
 
@@ -87,6 +88,7 @@ class OrderRepository : OrderDataSource {
                 response?.body().let{
                     if(response.isSuccessful){
                         if (it != null) {
+                            println("success $it ${order.id}")
                             callback.onSuccess(it)
                         }
                     }

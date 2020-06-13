@@ -39,7 +39,7 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
     }
 
 
-    class ViewHolder(private val binding: PrivOrderCardviewBinding, private val viewModel : OrderViewModel, private val ctx : Context) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    class ViewHolder(private val binding: PrivOrderCardviewBinding, private val viewModel : OrderViewModel, private val ctx : Context) : RecyclerView.ViewHolder(binding.root) {
         private lateinit var order : Order
         private var dialog = Dialog(ctx)
 
@@ -70,12 +70,12 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
             //Picasso.get().load(_order.url).into(binding.imageviewId)
         }
 
-        override fun onClick(v: View?) {
+        private fun onClick(v: View?) {
             when(v?.id){
-                R.id.btn1 -> println("clicked btn1")
-                R.id.btn2 -> println("clicked btn2")
-                R.id.btn3 -> println("clicked btn3")
-                R.id.btn4 -> println("clicked btn4")
+                R.id.btn1 -> viewModel.setStatus("Order Accepted", order)
+                R.id.btn2 -> viewModel.setStatus("Order Declined", order)
+                R.id.btn3 -> viewModel.setStatus("Order Ready To Collect", order)
+                R.id.btn4 -> viewModel.setStatus("Order status : Delivering", order)
             }
             dialog.hide()
         }
