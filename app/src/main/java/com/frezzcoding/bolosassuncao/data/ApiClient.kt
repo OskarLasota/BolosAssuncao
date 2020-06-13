@@ -99,6 +99,11 @@ object ApiClient {
         @POST("submit_order_product.php")
         fun submit_order_product(@Field("bolo_id") bolo_id : Int, @Field("order_id") order_id : Int) : Call<Boolean>
 
+        @FormUrlEncoded
+        @POST("update_order_status.php")
+        fun update_order_status(@Field("status") status : String, @Field("order_id") order_id : Int) : Call<Int>
+
+
     }
 
 }
