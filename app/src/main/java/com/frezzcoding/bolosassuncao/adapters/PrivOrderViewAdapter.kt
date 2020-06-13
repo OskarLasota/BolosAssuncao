@@ -73,7 +73,10 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
         private fun onClick(v: View?) {
             when(v?.id){
                 R.id.btn1 -> viewModel.setStatus("Order Accepted", order)
-                R.id.btn2 -> viewModel.setStatus("Order Declined", order)
+                R.id.btn2 -> {
+                    viewModel.setStatus("Order Declined", order)
+                    viewModel.delete(order)
+                }
                 R.id.btn3 -> viewModel.setStatus("Order Ready To Collect", order)
                 R.id.btn4 -> viewModel.setStatus("Order status : Delivering", order)
             }
