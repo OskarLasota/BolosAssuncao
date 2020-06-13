@@ -80,13 +80,18 @@ class OrderRepository : OrderDataSource {
         statusCall = ApiClient.build()?.update_order_status(status, order.id)
         statusCall?.enqueue(object: Callback<Int>{
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                TODO("Not yet implemented")
+                callback.onError(t.message)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                TODO("Not yet implemented")
+                response?.body().let{
+                    if(response.isSuccessful){
+                        if (it != null) {
+                            callback.onSuccess(it)
+                        }
+                    }
+                }
             }
-
         })
     }
 
