@@ -130,7 +130,16 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
 
     fun setStatus(status : String, order : Order){
         _isViewLoading.postValue(true)
+        repository.statusOperation(status, order, object: UploadCallBack<Int>{
+            override fun onSuccess(data: Int) {
+                TODO("Not yet implemented")
+            }
 
+            override fun onError(error: String?) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
 
