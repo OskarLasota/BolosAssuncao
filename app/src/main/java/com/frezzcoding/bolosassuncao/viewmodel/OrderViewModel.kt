@@ -128,7 +128,7 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
         })
     }
 
-    fun setStatus(status : String){
+    fun setStatus(status : String, order : Order){
         _isViewLoading.postValue(true)
 
     }

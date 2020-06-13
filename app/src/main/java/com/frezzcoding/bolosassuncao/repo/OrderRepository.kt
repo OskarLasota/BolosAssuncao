@@ -76,7 +76,7 @@ class OrderRepository : OrderDataSource {
         })
     }
 
-    override fun statusOperation(status: String): UploadCallBack<Int> {
+    override fun statusOperation(status: String, orderid : Order): UploadCallBack<Int> {
         TODO("Not yet implemented")
     }
 
