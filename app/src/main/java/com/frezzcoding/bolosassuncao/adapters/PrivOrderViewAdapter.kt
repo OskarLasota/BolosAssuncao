@@ -51,10 +51,12 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
                 var btn2 = dialog.findViewById<Button>(R.id.btn2)
                 var btn3 = dialog.findViewById<Button>(R.id.btn3)
                 var btn4 = dialog.findViewById<Button>(R.id.btn4)
+                var btn5 = dialog.findViewById<Button>(R.id.btn5)
                 btn1.setOnClickListener { onClick(btn1) }
                 btn2.setOnClickListener { onClick(btn2) }
                 btn3.setOnClickListener { onClick(btn3) }
                 btn4.setOnClickListener { onClick(btn4) }
+                btn5.setOnClickListener { onClick(btn5) }
 
                 dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
@@ -79,6 +81,7 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
                 }
                 R.id.btn3 -> viewModel.setStatus("Order Ready To Collect", order)
                 R.id.btn4 -> viewModel.setStatus("Order status : Delivering", order)
+                R.id.btn5 -> viewModel.delete(order)
             }
             dialog.hide()
         }
