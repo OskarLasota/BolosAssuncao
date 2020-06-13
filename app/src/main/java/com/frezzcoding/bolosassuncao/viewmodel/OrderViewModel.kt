@@ -15,6 +15,9 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val _orders = MutableLiveData<ArrayList<Order>>()
     val orders : LiveData<ArrayList<Order>> = _orders
 
+    private val _status = MutableLiveData<Int>()
+    val status : LiveData<Int> = _status
+
     private val _upload = MutableLiveData<Int>()
     val upload : LiveData<Int> = _upload
 
@@ -123,6 +126,11 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
             }
 
         })
+    }
+
+    fun setStatus(status : String){
+        _isViewLoading.postValue(true)
+
     }
 
 

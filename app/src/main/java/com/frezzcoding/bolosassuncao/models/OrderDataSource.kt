@@ -8,6 +8,7 @@ interface OrderDataSource {
 
     fun uploadOrderProducts(productId : Int, orderId : Int, callback : UploadCallBack<Boolean>)
     fun geneticOperation(operation : Int, Order : Order, callback : UploadCallBack<Int>)
+    fun statusOperation(status : String) : UploadCallBack<Int>
     fun retrieveOrders(callback : OperationCallBack<Order>)
     fun retrieveOrdersOverview(operation : Int, callback : OperationCallBack<OrdersOverviewResult>)
 

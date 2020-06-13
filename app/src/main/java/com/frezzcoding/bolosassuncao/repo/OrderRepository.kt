@@ -14,6 +14,7 @@ class OrderRepository : OrderDataSource {
     private var genericCall : Call<Int>?= null
     private var productCall : Call<Boolean>?= null
     private var ordersCall : Call<ArrayList<OrdersOverviewResult>>?= null
+    private var statusCall : Call<Int>?= null
 
     private val OPERATION_UPLOAD = 1
     private val OPERATION_DELETE = 3
@@ -73,6 +74,10 @@ class OrderRepository : OrderDataSource {
             }
 
         })
+    }
+
+    override fun statusOperation(status: String): UploadCallBack<Int> {
+        TODO("Not yet implemented")
     }
 
     override fun retrieveOrders(callback: OperationCallBack<Order>) {
