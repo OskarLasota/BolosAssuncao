@@ -76,9 +76,20 @@ class OrderRepository : OrderDataSource {
         })
     }
 
-    override fun statusOperation(status: String, orderid : Order): UploadCallBack<Int> {
-        TODO("Not yet implemented")
+    override fun statusOperation(status: String, order: Order, callback: UploadCallBack<Int>) {
+        statusCall = ApiClient.build()?.update_order_status(status, order.id)
+        statusCall?.enqueue(object: Callback<Int>{
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
+
 
     override fun retrieveOrders(callback: OperationCallBack<Order>) {
         call= ApiClient.build()?.orders()

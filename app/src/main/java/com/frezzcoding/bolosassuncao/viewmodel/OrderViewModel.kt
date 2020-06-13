@@ -42,7 +42,7 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
     private val OPERATION_UPLOAD = 1
     private val OPERATION_RETRIEVE_ORDERS = 2
     private val OPERATION_DELETE = 3
-    private val DELETE_SUCCESS = 1
+    private val OPERATION_SUCCESS = 1
 
     fun getOrderOverview(){
         _isViewLoading.postValue(true)
@@ -80,7 +80,7 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
         repository.geneticOperation(OPERATION_DELETE, order, object: UploadCallBack<Int>{
             override fun onSuccess(data: Int) {
                 _isViewLoading.postValue(false)
-                _deleted.postValue(DELETE_SUCCESS)
+                _deleted.postValue(OPERATION_SUCCESS)
             }
 
             override fun onError(error: String?) {
@@ -132,11 +132,12 @@ class OrderViewModel(private val repository : OrderDataSource) : ViewModel() {
         _isViewLoading.postValue(true)
         repository.statusOperation(status, order, object: UploadCallBack<Int>{
             override fun onSuccess(data: Int) {
-                TODO("Not yet implemented")
+                _isViewLoading.postValue(false)
+                _status.postValue(OPERATION_SUCCESS)
             }
 
             override fun onError(error: String?) {
-                TODO("Not yet implemented")
+                _isViewLoading.postValue(false)
             }
 
         })
