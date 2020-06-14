@@ -7,6 +7,7 @@
             type="com.frezzcoding.bolosassuncao.models.Order"/>
     </data>
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -49,6 +50,23 @@
                 android:text="@{`Name : ` + order.customer_name + `    R$ ` + String.format(`%.2f`, order.cost) }" />
 
             <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_customername"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="left"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:text="@{`Numero : ` + order.mobile}"
+                />
+
+            <TextView
                 android:id="@+id/tv_orderdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,7 +75,7 @@
                 android:layout_marginBottom="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_customername"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone"
                 android:textSize="16sp"
                 android:text="@{`Due date : `+order.delivery_date + ` ` +order.delivery_time}"
                 android:textColor="#fff" />

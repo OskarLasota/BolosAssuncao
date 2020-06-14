@@ -48,6 +48,7 @@
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#fff"
                     android:maxLines="1"
                     android:hint="first name is fine"
                     android:singleLine="true"
@@ -77,6 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:textColor="#fff"
                     android:inputType="number"
                     android:hint="So we can contact you"
                     android:singleLine="true"
@@ -116,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:textColor="#fff"
                     android:hint="House number or name"
                     android:singleLine="true"
                     />
@@ -143,6 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:textColor="#fff"
                     android:hint="Address Line 2 (optional)"
                     android:singleLine="true"
                     />
@@ -172,6 +176,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:hint="Postcode"
+                    android:textColor="#fff"
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -201,6 +206,7 @@
                     android:maxLines="1"
                     android:hint="Your message here"
                     android:singleLine="true"
+                    android:textColor="#fff"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

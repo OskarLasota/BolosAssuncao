@@ -9,11 +9,6 @@
         android:icon="@drawable/ic_cake"
         android:title="Orders" />
     <item
-        android:id="@+id/destination_chat"
-        android:icon="@drawable/ic_chat"
-        android:title="Chat"
-        />
-    <item
         android:id="@+id/destination_timetable"
         android:icon="@drawable/ic_schedule"
         android:title="Timetable"

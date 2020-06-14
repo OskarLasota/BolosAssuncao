@@ -3,8 +3,10 @@ package com.frezzcoding.bolosassuncao.adapters
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +46,13 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
         private var dialog = Dialog(ctx)
 
         init{
+            binding.cardview.setOnClickListener {
+                var number = "+447773117678"
+                val url = "https://api.whatsapp.com/send?phone=${order.mobile}"
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                ctx.startActivity(i)
+            }
 
             binding.ivStatus.setOnClickListener {
                 dialog.setContentView(R.layout.popup_select_status)

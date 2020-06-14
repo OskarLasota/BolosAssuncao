@@ -4,12 +4,16 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -245,6 +249,17 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             }
             inProcess = false
         }
+
+        binding.etMobile.doOnTextChanged { text, start, count, after ->
+            if (text != null) {
+                if(text == "+55"){
+                    println("reached ")
+                    println(text)
+                    binding.etMobile.text = Editable.Factory.getInstance().newEditable("+55 ")
+                }
+            }
+        }
+
 
         binding.tvSelectdate.setOnClickListener {
             showPopup(SELECT_DATE)

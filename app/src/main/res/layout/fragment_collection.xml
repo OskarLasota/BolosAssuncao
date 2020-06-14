@@ -50,6 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
+                        android:textColor="#fff"
                         android:hint="first name is fine"
                         android:singleLine="true"
                         />
@@ -79,7 +80,8 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:hint="So we can contact you"
+                        android:text="+55 "
+                        android:textColor="#fff"
                         android:singleLine="true"
                         />
                 </com.google.android.material.textfield.TextInputLayout>

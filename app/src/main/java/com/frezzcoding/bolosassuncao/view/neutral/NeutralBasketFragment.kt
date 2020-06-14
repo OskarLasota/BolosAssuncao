@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -76,8 +77,9 @@ class NeutralBasketFragment : Fragment() {
     }
 
     private val renderOrders = Observer<ArrayList<Order>>{
-        if(it.size > 1){
+        if(it.size > 2){
             allowOrder = false
+            Toast.makeText(this.context, "You have placed too many orders", Toast.LENGTH_SHORT).show()
         }
     }
 
