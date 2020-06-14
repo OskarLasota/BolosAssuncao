@@ -1,3 +1,5 @@
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,13 @@ import com.frezzcoding.bolosassuncao.R
 class ChatFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
+        var number = "+447773117678"
+        val url = "https://api.whatsapp.com/send?phone=$number"
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        startActivity(i)
+
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
 

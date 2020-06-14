@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="CURRENTLY UNAVAILABLE"
-        android:textColor="@color/brownish"
+        android:text="WHATSAPP"
+        android:textColor="#228B22"
         android:textSize="45sp" />
 
 </FrameLayout>
