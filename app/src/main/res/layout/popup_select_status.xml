@@ -10,7 +10,7 @@
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accept"
+        android:text="Aceitar"
         />
 
     <Button
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn1"
-        android:text="Decline"
+        android:text="Negar"
         />
 
     <Button
@@ -26,14 +26,14 @@
         android:layout_below="@id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ready to collect"
+        android:text="Pronto pra entrega"
     />
     <Button
         android:id="@+id/btn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn3"
-        android:text="Delivering"
+        android:text="Saiu pra entrega"
         />
 
     <Button
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn4"
-        android:text="Delete"
+        android:text="DELETAR"
         />
 
 </RelativeLayout>

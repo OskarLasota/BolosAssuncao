@@ -47,7 +47,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="#fff"
-                android:text="@{`Name : ` + order.customer_name + `    R$ ` + String.format(`%.2f`, order.cost) }" />
+                android:text="@{`Nome : ` + order.customer_name + `    R$ ` + String.format(`%.2f`, order.cost) }" />
 
             <TextView
                 android:id="@+id/tv_phone"
@@ -63,7 +63,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="#fff"
-                android:text="@{`Numero : ` + order.mobile}"
+                android:text="@{`Telefone : ` + order.mobile}"
                 />
 
             <TextView
@@ -77,7 +77,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_phone"
                 android:textSize="16sp"
-                android:text="@{`Due date : `+order.delivery_date + ` ` +order.delivery_time}"
+                android:text="@{`Data de entrega : `+order.delivery_date + ` ` +order.delivery_time}"
                 android:textColor="#fff" />
 
             <TextView
@@ -91,7 +91,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_orderdate"
                 android:textSize="16sp"
-                android:text="@{`Order Type : ` + order.delivery_collection}"
+                android:text="@{`Forma de entrega : ` + order.delivery_collection}"
                 android:textColor="#fff" />
 
             <TextView

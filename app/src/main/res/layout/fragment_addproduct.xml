@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#c6c1c1"
-            android:hint="Name"
+            android:hint="Nome"
             android:maxLines="1"
             android:singleLine="true"
             />
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#c6c1c1"
-            android:hint="Description"
+            android:hint="Descrição do Produto"
             android:maxLines="1"
             />
 
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:textColor="#c6c1c1"
-            android:hint="Price"
+            android:hint="Preço"
             android:maxLines="1"
             />
 
@@ -117,7 +117,7 @@
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Image"
+        android:text="Selecionar Imagem"
         android:textColor="#c6c1c1"
         app:layout_constraintLeft_toRightOf="@id/iv_selectimage"
         app:layout_constraintTop_toBottomOf="@id/til_price"
@@ -131,7 +131,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:backgroundTint="@color/brownish"
-        android:text="Submit"
+        android:text="Atualizar"
         app:layout_constraintTop_toBottomOf="@id/iv_selectimage"
         app:layout_constraintBottom_toBottomOf="parent"
         />

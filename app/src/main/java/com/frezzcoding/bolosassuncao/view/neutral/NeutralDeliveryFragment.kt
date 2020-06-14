@@ -65,7 +65,7 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             //handle miss communication
         }
         if(!NetworkChecker.isNetworkAvailable(this.context!!)){
-            Toast.makeText(this.context, "Please check your internet connection", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Por favor verifique sua conexao", Toast.LENGTH_SHORT).show()
         }
         //call api to create an order in the main database ( not local database ) & remove all basket items
 
@@ -98,7 +98,6 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
     private val getUploadStatus = Observer<Int>{
         for(element in productList){
             orderViewModel.upload(element.id, it)
-            println("upload sent")
         }
     }
 
@@ -209,11 +208,11 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
         builder.setSingleChoiceItems(result, -1){
                 dialog: DialogInterface?, which: Int ->
             if(action==1){
-                builder.setTitle("Select Delivery Time")
+                builder.setTitle("Selecione a hora de entrega")
                 binding.tvSelecttime.text = result[which] + " ▼"
                 TIME_SELECTED = true
             }else{
-                builder.setTitle("Select Delivery Day")
+                builder.setTitle("Selecione a data de entrega")
                 binding.tvSelectdate.text = result[which] + " ▼"
                 DATE_SELECTED = true
             }
@@ -265,7 +264,7 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             return false
         }
         if(binding.radioGrp.checkedRadioButtonId < 0 ){
-            Toast.makeText(this.context, "Select payment method", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Selecione forma de pagamento", Toast.LENGTH_SHORT).show()
             return false
         }
 
@@ -288,8 +287,8 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
                 }
                 orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
                     binding.tvSelectdate.text.toString().substring(0,10),
-                  binding.etMobile.text.toString(), binding.etAddress1.text.toString(), binding.etAddress2.text.toString(), binding.etPostcode.text.toString(), "delivery",
-                  binding.etInstructions.text.toString(),payment_type, "pending"))
+                  binding.etMobile.text.toString(), binding.etAddress1.text.toString(), binding.etAddress2.text.toString(), binding.etPostcode.text.toString(), "Entrega",
+                  binding.etInstructions.text.toString(),payment_type, "Pendente"))
 
 
             }

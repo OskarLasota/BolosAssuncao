@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/destination_home"
         android:name="HomeFragment"
-        android:label="Home" >
+        android:label="Início">
         <action
             android:id="@+id/action_destination_home_to_destination_settings"
             app:destination="@id/destination_edit" />
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/destination_orders"
         android:name="NeutralOrdersFragment"
-        android:label="Orders" />
+        android:label="Pedidos" />
     <fragment
         android:id="@+id/destination_edit"
         android:name="ManageProductsFragment"
@@ -62,15 +62,15 @@
     <fragment
         android:id="@+id/destination_chat"
         android:name="ChatFragment"
-        android:label="Chat" />
+        android:label="Mensagem" />
     <fragment
         android:id="@+id/destination_add"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.AddProductFragment"
-        android:label="New Product" />
+        android:label="Produto Novo" />
     <fragment
         android:id="@+id/destination_editproduct"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.EditProductFragment"
-        android:label="Edit Product" >
+        android:label="Editar Produto">
 
         <argument
             android:name="product"
@@ -79,7 +79,7 @@
     <fragment
         android:id="@+id/destination_requirelogin1"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.RequireLoginFragment"
-        android:label="Login Required" >
+        android:label="Login Necessario">
         <action
             android:id="@+id/action_destination_requirelogin1_to_LoginActivity"
             app:destination="@id/destination_login" />
@@ -87,7 +87,7 @@
     <fragment
         android:id="@+id/destination_requirelogin2"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.RequireLoginFragment"
-        android:label="Login Required" >
+        android:label="Login Necessario">
         <action
             android:id="@+id/action_destination_requirelogin2_to_LoginActivity"
             app:destination="@id/destination_login" />
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/destination_preview"
         android:name="com.frezzcoding.bolosassuncao.view.ProductPreviewFragment"
-        android:label="Product" />
+        android:label="Produto" />
     <fragment
         android:id="@+id/destination_basket"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralBasketFragment"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/destination_timetable"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedTimetableFragment"
-        android:label="Timetable" />
+        android:label="Dias de Funcionamento" />
     <fragment
         android:id="@+id/destination_todo"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedTodoFragment"
@@ -123,5 +123,5 @@
     <fragment
         android:id="@+id/destination_ordersuccess"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.OrderSuccessFragment"
-        android:label="Success!" />
+        android:label="Sucesso" />
 </navigation>

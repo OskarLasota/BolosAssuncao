@@ -3,14 +3,14 @@
     <item
         android:id="@+id/destination_todo"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Início" />
     <item
         android:id="@+id/destination_priv_orders"
         android:icon="@drawable/ic_cake"
-        android:title="Orders" />
+        android:title="Pedidos" />
     <item
         android:id="@+id/destination_timetable"
         android:icon="@drawable/ic_schedule"
-        android:title="Timetable"
+        android:title="Funcionamento"
         />
 </menu>
