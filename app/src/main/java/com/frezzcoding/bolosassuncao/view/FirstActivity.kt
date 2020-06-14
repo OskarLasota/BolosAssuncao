@@ -55,7 +55,7 @@ class FirstActivity : AppCompatActivity() {
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")
             }else{
-                if(it.privilege == 1) {
+                if(it.privilege == 1 || it.privilege == 2) {
                     intent = Intent(this, PrivilegedUserActivity::class.java)
                 }
                 intent.putExtra("user", it)
