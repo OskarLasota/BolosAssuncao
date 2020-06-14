@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="Username"
+            android:hint="Nome de Usuário"
             android:textColor="#c6c1c1"
             android:singleLine="true"
             />
@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="Password"
+            android:hint="Senha"
             android:textColor="#c6c1c1"
             android:inputType="textPassword"
             android:singleLine="true"
@@ -126,7 +126,7 @@
             android:textColor="#c6c1c1"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="Repeat Password"
+            android:hint="Confirmar Senha"
             android:inputType="textPassword"
             android:singleLine="true"
             />
@@ -143,7 +143,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_repeat_password"
         app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="@color/brownish"
-        android:text="Create Account"
+        android:text="Criar conta"
         />
 
 

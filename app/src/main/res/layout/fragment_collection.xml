@@ -23,13 +23,13 @@
                     android:textColor="#c6c1c1"
                     android:textAlignment="center"
                     android:textSize="22sp"
-                    android:text="Who are we delivering it to?"
+                    android:text="Pra quem estamos entregando?"
                     />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Name"
+                    android:text="Nome"
                     android:textStyle="bold"
                     android:textColor="#c6c1c1"
                     android:paddingTop="15dp"
@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:textColor="#fff"
-                        android:hint="first name is fine"
+                        android:hint="Primeiro Nome"
                         android:singleLine="true"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mobile"
+                    android:text="Telefone"
                     android:textStyle="bold"
                     android:textColor="#c6c1c1"
                     android:paddingTop="15dp"
@@ -94,14 +94,14 @@
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:paddingBottom="20dp"
-                    android:text="Request Collection Date"
+                    android:text="Data de retrirada"
                     />
 
                 <TextView
                     android:id="@+id/tv_selecttime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SELECT TIME ▼"
+                    android:text="SELECIONAR HORA ▼"
                     android:paddingTop="20dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="30dp"
@@ -113,8 +113,8 @@
                     android:id="@+id/tv_selectdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SELECT DATE ▼"
-                    android:padding="10dp"
+                    android:text="SELECIONAR DATA  ▼"
+                    android:layout_margin="10dp"
                     android:textColor="#c6c1c1"
                     android:textStyle="bold"
                     />
@@ -127,7 +127,7 @@
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:padding="20dp"
-                    android:text="How would you like to pay?"
+                    android:text="Forma de pagamento"
                     />
 
                 <RadioGroup
@@ -140,14 +140,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#c6c1c1"
-                        android:text="Debit Card"
+                        android:text="Cartão de débito"
                         />
                     <RadioButton
                         android:id="@+id/radio_two"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#c6c1c1"
-                        android:text="Cash on delivery"
+                        android:text="Dinheiro na Entrega"
                         />
                 </RadioGroup>
 
@@ -156,8 +156,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="Place your order"
+                    android:backgroundTint="@color/brownish"
+                    android:text="Faça seu pedido"
                     />
 
             </LinearLayout>

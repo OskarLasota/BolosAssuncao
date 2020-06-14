@@ -4,18 +4,18 @@
     <item
         android:id="@+id/destination_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Início" />
     <item
         android:id="@+id/destination_orders"
         android:icon="@drawable/ic_cake"
-        android:title="Orders" />
+        android:title="Pedidos" />
     <item
         android:id="@+id/destination_priv_orders"
         android:icon="@drawable/ic_cake"
-        android:title="Orders" />
+        android:title="Pedidos" />
     <item
         android:id="@+id/destination_chat"
         android:icon="@drawable/ic_chat"
-        android:title="Chat"
+        android:title="Mensagem"
         />
 </menu>

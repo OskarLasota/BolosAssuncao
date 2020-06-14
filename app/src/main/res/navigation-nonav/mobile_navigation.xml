@@ -19,7 +19,7 @@
     <activity
         android:id="@+id/destination_register"
         android:name="com.frezzcoding.bolosassuncao.view.RegisterActivity"
-        android:label="Login" />
+        android:label="Criar Conta" />
 
     <fragment
         android:id="@+id/destination_home"
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/destination_edit"
         android:name="ManageProductsFragment"
-        android:label="Edit">
+        android:label="Editar">
         <action
             android:id="@+id/action_destination_settings_to_updateProductFragment2"
             app:destination="@id/destination_add" />
@@ -99,19 +99,19 @@
     <fragment
         android:id="@+id/destination_basket"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralBasketFragment"
-        android:label="Basket" />
+        android:label="Carrinho" />
     <fragment
         android:id="@+id/destination_delivery"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralDeliveryFragment"
-        android:label="Delivery" />
+        android:label="Entrega" />
     <fragment
         android:id="@+id/destination_collection"
         android:name="com.frezzcoding.bolosassuncao.view.neutral.NeutralCollectionFragment"
-        android:label="Collection" />
+        android:label="Retirada" />
     <fragment
         android:id="@+id/destination_priv_orders"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedOrderFragment"
-        android:label="Orders" />
+        android:label="Pedidos" />
     <fragment
         android:id="@+id/destination_timetable"
         android:name="com.frezzcoding.bolosassuncao.view.privileged.PrivilegedTimetableFragment"

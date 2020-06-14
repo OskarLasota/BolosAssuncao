@@ -80,6 +80,7 @@
                 android:text="@{`Data de entrega : `+order.delivery_date + ` ` +order.delivery_time}"
                 android:textColor="#fff" />
 
+
             <TextView
                 android:id="@+id/tv_deliverydate"
                 android:layout_width="match_parent"

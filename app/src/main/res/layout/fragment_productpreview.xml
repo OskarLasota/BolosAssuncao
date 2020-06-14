@@ -36,8 +36,8 @@
         app:lottie_fileName="success.json"
         app:lottie_autoPlay="false"
         app:lottie_repeatCount="0"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
+        android:layout_height="200dp"
+        android:layout_width="200dp"/>
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"

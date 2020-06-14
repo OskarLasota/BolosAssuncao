@@ -27,10 +27,11 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo"
         app:layout_constraintBottom_toTopOf="@id/btn_login_request"
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:textSize="25sp"
+        android:textColor="#fff"
         android:textStyle="bold"
-        android:text="To use this function, please log in!"
+        android:text="Por favor fazer login"
         />
 
     <Button

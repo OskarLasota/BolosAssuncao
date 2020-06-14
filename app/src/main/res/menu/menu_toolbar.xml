@@ -5,15 +5,15 @@
         android:id="@+id/destination_edit"
         android:icon="@drawable/ic_edit"
         app:showAsAction="ifRoom"
-        android:title="Settings" />
+        android:title="Opções" />
     <item
         android:id="@+id/destination_basket"
         android:icon="@drawable/ic_orders_white"
         app:showAsAction="ifRoom"
-        android:title="Settings" />
+        android:title="Carrinho" />
     <item
         android:id="@+id/destination_login"
         android:icon="@drawable/ic_account"
         app:showAsAction="ifRoom"
-        android:title="Settings" />
+        android:title="Conta" />
 </menu>

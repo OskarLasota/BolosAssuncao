@@ -23,13 +23,13 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
-                android:text="Who are we delivering it to?"
+                android:text="Pra quem estamos entregando?"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="Nome"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
                     android:maxLines="1"
-                    android:hint="first name is fine"
+                    android:hint="Nome completo"
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mobile"
+                android:text="Telefone"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -80,7 +80,7 @@
                     android:maxLines="1"
                     android:textColor="#fff"
                     android:inputType="number"
-                    android:hint="So we can contact you"
+                    android:text="+55 "
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,13 +93,13 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
-                android:text="Where are we delivering it to?"
+                android:text="Pra onde estamos entregando?"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address Line 1"
+                android:text="Endereço"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textColor="#fff"
-                    android:hint="House number or name"
+                    android:hint="Rua, Número, Bairro"
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -127,7 +127,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address Line 2"
+                android:text="Complemento"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textColor="#fff"
-                    android:hint="Address Line 2 (optional)"
+                    android:hint="Informações adicionais"
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -155,7 +155,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Postcode"
+                android:text="CEP"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -175,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:inputType="number"
-                    android:hint="Postcode"
+                    android:hint="CEP"
                     android:textColor="#fff"
                     android:singleLine="true"
                     />
@@ -184,7 +184,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delivery Instructions"
+                android:text="Instruções de entrega"
                 android:textStyle="bold"
                 android:textColor="#c6c1c1"
                 android:paddingTop="15dp"
@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:hint="Your message here"
+                    android:hint="Sua mensagem aqui"
                     android:singleLine="true"
                     android:textColor="#fff"
                     />
@@ -218,14 +218,14 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="20dp"
-                android:text="Request Collection Date"
+                android:text="Data de entrega"
                 />
 
             <TextView
                 android:id="@+id/tv_selecttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SELECT TIME ▼"
+                android:text="SELECIONAR HORA ▼"
                 android:paddingTop="20dp"
                 android:paddingLeft="10dp"
                 android:paddingBottom="30dp"
@@ -237,7 +237,7 @@
                 android:id="@+id/tv_selectdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SELECT DATE ▼"
+                android:text="SELECIONAR DATA ▼"
                 android:padding="10dp"
                 android:textColor="#c6c1c1"
                 android:textStyle="bold"
@@ -251,7 +251,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
-                android:text="How would you like to pay?"
+                android:text="Forma de Pagamento"
                 />
             <RadioGroup
                 android:id="@+id/radio_grp"
@@ -263,14 +263,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="#c6c1c1"
-                    android:text="Debit Card"
+                    android:text="Cartão de débito"
                     />
                 <RadioButton
                     android:id="@+id/radio_two"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="#c6c1c1"
-                    android:text="Cash on delivery"
+                    android:text="Dinheiro na Entrega"
                     />
             </RadioGroup>
 
@@ -279,7 +279,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="Place your order"
+                android:backgroundTint="@color/brownish"
+                android:text="Faça seu pedido"
                 />
 
         </LinearLayout>
