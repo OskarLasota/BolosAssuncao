@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -274,6 +275,15 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
 
 
     private fun setObservers(){
+        binding.etMobile.setOnKeyListener(object : View.OnKeyListener{
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if(binding.etMobile.text.toString().length == 4 && keyCode == 67){
+                    return true
+                }
+                return false
+            }
+        })
+
         binding.btnOrderdelivery.setOnClickListener {
             if(checkInputValidity() && !inProcess){
                 inProcess = true

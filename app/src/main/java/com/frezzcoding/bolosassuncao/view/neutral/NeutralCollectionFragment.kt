@@ -250,15 +250,14 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
             inProcess = false
         }
 
-        binding.etMobile.doOnTextChanged { text, start, count, after ->
-            if (text != null) {
-                if(text == "+55"){
-                    println("reached ")
-                    println(text)
-                    binding.etMobile.text = Editable.Factory.getInstance().newEditable("+55 ")
+        binding.etMobile.setOnKeyListener(object : View.OnKeyListener{
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if(binding.etMobile.text.toString().length == 4 && keyCode == 67){
+                    return true
                 }
+                return false
             }
-        }
+        })
 
 
         binding.tvSelectdate.setOnClickListener {

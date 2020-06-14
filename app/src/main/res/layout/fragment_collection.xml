@@ -94,7 +94,7 @@
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:paddingBottom="20dp"
-                    android:text="Data de retrirada"
+                    android:text="Data de retirada"
                     />
 
                 <TextView
