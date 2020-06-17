@@ -2,21 +2,24 @@ package com.frezzcoding.bolosassuncao.adapters
 
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.PrivOrderCardviewBinding
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
+
 
 class PrivOrderViewAdapter(private val _data : List<Order>, private val viewModel : OrderViewModel) : RecyclerView.Adapter<PrivOrderViewAdapter.ViewHolder>(){
 
@@ -52,6 +55,17 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
                 val i = Intent(Intent.ACTION_VIEW)
                 i.data = Uri.parse(url)
                 ctx.startActivity(i)
+            }
+
+            binding.arrowBtn.setOnClickListener {
+                if(!binding.expandable.isVisible){
+                    TransitionManager.beginDelayedTransition(binding.cardview, AutoTransition())
+                    binding.expandable.visibility = View.VISIBLE
+                    //arrowBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp)
+                }else{
+                    TransitionManager.beginDelayedTransition(binding.cardview, AutoTransition())
+                    binding.expandable.visibility = View.GONE
+                }
             }
 
             binding.ivStatus.setOnClickListener {
