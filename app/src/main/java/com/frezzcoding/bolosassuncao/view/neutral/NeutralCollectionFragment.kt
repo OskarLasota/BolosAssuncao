@@ -240,6 +240,9 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
                 if(binding.radioOne.isSelected){
                     payment_type = "Debit card"
                 }
+                if(binding.radioThree.isSelected){
+                    payment_type = "Transferência"
+                }
                 orderViewModel.upload(
                     Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
                         binding.tvSelectdate.text.toString().substring(0,10),
@@ -250,6 +253,10 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
 
             }
             inProcess = false
+        }
+
+        binding.radioThree.setOnClickListener {
+            showTransferPopup()
         }
 
         binding.etMobile.setOnKeyListener(object : View.OnKeyListener{
@@ -271,6 +278,14 @@ class NeutralCollectionFragment : Fragment(), InputValidator {
         binding.etName.doAfterTextChanged {
             checkCurrentValidity("name")
         }
+    }
+
+    private fun showTransferPopup(){
+        var dialog = Dialog(context!!)
+        dialog.setContentView(R.layout.popup_transfer_info)
+
+
+        dialog.show()
     }
 
     override fun checkCurrentValidity(resource: String) {

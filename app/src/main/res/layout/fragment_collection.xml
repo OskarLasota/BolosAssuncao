@@ -154,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#c6c1c1"
-                        android:text="Transfer"
+                        android:text="Transferência"
                         />
                 </RadioGroup>
 
