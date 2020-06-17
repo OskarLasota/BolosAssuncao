@@ -164,6 +164,13 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             }
         }
     }
+    private fun showTransferPopup(){
+        var dialog = Dialog(context!!)
+        dialog.setContentView(R.layout.popup_transfer_info)
+
+
+        dialog.show()
+    }
 
     private fun findAvailableTimes(it : Privileged){
         var startHour = Integer.parseInt(it.start_time.substring(0,2))
@@ -286,6 +293,10 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
             }
         })
 
+        binding.radioThree.setOnClickListener {
+            showTransferPopup()
+        }
+
         binding.btnOrderdelivery.setOnClickListener {
             if(checkInputValidity() && !inProcess){
                 inProcess = true
@@ -296,6 +307,9 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
                 var payment_type = "Cash On Delivery"
                 if(binding.radioOne.isSelected){
                     payment_type = "Debit card"
+                }
+                if(binding.radioThree.isSelected){
+                    payment_type = "Transferência"
                 }
                 orderViewModel.upload(Order(0, currentUser.id, sum, binding.etName.text.toString(), binding.tvSelecttime.text.toString().substring(0,5),
                     binding.tvSelectdate.text.toString().substring(0,10),

@@ -278,6 +278,13 @@
                     android:textColor="@color/textfieldcolour"
                     android:text="Dinheiro na Entrega"
                     />
+                <RadioButton
+                    android:id="@+id/radio_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/textfieldcolour"
+                    android:text="Transferência"
+                    />
             </RadioGroup>
 
             <Button
