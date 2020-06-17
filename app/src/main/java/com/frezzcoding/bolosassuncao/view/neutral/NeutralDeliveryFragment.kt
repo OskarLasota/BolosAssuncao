@@ -167,28 +167,30 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
 
     private fun findAvailableTimes(it : Privileged){
         var startHour = Integer.parseInt(it.start_time.substring(0,2))
-        var startMin = Integer.parseInt(it.start_time.substring(3,5))
+        val startMin = Integer.parseInt(it.start_time.substring(3,5))
 
-        var endHour = Integer.parseInt(it.end_time.substring(0,2))
-        var endMin = Integer.parseInt(it.end_time.substring(3,5))
+        val endHour = Integer.parseInt(it.end_time.substring(0,2))
+        val endMin = Integer.parseInt(it.end_time.substring(3,5))
 
-        var tempMin = ""
+        var tempMin = startMin.toString() + "0"
 
-        while(startHour < endHour) {
-            if(startHour == endHour && endMin == 30){
-                timesAvailable = timesAvailable.plus("$startHour:$endMin")
+        while(startHour+1 <= endHour) {
+            if(startHour+1 == endHour){
+                if(tempMin == "30" && (endMin.toString()+"0") == "00"){
+                    break
+                }
             }
-            if (startMin == 30) {
-                startMin = 0
-                tempMin = startMin.toString()+"0"
+            if(tempMin == "00"){
+                timesAvailable = timesAvailable.plus("$startHour:$tempMin - ${startHour + 1}:$tempMin")
+            }else {
+                timesAvailable = timesAvailable.plus("$startHour:$tempMin - ${startHour + 1}:$tempMin")
+            }
+
+            if (tempMin == "30") {
+                tempMin = "00"
                 startHour ++
             }else{
-                startMin += 30
-            }
-            if(startMin == 0){
-                timesAvailable = timesAvailable.plus("$startHour:$tempMin")
-            }else {
-                timesAvailable = timesAvailable.plus("$startHour:$startMin")
+                tempMin = "30"
             }
         }
 
