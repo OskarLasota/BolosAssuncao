@@ -44,7 +44,7 @@
                 android:gravity="left"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#fff"
+                android:textColor="@color/textfieldcolour"
                 android:text="@{`Nome : ` + order.customer_name}" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:gravity="left"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#fff"
+                android:textColor="@color/textfieldcolour"
                 android:text="@{`Telefone : ` + order.mobile}"
                 />
 
@@ -93,7 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_phone"
                 android:textSize="16sp"
                 android:text="@{`Data de entrega : `+order.delivery_date + ` ` +order.delivery_time}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
 
             <TextView
@@ -108,7 +108,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_orderdate"
                 android:textSize="16sp"
                 android:text="@{`Forma de entrega : ` + order.delivery_collection}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
             <TextView
                 android:id="@+id/tv_status"
@@ -122,7 +122,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_deliverydate"
                 android:textSize="16sp"
                 android:text="@{`Status : ` + order.status}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
             
             <TextView
                 android:id="@+id/tv_instruction"
@@ -136,7 +136,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_status"
                 android:textSize="16sp"
                 android:text="@{`Mensagem : ` + order.instructions}"
-                android:textColor="#fff"
+                android:textColor="@color/textfieldcolour"
                 />
 
 
@@ -172,7 +172,7 @@
                     android:layout_marginBottom="30dp"
                     android:textSize="16sp"
                     android:text="@{`Endereço : ` + order.address_1}"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     />
 
                 <TextView
@@ -187,7 +187,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_address1"
                     android:textSize="16sp"
                     android:text="@{`Complemento : ` + order.address_2}"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     />
 
                 <TextView
@@ -202,7 +202,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_address2"
                     android:textSize="16sp"
                     android:text="@{`CEP : ` + order.postcode}"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     />
 
 

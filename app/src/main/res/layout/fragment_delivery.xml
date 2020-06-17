@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nome"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
 
@@ -42,13 +42,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:textColorHint="@color/textfieldcolour"
                 app:layout_constraintRight_toRightOf="parent"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     android:maxLines="1"
                     android:hint="Nome completo"
                     android:singleLine="true"
@@ -60,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="Telefone"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -69,6 +70,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:textColorHint="@color/textfieldcolour"
                 app:layout_constraintRight_toRightOf="parent"
                 android:paddingBottom="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -78,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     android:inputType="number"
                     android:text="+55 "
                     android:singleLine="true"
@@ -89,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -101,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:text="Endereço"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
@@ -109,6 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/divider"
+                android:textColorHint="@color/textfieldcolour"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -118,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     android:hint="Rua, Número, Bairro"
                     android:singleLine="true"
                     />
@@ -129,12 +132,13 @@
                 android:layout_height="wrap_content"
                 android:text="Complemento"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_address2"
                 android:layout_width="match_parent"
+                android:textColorHint="@color/textfieldcolour"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -146,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     android:hint="Informações adicionais"
                     android:singleLine="true"
                     />
@@ -157,13 +161,14 @@
                 android:layout_height="wrap_content"
                 android:text="CEP"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_postcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/textfieldcolour"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -176,7 +181,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:hint="CEP"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -186,13 +191,14 @@
                 android:layout_height="wrap_content"
                 android:text="Instruções de entrega"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:paddingTop="15dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_instructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/textfieldcolour"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -206,7 +212,7 @@
                     android:maxLines="1"
                     android:hint="Sua mensagem aqui"
                     android:singleLine="true"
-                    android:textColor="#fff"
+                    android:textColor="@color/textfieldcolour"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -214,7 +220,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="20dp"
@@ -229,7 +235,7 @@
                 android:paddingTop="20dp"
                 android:paddingLeft="10dp"
                 android:paddingBottom="30dp"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textStyle="bold"
                 />
 
@@ -239,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:text="SELECIONAR DATA ▼"
                 android:padding="10dp"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textStyle="bold"
                 />
 
@@ -247,7 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="#c6c1c1"
+                android:textColor="@color/textfieldcolour"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:paddingBottom="15dp"
@@ -262,14 +268,14 @@
                     android:id="@+id/radio_one"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:text="Cartão de débito"
                     />
                 <RadioButton
                     android:id="@+id/radio_two"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:text="Dinheiro na Entrega"
                     />
             </RadioGroup>

@@ -30,7 +30,7 @@
                 android:gravity="left"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#fff"
+                android:textColor="@color/textfieldcolour"
                 android:text="@{`Número do Pedido : ` + order.id}" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:textSize="18sp"
                 android:text="@{order.delivery_collection +` : `}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
             <TextView
                 android:id="@+id/tv_deliverydate"
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:textSize="18sp"
                 android:text="@{order.delivery_date}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
             <TextView
                 android:id="@+id/tv_status"
@@ -74,7 +74,7 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:text="@{`R$ : ` + String.format(`%.2f`, order.cost)}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
             <ImageView
                 android:id="@+id/iv_remove"

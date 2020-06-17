@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:textColorHint="@color/textfieldcolour"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/til_email"
@@ -24,6 +25,7 @@
             android:id="@+id/et_editname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/textfieldcolour"
             android:maxLines="1"
             android:hint="Nome de Usuário"
             android:singleLine="true"
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:textColorHint="@color/textfieldcolour"
         app:layout_constraintTop_toBottomOf="@id/til_username"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:hint="Email"
+            android:textColor="@color/textfieldcolour"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             />
@@ -59,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_email"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="25dp"
+        android:textColorHint="@color/textfieldcolour"
         android:layout_marginRight="25dp"
         app:layout_constraintRight_toRightOf="parent"
         >
@@ -68,6 +73,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="textPassword"
+            android:textColor="@color/textfieldcolour"
             android:hint="Senha"
             android:singleLine="true"
             />
@@ -75,6 +81,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_repeat_password"
+        android:textColorHint="@color/textfieldcolour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/til_password"
@@ -89,6 +96,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="textPassword"
+            android:textColor="@color/textfieldcolour"
             android:hint="Confirmar Senha"
             android:singleLine="true"
             />

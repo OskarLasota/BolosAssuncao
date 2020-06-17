@@ -44,7 +44,7 @@
                 android:layout_margin="20dp"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:textColor="#fff"
+                android:textColor="@color/textfieldcolour"
                 android:text="@{product.name}" />
 
 
@@ -60,7 +60,7 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="@{`R$ `+ String.format(`%.2f`, product.price)}"
-                android:textColor="#fff" />
+                android:textColor="@color/textfieldcolour" />
 
             <ImageView
                 android:id="@+id/iv_remove"

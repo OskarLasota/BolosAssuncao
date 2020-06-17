@@ -7,5 +7,6 @@
     <color name="transparent">#0000</color>
     <color name="brownish">#5F3813</color>
     <color name="browner">#573815</color>
+    <color name="textfieldcolour">#000000</color>
     <color name="cardview_brownish">#C4996C</color>
 </resources>

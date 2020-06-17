@@ -20,7 +20,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:text="Pra quem estamos entregando?"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nome"
                     android:textStyle="bold"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:paddingTop="15dp"
                     />
 
@@ -41,6 +41,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:layout_constraintTop_toBottomOf="@id/divider"
+                    android:textColorHint="@color/textfieldcolour"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     android:paddingBottom="20dp"
@@ -50,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:textColor="#fff"
+                        android:textColor="@color/textfieldcolour"
                         android:hint="Primeiro Nome"
                         android:singleLine="true"
                         />
@@ -61,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:text="Telefone"
                     android:textStyle="bold"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:paddingTop="15dp"
                     />
                 <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +82,7 @@
                         android:maxLines="1"
                         android:inputType="number"
                         android:text="+55 "
-                        android:textColor="#fff"
+                        android:textColor="@color/textfieldcolour"
                         android:singleLine="true"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -90,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:paddingBottom="20dp"
@@ -105,7 +106,7 @@
                     android:paddingTop="20dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="30dp"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:textStyle="bold"
                     />
 
@@ -115,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="SELECIONAR DATA  ▼"
                     android:layout_margin="10dp"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:textStyle="bold"
                     />
 
@@ -123,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#c6c1c1"
+                    android:textColor="@color/textfieldcolour"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:padding="20dp"
@@ -139,21 +140,21 @@
                         android:id="@+id/radio_one"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="#c6c1c1"
+                        android:textColor="@color/textfieldcolour"
                         android:text="Cartão de débito"
                         />
                     <RadioButton
                         android:id="@+id/radio_two"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="#c6c1c1"
+                        android:textColor="@color/textfieldcolour"
                         android:text="Dinheiro na Entrega"
                         />
                     <RadioButton
                         android:id="@+id/radio_three"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="#c6c1c1"
+                        android:textColor="@color/textfieldcolour"
                         android:text="Transferência"
                         />
                 </RadioGroup>

@@ -26,7 +26,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="16dp"
-            android:textColor="#fff"
+            android:textColor="@color/textfieldcolour"
             android:text="@{product.name}" />
 
         <ImageView
@@ -45,7 +45,7 @@
             android:maxLines="1"
             android:textSize="16dp"
             android:text="@{`R$ `+ String.format(`%.2f`, product.price)}"
-            android:textColor="#fff" />
+            android:textColor="@color/textfieldcolour" />
 
     </LinearLayout>
 
