@@ -21,7 +21,7 @@
             android:id="@+id/image_title"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/cardview_brownish"
             android:maxLines="1"
             android:gravity="center"
             android:textStyle="bold"
@@ -33,14 +33,14 @@
             android:id="@+id/imageview_id"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/cardview_brownish"
              />
 
         <TextView
             android:id="@+id/image_price"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/cardview_brownish"
             android:gravity="center"
             android:maxLines="1"
             android:textSize="16dp"

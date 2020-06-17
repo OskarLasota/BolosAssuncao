@@ -3,8 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="grey">#514F4F</color>
+    <color name="lightbrownish">#EFCB8F</color>
     <color name="transparent">#0000</color>
-    <color name="brownish">#d18e27</color>
-    <color name="browner">#af741a</color>
+    <color name="brownish">#5F3813</color>
+    <color name="browner">#573815</color>
+    <color name="cardview_brownish">#C4996C</color>
 </resources>

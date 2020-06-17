@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/cardview_brownish"
             android:orientation="vertical">
 
             <TextView
@@ -31,7 +31,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="#fff"
-                android:text="@{`Order Number : ` + order.id}" />
+                android:text="@{`Número do Pedido : ` + order.id}" />
 
             <TextView
                 android:id="@+id/tv_orderdate"
@@ -52,7 +52,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="5dp"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintLeft_toRightOf="@id/tv_orderdate"
                 app:layout_constraintRight_toRightOf="parent"
@@ -68,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintTop_toBottomOf="@id/tv_deliverydate"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
