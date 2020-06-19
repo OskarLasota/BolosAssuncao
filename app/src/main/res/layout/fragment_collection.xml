@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:textColor="@color/textfieldcolour"
-                        android:hint="Primeiro Nome"
+                        android:hint="Nome completo"
                         android:singleLine="true"
                         />
                 </com.google.android.material.textfield.TextInputLayout>

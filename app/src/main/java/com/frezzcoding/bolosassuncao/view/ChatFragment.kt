@@ -12,7 +12,7 @@ class ChatFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        var number = "+447773117678"
+        var number = "+557196348589"
         val url = "https://api.whatsapp.com/send?phone=$number"
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
