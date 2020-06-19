@@ -30,6 +30,7 @@ import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.PrivilegedViewModel
 import maes.tech.intentanim.CustomIntent
+import java.text.DateFormat
 import java.util.*
 
 
@@ -115,53 +116,48 @@ class NeutralDeliveryFragment : Fragment(), InputValidator {
     //todo if statements could be avoided by changing api response and storing in an array
     private fun findAvailableDates(it : Privileged){
         var dt = Date()
-        val c = Calendar.getInstance()
+        var brazil = Locale("pt", "BR")
+        val c = Calendar.getInstance(brazil)
+
         c.time = dt
         for(i in 1..7){
-            c.add(Calendar.DATE, 1)
             dt = c.time
             if(dt.toString().substring(0,3) == "Mon"){
                 if(it.monday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Tue"){
                 if(it.tuesday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Wed"){
                 if(it.wednesday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Thu"){
                 if(it.thursday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Fri"){
                 if(it.friday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Sat"){
                 if(it.saturday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
             if(dt.toString().substring(0,3) == "Sun"){
                 if(it.sunday == "true") {
-                    daysAvailable = daysAvailable.plus(dt.toString().substring(0, 10))
-                    continue
+                    daysAvailable = daysAvailable.plus(DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time))
                 }
             }
+            c.add(Calendar.DATE, 1)
         }
     }
     private fun showTransferPopup(){

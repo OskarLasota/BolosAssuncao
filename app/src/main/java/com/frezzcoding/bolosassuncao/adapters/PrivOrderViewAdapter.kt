@@ -50,7 +50,6 @@ class PrivOrderViewAdapter(private val _data : List<Order>, private val viewMode
 
         init{
             binding.cardview.setOnClickListener {
-                var number = "+447773117678"
                 val url = "https://api.whatsapp.com/send?phone=${order.mobile}"
                 val i = Intent(Intent.ACTION_VIEW)
                 i.data = Uri.parse(url)
