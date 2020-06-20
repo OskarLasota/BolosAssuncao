@@ -51,6 +51,7 @@ class PrivilegedTodoFragment : Fragment() {
     }
 
     private val obtainOrders = Observer<ArrayList<OrdersOverviewResult>>{
+        productList = HashMap<String, Int>()
         for(order in it){
             if(productList[order.url] == null){
                 productList[order.url] = 0

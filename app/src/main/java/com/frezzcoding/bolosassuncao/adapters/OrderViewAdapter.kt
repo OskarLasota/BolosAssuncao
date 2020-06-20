@@ -8,6 +8,8 @@ import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.databinding.OrderCardviewBinding
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
+import java.text.DateFormat
+import java.util.*
 
 class OrderViewAdapter(private val _data : List<Order>, private val viewModel : OrderViewModel) : RecyclerView.Adapter<OrderViewAdapter.ViewHolder>(){
 
@@ -34,14 +36,26 @@ class OrderViewAdapter(private val _data : List<Order>, private val viewModel : 
         private lateinit var order : Order
 
         init{
-            binding.ivRemove.setOnClickListener {
-                viewModel.delete(order)
-            }
+          //  binding.ivRemove.setOnClickListener {
+           //     viewModel.delete(order)
+          //  }
         }
 
         fun bind(_order : Order){
             binding.order = _order
             order = _order
+            var brazil = Locale("pt", "BR")
+            var dt = Date()
+            val c = Calendar.getInstance(brazil)
+            c.time = dt
+            var temp = false
+            while(!temp){
+                if(dt.toString().contains(_order.delivery_date)){
+                    binding.tvDeliverydate.text = DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time)
+                    temp = true
+                }
+                c.add(Calendar.DATE, 1)
+            }
         }
 
 
