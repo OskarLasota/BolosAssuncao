@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_neutral.*
 
 
 class PrivilegedUserActivity : AppCompatActivity() {
@@ -67,12 +67,9 @@ class PrivilegedUserActivity : AppCompatActivity() {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
-        setupActionBar(navController)
     }
 
-    private fun setupActionBar(navController: NavController) {
-        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
-    }
+
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.menu?.findItem(R.id.destination_orders)?.isVisible = false
@@ -100,10 +97,5 @@ class PrivilegedUserActivity : AppCompatActivity() {
         return navigated || super.onOptionsItemSelected(item)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(Navigation.findNavController(this,
-            R.id.nav_host_fragment
-        ),
-            drawer_layout)
-    }
+
 }

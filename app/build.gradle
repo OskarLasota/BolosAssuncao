@@ -8,12 +8,12 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
 
-    dataBinding {
-        enabled = true
+
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
     }
-    viewBinding {
-        enabled = true
-    }
+
     defaultConfig {
         applicationId "com.frezzcoding.bolosassuncao"
         minSdkVersion 21

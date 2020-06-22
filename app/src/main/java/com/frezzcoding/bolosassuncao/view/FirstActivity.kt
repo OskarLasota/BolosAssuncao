@@ -45,6 +45,9 @@ class FirstActivity : AppCompatActivity() {
             if(!it){
                 startActivity(intent)
                 CustomIntent.customType(this, "fadein-to-fadeout")
+            }else{
+                startActivity(intent)
+                CustomIntent.customType(this, "fadein-to-fadeout")
             }
         })
 

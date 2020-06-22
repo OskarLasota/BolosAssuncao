@@ -19,7 +19,7 @@ import com.frezzcoding.bolosassuncao.view.privileged.PrivilegedUserActivity
 import com.frezzcoding.bolosassuncao.viewmodel.AccountViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.google.firebase.iid.FirebaseInstanceId
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_neutral.*
 import maes.tech.intentanim.CustomIntent
 
 class LoginActivity : AppCompatActivity(), InputValidator {

@@ -13,7 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.frezzcoding.bolosassuncao.R
 import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_neutral.*
 
 class NeutralUserActivity : AppCompatActivity()  {
 
@@ -66,7 +66,6 @@ class NeutralUserActivity : AppCompatActivity()  {
             R.id.nav_host_fragment
         )
         setupBottomNavMenu(navController)
-        setupActionBar(navController)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -79,10 +78,7 @@ class NeutralUserActivity : AppCompatActivity()  {
         return super.onPrepareOptionsMenu(menu)
     }
 
-    //name of fragment used from map graph
-    private fun setupActionBar(navController: NavController) {
-        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
-    }
+
 
     private fun setupBottomNavMenu(navController: NavController) {
         bottom_nav?.menu?.findItem(R.id.destination_timetable)?.isVisible = false
@@ -110,11 +106,5 @@ class NeutralUserActivity : AppCompatActivity()  {
         return navigated || super.onOptionsItemSelected(item)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(Navigation.findNavController(this,
-            R.id.nav_host_fragment
-        ),
-            drawer_layout)
-    }
 
 }
