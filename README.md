@@ -53,8 +53,7 @@ In the meantime practicing Kotlin and other industry standard techiniques and li
 
 ## Current Admin UI : In progress
 
-![current products](images/admin_products.png) 
+![current products](images/admin_home.png) 
 ![edit product](images/admin_edit.png)
 ![new product](images/admin_new.png)
 ![orders](images/admin_orders.png)
-![admin_chat](images/admin_chat.png)
