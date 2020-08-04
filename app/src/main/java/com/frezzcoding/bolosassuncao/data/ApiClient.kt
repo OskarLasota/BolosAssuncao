@@ -14,7 +14,7 @@ import retrofit2.http.POST
 
 object ApiClient {
 
-    private const val API_BASE_URL = "http://bolosassuncao.com.br/api/"
+    private const val API_BASE_URL = "https://frezzyyltd.space/api/"
     private var servicesApiInterface:ServicesApiInterface?=null
 
 
