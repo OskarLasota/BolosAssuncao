@@ -17,6 +17,9 @@ import com.frezzcoding.bolosassuncao.models.User
 import com.frezzcoding.bolosassuncao.utils.NetworkChecker
 import com.frezzcoding.bolosassuncao.viewmodel.CachingViewModel
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class NeutralOrdersFragment : Fragment() {
@@ -65,7 +68,12 @@ class NeutralOrdersFragment : Fragment() {
         var list : List<Order> = mutableListOf()
         for(element in it){
             if(element.user_id == currentUser.id){
-                list = list.plus(element)
+                var dt = Date()
+                val format = SimpleDateFormat("E MMM dd")
+                var dt2 = format.parse(element.delivery_date)
+                if(dt.before(dt2)) {
+                    list = list.plus(element)
+                }
             }
         }
         println(list.size)

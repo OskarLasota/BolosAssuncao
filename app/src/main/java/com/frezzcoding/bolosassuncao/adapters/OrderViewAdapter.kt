@@ -9,6 +9,7 @@ import com.frezzcoding.bolosassuncao.databinding.OrderCardviewBinding
 import com.frezzcoding.bolosassuncao.models.Order
 import com.frezzcoding.bolosassuncao.viewmodel.OrderViewModel
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class OrderViewAdapter(private val _data : List<Order>, private val viewModel : OrderViewModel) : RecyclerView.Adapter<OrderViewAdapter.ViewHolder>(){
@@ -49,12 +50,15 @@ class OrderViewAdapter(private val _data : List<Order>, private val viewModel : 
             val c = Calendar.getInstance(brazil)
             c.time = dt
             var temp = false
-            while(!temp){
+            var count = 0
+            while(!temp && count < 15){
                 if(dt.toString().contains(_order.delivery_date)){
                     binding.tvDeliverydate.text = DateFormat.getDateInstance(DateFormat.LONG, brazil).format(c.time)
                     temp = true
                 }
                 c.add(Calendar.DATE, 1)
+                count++
+                println(count)
             }
         }
 
